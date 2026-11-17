@@ -1,0 +1,4 @@
+#!/bin/bash
+# show.sh USERID -> notas do Moodle (valor persistido), eventos novos da fila e linhas/contexto das análises do estudante
+u=$1
+mysql -h db -umoodle -ppassword moodle -e "select 'MOODLE' src, i.id item, i.itemname, g.finalgrade, g.overridden>0 ov, i.grademin, i.grademax, round((g.finalgrade-i.grademin)/(i.grademax-i.grademin)*100,3) pct from mdl_grade_grades g join mdl_grade_items i on i.id=g.itemid where i.courseid=3 and g.userid=$u order by i.id; select 'PLUGIN' src, a.id analysis, p.activity_id cmid, p.grade from mdl_local_assistente_analysis a join mdl_local_assistente_processing pr on pr.id=a.processing_id join mdl_local_assistente_event e on e.id=pr.event_id left join mdl_local_assistente_performance p on p.analysis_id=a.id where a.analysis_type='grade_performance' and a.course_id=3 and e.payload like '{\"userid\":$u,%' order by a.id desc, p.activity_id limit 12" 2>&1

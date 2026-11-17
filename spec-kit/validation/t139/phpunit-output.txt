@@ -1,0 +1,2397 @@
+Moodle 5.2.4+ (Build: 20261030)
+Php: 8.3.36, mariadb: 11.4.13, OS: Linux 6.8.0-1064-azure x86_64
+PHPUnit 11.5.55 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.3.36 with PCOV 1.0.12
+Configuration: /var/www/html/phpunit-t139.xml
+
+.............................................................   61 / 1588 (  3%)
+................................................
+[sinal] task connection 31 owns c4746a1950b2886f539ff1a5fa5e66430f0b5e2c and waits for 84497af135328b19fa9aa9eb2973e37169f76164.............  122 / 1588 (  7%)
+.............................................................  183 / 1588 ( 11%)
+......
+T105 growth of the history by type of analysis (analyses / result rows), after each of 5 rounds:
+type                 round 1    round 2    round 3    round 4    round 5  
+grade_performance    1/1        2/2        3/3        4/4        5/5      
+frequency            1/1        2/2        3/3        4/4        5/5      
+criteria_check       1/1        2/2        3/3        4/4        5/5      
+forum_analysis       1/1        2/2        3/3        4/4        5/5      
+quiz_initial         1/1        2/2        3/3        4/4        5/5      
+quiz_results         1/0        2/0        3/0        4/0        5/0      
+section_synthesis    1/1        2/2        3/3        4/4        5/5      
+..........................................
+[CL-48] 10 students x 5 modules: (a) common case 23 reads, (b) worst case 610 reads; one module only: (a) 16, (b) 129
+.
+[CL-48] 20 students x 10 modules: (a) common case 38 reads, (b) worst case 4415 reads; one module only: (a) 26, (b) 454
+.
+[CL-48] worst case, one material, 10 x 5: 132 reads, 20 x 10: 455 reads, factor 3.45
+.
+[CL-48] 10 students x 5 modules: (c) initial synchronization 73 reads, 5 material_changed events
+.
+[CL-48] 20 students x 10 modules: (c) initial synchronization 128 reads, 10 material_changed events
+.........  244 / 1588 ( 15%)
+.......................................................local_assistente: could not erase the data of the deleted course 163000: database unavailable
+......  305 / 1588 ( 19%)
+..............
+[sinal] A: erasure connection 61 owns c4746a1950b2886f539ff1a5fa5e66430f0b5e2c; task connection 62 waits for it.
+[sinal] B: task connection 64 owns c4746a1950b2886f539ff1a5fa5e66430f0b5e2c and waits for the student; erasure connection 65 waits for the course.
+[sinal] round 1: order of the task and the erasure of the student = task first
+[sinal] round 2: order of the task and the erasure of the student = task first
+[sinal] round 3: order of the task and the erasure of the student = task first
+[sinal] round 4: order of the task and the erasure of the student = task first
+[sinal] round 5: order of the task and the erasure of the student = task first.............................................  366 / 1588 ( 23%)
+.............................................................  427 / 1588 ( 26%)
+.....................
+CL33 match: reader answers=0 correct_response=empty | attempt state=gradedright fraction=1.0 total_mark=1.0 | handler ok rows=1 avg=100.000 partial='100.000'
+.
+CL33 multianswer: reader answers=0 correct_response=given | attempt state=gradedright fraction=1.0 total_mark=2.0 | handler ok rows=1 avg=100.000 partial='100.000'
+.S
+CL33 ddwtos: reader answers=0 correct_response=given | attempt state=gradedright fraction=1.0 total_mark=1.0 | handler ok rows=1 avg=100.000 partial='100.000'
+.SNNS................................  488 / 1588 ( 30%)
+.............................................................  549 / 1588 ( 34%)
+.............................................................  610 / 1588 ( 38%)
+.............................................................  671 / 1588 ( 42%)
+.............................................................  732 / 1588 ( 46%)
+.............................................................  793 / 1588 ( 49%)
+.............................................................  854 / 1588 ( 53%)
+.............................................................  915 / 1588 ( 57%)
+.............................................................  976 / 1588 ( 61%)
+............................................................. 1037 / 1588 ( 65%)
+............................................................. 1098 / 1588 ( 69%)
+..................................N.......N.................. 1159 / 1588 ( 72%)
+............................................................. 1220 / 1588 ( 76%)
+..
+[sinal] M-02: the pointer ended on version 32 of 32; switches refused by the rule: 0.
+[sinal] M-03: 39 accepted and 25 refused by the unique index, of 64; first round: 1 accepted, 3 refused.........
+[sinal] M-12: order in which the lock was obtained in 6 runs: v3,v2 | v2,v3 | v3,v2 | v2,v3 | v3,v2 | v3,v2...
+[sinal] M-13: order in which the lock was obtained in 6 runs: v1,v2 | v2,v1 | v2,v1 | v1,v2 | v2,v1 | v1,v2.............................................. 1281 / 1588 ( 80%)
+............................................................. 1342 / 1588 ( 84%)
+.............................
+[sinal] M-07: the operation gave up after 1.00s (timeout 1s)...
+[sinal] M-10: the worker failed with dml_read_exception: Error reading from database (MySQL server has gone away
+SELECT RELEASE_LOCK(?) AS unlocked
+[array (
+  0 => 'ef82e82fb5f682aa032060c606995f91............................. 1403 / 1588 ( 88%)
+................local_assistente: could not process the course module event of cmid 262000: queue unavailable
+.......local_assistente: could not process the forum event \mod_forum\event\post_deleted of object 1: The discussion of the forum event is missing.
+.local_assistente: could not process the forum event \mod_forum\event\discussion_created of object 317000: queue unavailable
+........local_assistente: could not process the grade event \core\event\grade_deleted of object 1: The item of the grade event is missing.
+local_assistente: could not process the grade event \core\event\grade_deleted of object 1: The grade event is missing its course, user or item.
+.local_assistente: could not process the grade event \core\event\user_graded of object 331000: queue unavailable
+local_assistente: could not process the grade event \core\event\user_graded of object 331001: queue unavailable
+..........local_assistente: could not process the course module event of cmid 262000: queue unavailable
+..........local_assistente: could not process the participation event \core\event\course_module_completion_updated of object 1: The user of the participation event is missing.
+.local_assistente: could not process the participation event \mod_assign\event\assessable_submitted of object 188000: queue unavailable
+....... 1464 / 1588 ( 92%)
+......local_assistente: could not process the quiz event \mod_quiz\event\question_manually_graded of object 1: The attempt of the quiz event is missing.
+.local_assistente: could not process the quiz event \mod_quiz\event\attempt_regraded of object 496000: queue unavailable
+...................................................... 1525 / 1588 ( 96%)
+............................................................. 1586 / 1588 ( 99%)
+..                                                            1588 / 1588 (100%)
+
+Time: 20:24.560, Memory: 165.00 MB
+
+access_service_test (local_assistente\application\access_service_test)
+ ✔ Editing teacher accesses own course
+ ✔ Other course is denied on direct backend call
+ ✔ Manage is denied on other course
+ ✔ Site administrator accesses any course
+ ✔ Non editing teacher is denied without an explicit grant
+ ✔ Students guests and strangers are denied
+ ✔ Capability in the system context gives access to all courses
+ ✔ A custom role with the capability works like the manager
+ ✔ Teacher with the capability removed is denied
+ ✔ Accessible courses of a teacher
+ ✔ Missing course
+
+access_test (local_assistente\access_test)
+ ✔ Declaration in access php
+ ✔ Capabilities are installed
+ ✔ Default archetypes allow with data set "editingteacher"
+ ✔ Default archetypes allow with data set "manager"
+ ✔ Other archetypes do not receive by default with data set "non-editing teacher"
+ ✔ Other archetypes do not receive by default with data set "student"
+ ✔ Other archetypes do not receive by default with data set "guest"
+ ✔ Other archetypes do not receive by default with data set "authenticated user"
+ ✔ Other archetypes do not receive by default with data set "authenticated user on the front page"
+ ✔ Other archetypes do not receive by default with data set "course creator"
+ ✔ Manager receives the correction capability by default
+ ✔ Other archetypes do not receive the correction capability with data set "editing teacher"
+ ✔ Other archetypes do not receive the correction capability with data set "non-editing teacher"
+ ✔ Other archetypes do not receive the correction capability with data set "student"
+ ✔ Other archetypes do not receive the correction capability with data set "guest"
+ ✔ Other archetypes do not receive the correction capability with data set "authenticated user"
+ ✔ Other archetypes do not receive the correction capability with data set "authenticated user on the front page"
+ ✔ Other archetypes do not receive the correction capability with data set "course creator"
+ ✔ Installed roles follow the archetypes
+
+adapter_factory_test (local_assistente\infrastructure\llm\adapter_factory_test)
+ ✔ Simulated adapter in tests
+ ✔ Port is guarded
+ ✔ No credential in the plugin configuration
+ ✔ Plugin code reads no environment and stores no setting
+ ✔ The two allowed readers exist
+
+aggregate_queries_test (local_assistente\application\query\aggregate_queries_test)
+ ✔ Quiz metrics with only the contract fields
+ ✔ The newest initial analysis is the one shown
+ ✔ Quiz states when data is missing
+ ✔ Forums show the current snapshot
+ ✔ Material summaries show the current version
+ ✔ Synthesis shows the version in force by section
+ ✔ History of each entity
+ ✔ A removed source keeps the history and says so
+ ✔ The filter by group is not available
+ ✔ No query takes free text
+ ✔ A course that is not theirs is refused
+ ✔ A course without the assistant enabled shows no results
+ ✔ Failures are exceptions not empty answers
+ ✔ Queries write nothing and empty courses are empty
+
+architecture_test (local_assistente\architecture_test)
+ ✔ No dml or sql outside the infrastructure
+ ✔ Domain does not use the moodle api
+ ✔ No physical table prefix
+ ✔ Lib php has only the necessary callbacks
+ ✔ Layout and namespaces
+ ✔ The student data repository is used only by the privacy erasure
+ ✔ The history redaction writer is used only by the privacy application
+ ✔ Only the erasure audit triggers the audit events
+ ✔ No own weighting of grades
+ ✔ No threshold constant outside criteria
+ ✔ Observers only delegate
+ ✔ No manual form or post where there is a moodleform
+
+assessable_submitted_real_test (local_assistente\observer\assessable_submitted_real_test)
+ ✔ Save submission without drafts queues the participation
+ ✔ Submit for grading with drafts queues the participation
+
+assign_grading_api_test (local_assistente\observer\assign_grading_api_test)
+ ✔ A grade saved by the assign api reaches the performance analysis
+
+availability_cost_test (local_assistente\application\material\availability_cost_test)
+ ✔ Reads of the evaluation of the availability with data set "10 students x 5 modules"
+ ✔ Reads of the evaluation of the availability with data set "20 students x 10 modules"
+ ✔ The evaluation of one material grows in proportion to students times modules
+ ✔ Initial synchronization creates one event per material with data set "10 students x 5 modules"
+ ✔ Initial synchronization creates one event per material with data set "20 students x 10 modules"
+
+catalog_test (local_assistente\observer\catalog_test)
+ ✔ Only the events of the catalog are observed
+ ✔ The closing time is detected by a scheduled task
+ ✔ Observers only delegate and cite their evidence
+ ✔ Each mapped action creates its event
+ ✔ A course not enabled creates no event
+ ✔ The same occurrence twice is one event
+ ✔ Enrolment and role changes create no event
+
+change_detector_test (local_assistente\domain\material\change_detector_test)
+ ✔ Unknown material is new
+ ✔ No change
+ ✔ A different content creates a version
+ ✔ Hash comparison is exact
+ ✔ Rename alone creates no version
+ ✔ Visibility and restrictions are not part of the state
+ ✔ Moving to another section creates no version
+ ✔ Content rename and move together
+ ✔ A different type is a different content
+ ✔ Invalid states are rejected
+ ✔ Unknown kind is rejected
+
+cl02_material_events_test (local_assistente\observer\cl02_material_events_test)
+ ✔ Creation emits course module created and is queued
+ ✔ Form edition emits course module updated
+ ✔ Rename emits course module updated
+ ✔ Eye icon emits no course module event
+ ✔ Move emits no course module event
+ ✔ File replacement emits event only through the form
+ ✔ Restriction edition through the form emits course module updated
+ ✔ Deletion emits course module deleted and the plugin does not observe it
+
+cl33_attempts_test (local_assistente\application\quiz\cl33_attempts_test)
+ ✔ Attempt states and which count
+ ✔ Timeline submit event then grade
+ ✔ Only students with an active enrolment count
+ ✔ Grading methods match the final grade of moodle
+ ✔ Quiz with maximum grade ten matches moodle and the percentage is truncated
+ ✔ Manual grading real call and its events
+ ✔ Regrade real method emits the event and updates the grade
+ ✔ Raw data for multiple choice with several correct answers
+
+cl33_quiz_reading_test (local_assistente\infrastructure\moodle\cl33_quiz_reading_test)
+ ✔ Extraction by question type
+ ✔ Multichoice and match have answers but no correct response outside an attempt
+ ✔ A type that cannot load options outside an attempt does not break the reader
+ ✔ Fixed slot follows the version in force
+ ✔ Random slot candidates are the questions in force of the filter
+
+cl33_types_test (local_assistente\application\quiz\cl33_types_test)
+ ✔ Type in a real attempt with data set "match"
+ ✔ Type in a real attempt with data set "multianswer (cloze)"
+ ↩ Type in a real attempt with data set "gapselect"
+ ✔ Type in a real attempt with data set "ddwtos"
+ ↩ Type in a real attempt with data set "ddimageortext"
+ ⚠ Type in a real attempt with data set "calculated"
+ ⚠ Type in a real attempt with data set "calculatedmulti"
+ ↩ Type in a real attempt with data set "calculatedsimple"
+
+completion_real_test (local_assistente\observer\completion_real_test)
+ ✔ Completion by view reaches the frequency
+ ✔ Passed and failed completion reach the frequency
+
+config_repository_test (local_assistente\infrastructure\persistence\config_repository_test)
+ ✔ Configuration is created disabled and is unique per course
+ ✔ Enabling and disabling keep the row and the criteria
+ ✔ There is no delete operation
+ ✔ Valid criteria are stored
+ ✔ Invalid criteria are rejected with data set "activity above 100"
+ ✔ Invalid criteria are rejected with data set "activity negative"
+ ✔ Invalid criteria are rejected with data set "activity four decimals"
+ ✔ Invalid criteria are rejected with data set "frequency above 100"
+ ✔ Invalid criteria are rejected with data set "frequency negative"
+ ✔ Invalid criteria are rejected with data set "frequency four decimals"
+ ✔ Invalid criteria are rejected with data set "forum 2"
+ ✔ Invalid criteria are rejected with data set "forum negative"
+ ✔ Criteria are unique per configuration
+ ✔ Criteria can be replaced and still validated
+ ✔ Updating missing criteria is an error
+
+configure_page_test (local_assistente\output\configure_page_test)
+ ✔ Only manage opens the page
+ ✔ Saving enables and synchronizes
+ ✔ Criteria are locked for the teacher after saving
+ ✔ A forged change of saved criteria is explained and changes nothing
+
+content_extractor_test (local_assistente\application\material\content_extractor_test)
+ ✔ Page html becomes plain text
+ ✔ Page plain and markdown are kept
+ ✔ Page without content returns null
+ ✔ Types and invalid input
+ ✔ Extracted content value object
+
+context_guard_test (local_assistente\application\llm\context_guard_test)
+ ✔ Identifier keys are rejected with data set "userid"
+ ✔ Identifier keys are rejected with data set "user_id"
+ ✔ Identifier keys are rejected with data set "userId"
+ ✔ Identifier keys are rejected with data set "author"
+ ✔ Identifier keys are rejected with data set "author_id"
+ ✔ Identifier keys are rejected with data set "student_id"
+ ✔ Identifier keys are rejected with data set "username"
+ ✔ Identifier keys are rejected with data set "firstname"
+ ✔ Identifier keys are rejected with data set "last-name"
+ ✔ Identifier keys are rejected with data set "fullname"
+ ✔ Identifier keys are rejected with data set "email"
+ ✔ Identifier keys are rejected with data set "E-Mail"
+ ✔ Identifier keys are rejected with data set "idnumber"
+ ✔ Clean context passes
+ ✔ Email addresses are rejected
+ ✔ Forbidden literals are found
+ ✔ Guarded port does not call the adapter for a dirty request
+
+context_snapshot_builder_test (local_assistente\application\context\context_snapshot_builder_test)
+ ✔ Only materials of the same section
+ ✔ Moved material follows the real section
+ ✔ Removed module is not listed
+ ✔ Snapshot lists materials versions and language
+ ✔ Unavailable material is left out
+ ✔ Partially available material is not universal
+ ✔ Availability is evaluated for the students of the analysis
+ ✔ Material without a completed version is out
+ ✔ Persisted availability does not decide nor change
+ ✔ Material availability changes without altering version history
+ ✔ Saved snapshot is not replaced by later changes
+ ✔ No students means nothing eligible
+
+course_config_form_test (local_assistente\form\course_config_form_test)
+ ✔ Valid submission is persisted
+ ✔ Invalid percentages are rejected
+ ✔ Teacher cannot change saved criteria
+ ✔ Saved criteria are read only for the teacher
+ ✔ User without manage is refused before persisting
+ ✔ Administrator corrects the criteria
+ ✔ Manager corrects the criteria
+ ✔ Invalid sesskey is not accepted
+
+course_config_service_test (local_assistente\application\course_config_service_test)
+ ✔ New course is not enabled
+ ✔ Enable creates the configuration and runs the initial sync once
+ ✔ Enable without criteria
+ ✔ Disable keeps the history
+ ✔ Disable without configuration creates nothing
+ ✔ Reenabling runs the initial sync again
+ ✔ Sync sees the course already enabled
+ ✔ Writes require the manage capability
+ ✔ View without manage cannot write
+ ✔ First save creates configuration and criteria
+ ✔ Teacher cannot change saved criteria
+ ✔ Administrator corrects without reprocessing
+ ✔ Manager corrects without reprocessing
+ ✔ Manager without manage cannot correct
+ ✔ Capability policy recognises the site administrator
+ ✔ Capability policy recognises a manager at system category or course context
+ ✔ Capability policy denies the teacher
+ ✔ Capability policy recognises a custom role with the capability granted
+ ✔ Capability policy denies a manager with the capability prohibited
+ ✔ Invalid criteria leave nothing behind
+ ✔ Reading criteria needs the view capability
+ ✔ Can edit criteria
+
+course_criteria_handler_test (local_assistente\application\criteria\course_criteria_handler_test)
+ ✔ Every eligible student is evaluated in one processing
+ ✔ Ineligible users are not evaluated
+ ✔ Nothing is written without criteria without the assistant or without students
+ ✔ The course request is coalesced while pending and new after it ran
+ ✔ A disabled course queues nothing and a mismatched payload fails
+ ✔ The same processing is idempotent
+ ✔ The chain asks once for the course and still asks for each student
+ ✔ A read failure for one student writes nothing
+ ✔ An evaluation failure writes nothing
+ ✔ A persistence failure rolls back everything and the retry has no old context
+ ✔ A context without an analysis is never reused
+ ✔ The real queue applies the criteria to the course
+
+course_data_eraser_test (local_assistente\application\privacy\course_data_eraser_test)
+ ✔ Every table of the schema is in the erasure
+ ✔ A course with data in every table loses all of it
+ ✔ Another course keeps everything
+ ✔ No data and repetition are harmless
+ ✔ An invalid course is refused
+ ✔ A failure in the middle leaves the data as they were
+ ✔ The deletion of the course in moodle erases its data
+ ✔ The course is already gone when the observer runs
+ ✔ A failure is logged and not rethrown
+ ✔ The event is registered outside the transaction
+
+course_module_observer_test (local_assistente\observer\course_module_observer_test)
+ ✔ Observers are registered and callable
+ ✔ Creating a visible quiz produces one event
+ ✔ Hidden then visible produces the event when it becomes visible
+ ✔ Hide show and edit after publication keep one event
+ ✔ Other modules and not enabled courses produce nothing
+ ✔ A failure is contained and logged
+
+course_module_reader_test (local_assistente\infrastructure\moodle\course_module_reader_test)
+ ✔ Basic module data
+ ✔ Resource versus activity
+ ✔ Availability for a student
+ ✔ Count available to users
+ ✔ Is available to any user follows the count and stops early
+ ✔ Due dates
+ ✔ Module being deleted is not listed
+
+course_section_reader_test (local_assistente\infrastructure\moodle\course_section_reader_test)
+ ✔ Module resolves to its section id
+ ✔ Nonexistent cmid is not found
+ ✔ Cmid of another course is a distinct condition
+ ✔ Section validation
+ ✔ Module in subsection resolves to the delegated section
+ ✔ Resolution does not write plugin rows
+ ✔ Module being deleted is not resolved
+ ✔ Course level reads
+
+criteria_evaluator_test (local_assistente\domain\criteria\criteria_evaluator_test)
+ ✔ The activity criterion meets with greater or equal with data set "just below"
+ ✔ The activity criterion meets with greater or equal with data set "equal"
+ ✔ The activity criterion meets with greater or equal with data set "just above"
+ ✔ The activity criterion meets with greater or equal with data set "zero"
+ ✔ The activity criterion meets with greater or equal with data set "full"
+ ✔ The activity criterion meets with greater or equal with data set "noise below the third decimal is truncated, not rounded"
+ ✔ A student without a course total has no data
+ ✔ A zero total is a value and a zero criterion is met by it
+ ✔ The limits come from the criteria only
+ ✔ A missing post in a due forum is below
+ ✔ A forum not due yet is not required
+ ✔ A disabled forum criterion is always met
+ ✔ Without a due forum available to the student the forum has no data
+ ✔ On the second of the reference date the forum is not due
+ ✔ A repeated forum counts once and a post in any repetition counts
+ ✔ The frequency is global and not the mean of the sections
+ ✔ The frequency is truncated
+ ✔ A zero denominator has no data and a real zero is below
+ ✔ The dimensions are independent
+ ✔ The limits used are returned
+ ✔ The same facts give the same result
+ ✔ Invalid input is refused with data set "missing activity criterion"
+ ✔ Invalid input is refused with data set "missing frequency criterion"
+ ✔ Invalid input is refused with data set "missing forum criterion"
+ ✔ Invalid input is refused with data set "activity above 100"
+ ✔ Invalid input is refused with data set "frequency below 0"
+ ✔ Invalid input is refused with data set "four decimals"
+ ✔ Invalid input is refused with data set "null criterion"
+ ✔ Invalid input is refused with data set "forum criterion 2"
+ ✔ Invalid input is refused with data set "forum criterion true"
+ ✔ Invalid input is refused with data set "total above 100"
+ ✔ Invalid input is refused with data set "total below 0"
+ ✔ Invalid input is refused with data set "forum without module"
+ ✔ Invalid input is refused with data set "forum module zero"
+ ✔ Invalid input is refused with data set "frequency without total"
+ ✔ Invalid input is refused with data set "frequency negative"
+ ✔ Invalid input is refused with data set "participating above total"
+
+criteria_handler_test (local_assistente\application\criteria\criteria_handler_test)
+ ✔ Applies the current analyses and keeps the context
+ ✔ A student without analyses has no data and a missing post is below
+ ✔ A course without criteria or not enabled writes nothing
+ ✔ A teacher is not evaluated and an invalid event fails
+ ✔ A failure of a reader writes nothing
+ ✔ The same processing is idempotent
+ ✔ A correction reaches only the new checks
+ ✔ The analyses queue one coalesced request for the student
+ ✔ A reference date asks once for the course
+ ✔ Handling an existing analysis asks again
+ ✔ A course without the assistant queues no request
+ ✔ The real queue applies the criteria after the analyses
+
+criteria_result_repository_test (local_assistente\infrastructure\persistence\criteria_result_repository_test)
+ ✔ Saves and reads the statuses of each student
+ ✔ No data is stored as two and never as zero
+ ✔ Only the statuses are stored
+ ✔ Current is the latest per student and the history is kept
+ ✔ An empty list writes no row
+ ✔ Second save for the same processing is rejected
+ ✔ Invalid input writes nothing
+ ✔ A repeated student is refused
+ ✔ Failure midway rolls back everything
+ ✔ Unknown processing is rejected
+ ✔ Missing records read as null or empty
+
+criterion_percentage_test (local_assistente\domain\criteria\criterion_percentage_test)
+ ✔ Valid values are accepted with data set "zero"
+ ✔ Valid values are accepted with data set "hundred"
+ ✔ Valid values are accepted with data set "integer"
+ ✔ Valid values are accepted with data set "float"
+ ✔ Valid values are accepted with data set "three decimals"
+ ✔ Valid values are accepted with data set "zero float"
+ ✔ Valid values are accepted with data set "string integer"
+ ✔ Valid values are accepted with data set "string decimal"
+ ✔ Valid values are accepted with data set "one decimal"
+ ✔ Valid values are accepted with data set "hundred decimal"
+ ✔ Invalid values are rejected with data set "above"
+ ✔ Invalid values are rejected with data set "above integer"
+ ✔ Invalid values are rejected with data set "negative"
+ ✔ Invalid values are rejected with data set "negative float"
+ ✔ Invalid values are rejected with data set "four decimals"
+ ✔ Invalid values are rejected with data set "string four decimals"
+ ✔ Invalid values are rejected with data set "null"
+ ✔ Invalid values are rejected with data set "true"
+ ✔ Invalid values are rejected with data set "false"
+ ✔ Invalid values are rejected with data set "empty"
+ ✔ Invalid values are rejected with data set "text"
+ ✔ Invalid values are rejected with data set "scientific"
+ ✔ Invalid values are rejected with data set "comma"
+ ✔ Invalid values are rejected with data set "nan"
+ ✔ Invalid values are rejected with data set "infinite"
+ ✔ Invalid values are rejected with data set "array"
+ ✔ Invalid values are rejected with data set "spaces"
+ ✔ Invalid values are rejected with data set "sign"
+
+detect_quiz_close_test (local_assistente\task\detect_quiz_close_test)
+ ✔ Task is installed every 15 minutes
+ ✔ Closed questionnaire queues one final recalculation
+ ✔ The same closing queues once and a new closing time queues again
+ ✔ Not closed without timeclose not enabled or deleting queue nothing
+ ✔ Execute queues and logs one line
+ ✔ The real scheduled task executor queues the closed questionnaire
+
+detect_reference_dates_test (local_assistente\task\detect_reference_dates_test)
+ ✔ Task is installed every 15 minutes
+ ✔ A due date that passed queues the recalculation
+ ✔ The same date queues once and a later date queues another
+ ✔ Modules with the same reference date queue one event
+ ✔ What has no reference date that passed queues nothing
+ ✔ On the second of the date nothing is queued
+ ✔ After the date passes the student has the activity with participated zero
+ ✔ Execute queues and logs one line
+
+deterministic_no_llm_test (local_assistente\application\deterministic_no_llm_test)
+ ✔ Only the llm analyses reach the llm layer
+ ✔ The scan finds a reference when there is one
+ ✔ Deterministic handlers cannot receive a port
+ ✔ The deterministic flow writes nothing generated and the control does
+
+erased_subject_handlers_test (local_assistente\application\privacy\erased_subject_handlers_test)
+ ✔ The handlers finish an erased subject without results
+ ✔ Only zero is the marker
+ ✔ Events without a student and the quiz event are not affected
+
+erasure_audit_test (local_assistente\application\privacy\erasure_audit_test)
+ ✔ Each event is written once
+ ✔ Events are correlated by task and exact courses
+ ✔ The event carries no personal data
+ ✔ An incomplete event is refused
+ ✔ A failing log never changes the outcome
+ ✔ Each event is in the log when the call returns
+ ✔ Without a log store the reader is unavailable
+
+erasure_key_test (local_assistente\domain\privacy\erasure_key_test)
+ ✔ The key is canonical
+ ✔ A key is rebuilt from custom data
+ ✔ Exact and overlapping courses are different questions
+
+erasure_retry_scheduler_test (local_assistente\application\privacy\erasure_retry_scheduler_test)
+ ✔ One task per case with eight attempts and no user
+ ✔ Other sets and students are other tasks
+ ✔ A deleted account can be scheduled
+ ✔ A stopped task does not block a new request
+ ✔ The mark is visible and never runs
+ ✔ The tasks of a student
+ ✔ The cleanup keeps every task that is active
+ ✔ Which failures are transient
+
+erasure_retry_test (local_assistente\privacy\erasure_retry_test)
+ ✔ The last attempt writes exactly one stopped event
+ ✔ Recovery after a previous failure
+ ✔ A new request closes the case
+ ✔ Cases with overlapping courses do not mix
+ ✔ An unavailable name is never a success
+ ✔ The retry gives up when the name is gone
+ ✔ A database failure is not retried
+ ✔ A fatal failure outside the plugin leaves stopped without an event
+ ✔ Isolation when the erasure is by context
+ ✔ Isolation when the erasure is by list of users
+ ✔ Isolation when the erasure is by user
+ ✔ A database failure of one student does not stop the others
+ ✔ The state without the log
+ ✔ A text that cites the name is residue
+
+erasure_state_calculator_test (local_assistente\domain\privacy\erasure_state_calculator_test)
+ ✔ The five states and no completed
+ ✔ Without residue
+ ✔ A text that cites the name is residue
+ ✔ Pending
+ ✔ Stopped and incomplete
+ ✔ Pending wins over a stop
+ ✔ Closed by retry is strict
+ ✔ Overlapping cases do not mix
+ ✔ The open case
+ ✔ Obsolete tasks
+ ✔ Every combination has one state and no false success
+
+event_repository_test (local_assistente\infrastructure\persistence\event_repository_test)
+ ✔ Event is created pending with identity in the payload
+ ✔ Invalid payload stores nothing
+ ✔ Only the four states are accepted
+ ✔ Successful lifecycle
+ ✔ Three attempts in total
+ ✔ Retries belong to the same processing
+ ✔ Interrupted run is recovered on the same processing
+ ✔ Interrupted attempts cannot exceed the limit
+ ✔ Repeated or late transitions are rejected
+ ✔ Pending events are ordered and limited to enabled courses
+ ✔ Disabled course events stay pending until it is enabled again
+ ✔ Only pending events are offered
+ ✔ Runnable events include interrupted ones and filter by type
+ ✔ Find by identity
+ ✔ Context snapshot is immutable
+
+event_service_batch_test (local_assistente\application\event_service_batch_test)
+ ✔ New occurrences are created with the keys of the input
+ ✔ Batch and single delivery give the same events
+ ✔ Existing and new occurrences in the same call
+ ✔ A repeated occurrence in the call is created once
+ ✔ Another instant is another occurrence
+ ✔ A course not enabled creates nothing
+ ✔ Coalescing types keep their rule
+ ✔ An invalid payload writes nothing
+ ✔ A chunk below one is refused
+ ✔ Identities are read in one query
+
+event_service_concurrency_test (local_assistente\application\event_service_concurrency_test)
+ ✔ The same occurrence from four processes is one event
+ ✔ The same batch from four processes creates each event once
+ ✔ Single and batch deliveries recognise each other
+ ✔ Different occurrences from four processes are all created
+ ✔ A batch waits for the lock of an identity held elsewhere
+ ✔ A batch waits for the lock of a student held elsewhere
+ ✔ Equal retry tasks and a direct delivery create one event
+ ✔ A retry task waiting for the lock creates nothing when the erasure removed it
+ ✔ Rebuild requests from four processes coalesce into one pending event
+ ✔ A request during the processing is kept for a later processing
+ ✔ Rebuild requests of different forums stay separate
+
+event_service_deferral_test (local_assistente\application\event_service_deferral_test)
+ ✔ A free lock creates the event and no task
+ ✔ A busy lock defers the delivery to a confirmed task
+ ✔ The next deliveries do not wait and other students are not affected
+ ✔ The memory of a failed lock expires
+ ✔ The same occurrence twice is one task
+ ✔ Only a busy lock defers
+ ✔ Without a scheduler a busy lock still throws
+ ✔ A delivery that cannot be scheduled is never deferred
+ ✔ The scheduler that fails says so in the log without the student
+ ✔ An equal task that is waiting confirms the delivery
+ ✔ The tasks of a student are found and removed
+
+event_service_test (local_assistente\application\event_service_test)
+ ✔ Enqueue creates a pending event
+ ✔ Duplicate delivery is one event
+ ✔ Legitimate occurrences of the same object are distinct events
+ ✔ Two messages are two events
+ ✔ A processed event is still reused for once per object types
+ ✔ Synthesis requests coalesce only while pending
+ ✔ Forum rebuild requests coalesce while pending
+ ✔ A forum rebuild request after the processing creates a new event
+ ✔ A pending rebuild request does not discard a deletion
+ ✔ Forum rebuild requests coalesce in a batch
+ ✔ No event for a course that is not enabled
+ ✔ Events are isolated by course
+ ✔ Invalid payload is rejected
+ ✔ Concurrent delivery is excluded by the identity lock
+ ✔ The identity lock is released after enqueue
+ ✔ Enqueue path does not refer to the llm
+
+event_transitions_test (local_assistente\domain\event\event_transitions_test)
+ ✔ The transition matrix
+ ✔ Final states are final
+ ✔ State after a failed attempt
+ ✔ Assert allowed
+
+extractors_test (local_assistente\application\material\extractors_test)
+ ✔ Pdf with text gives the text
+ ✔ Pdf without text gives null
+ ✔ Youtube with subtitle gives title description and subtitle
+ ✔ Youtube subtitle language choice
+ ✔ Youtube without subtitle gives title and description
+ ✔ Youtube without content
+ ✔ Client without program is not available
+ ✔ Client uses the default path when the setting was never saved
+ ✔ Vtt to text
+
+fake_adapter_test (local_assistente\infrastructure\llm\fake_adapter_test)
+ ✔ Default answers are valid and marked as simulated
+ ✔ Script is consumed in order
+ ✔ Scripted bad answers are rejected by the validation
+ ✔ Unknown failure class cannot be scripted
+ ✔ Crash
+ ✔ Call with an open transaction is refused
+ ✔ Failed result maps to an attempt failure
+ ✔ Timeout is a failed attempt
+ ✔ Each failure class is recorded
+ ✔ Event fails after the third failed attempt
+ ✔ The queue calls the llm outside a transaction and succeeds
+
+fingerprint_test (local_assistente\domain\synthesis\fingerprint_test)
+ ✔ The same values give the same fingerprint
+ ✔ Order and transient metadata do not change the fingerprint
+ ✔ A change in the information changes the fingerprint with data set "a grade"
+ ✔ A change in the information changes the fingerprint with data set "a student without result gets one"
+ ✔ A change in the information changes the fingerprint with data set "a new post changes the summary of the forum (Q8)"
+ ✔ A change in the information changes the fingerprint with data set "a new material"
+ ✔ A change in the information changes the fingerprint with data set "the coverage"
+ ✔ A change in the information changes the fingerprint with data set "a text differs by one space"
+ ✔ Numbers are truncated to three decimals
+ ✔ The canonical json
+ ✔ Each activity has its statistics and the section has no single index
+ ✔ The frequency statistics are truncated
+ ✔ Absences are no data and never zero
+ ✔ Materials alone are not a result
+ ✔ Nothing individual leaves the set
+ ✔ Criteria and unknown blocks are refused
+ ✔ Invalid facts are refused with data set "grade above 100"
+ ✔ Invalid facts are refused with data set "grade below 0"
+ ✔ Invalid facts are refused with data set "grade as text"
+ ✔ Invalid facts are refused with data set "frequency above 100"
+ ✔ Invalid facts are refused with data set "activity without id"
+ ✔ Invalid facts are refused with data set "activity id zero"
+ ✔ Invalid facts are refused with data set "activity twice"
+ ✔ Invalid facts are refused with data set "forum twice"
+ ✔ Invalid facts are refused with data set "material without summary"
+ ✔ Invalid facts are refused with data set "material summary not a text"
+ ✔ Invalid facts are refused with data set "difficulty without text"
+ ✔ Invalid facts are refused with data set "questionnaire twice"
+ ✔ Invalid facts are refused with data set "negative count"
+ ✔ Invalid facts are refused with data set "infinite number"
+ ✔ Invalid facts are refused with data set "block not a list"
+
+forum_analysis_handler_test (local_assistente\application\forum\forum_analysis_handler_test)
+ ✔ First message creates the analysis with the context of the section
+ ✔ Second message keeps the history and sends the current summary
+ ✔ Difficulties of the affected discussion are replaced
+ ✔ Other discussions are copied without the llm
+ ✔ A discussion of another one is invalid and nothing is published
+ ✔ A failure publishes nothing and the failed message stays out
+ ✔ Edit is incremental and deletions rebuild what exists
+ ✔ The context has no author or identifier
+ ✔ Private replies are left out
+ ✔ An incremental event for a private reply is left out
+ ✔ Forum without messages is an empty snapshot without a call
+ ✔ A message that no longer exists writes nothing
+ ✔ A forum that does not exist is a technical failure
+ ✔ Repeated delivery is idempotent
+ ✔ Registered and run by the queue
+ ✔ A rebuild request rebuilds the whole forum without a discussion
+ ✔ A rebuild request reads the state at processing and leaves private replies out
+ ✔ A rebuild request sends no author or identifier
+ ✔ A rebuild request of an empty forum is an empty snapshot without a call
+ ✔ A failed rebuild request keeps the previous snapshot
+ ✔ An invalid answer to a rebuild request publishes nothing
+ ✔ A rebuild request asks for the synthesis of the section
+ ✔ The payload is validated by the type of the event
+ ✔ A repeated rebuild request is idempotent
+ ✔ A rebuild request is processed by the real queue
+
+forum_analysis_repository_test (local_assistente\infrastructure\persistence\forum_analysis_repository_test)
+ ✔ Saves and reads the snapshot
+ ✔ Snapshot without difficulties is valid
+ ✔ Current is the latest and removed difficulties stay in the old snapshot
+ ✔ Second save for the same processing is rejected
+ ✔ Invalid input writes nothing with data set "empty description"
+ ✔ Invalid input writes nothing with data set "description missing"
+ ✔ Invalid input writes nothing with data set "discussion id zero"
+ ✔ Invalid input writes nothing with data set "discussion that does not exist"
+ ✔ Discussion of another forum and a module that is not a forum are refused
+ ✔ Failure midway rolls back everything
+ ✔ Unknown processing is rejected
+ ✔ Missing records read as null or empty
+
+forum_observer_test (local_assistente\observer\forum_observer_test)
+ ✔ Observers are registered after the commit
+ ✔ The forum api emits no creation event
+ ✔ Two messages give two events
+ ✔ Two edits of the same message give two events
+ ✔ Deleting a message and a discussion
+ ✔ Course without the assistant enqueues nothing
+ ✔ Incomplete event data is refused safely
+ ✔ A failure is contained and logged
+ ✔ A real message reaches the analysis through the queue
+
+forum_reader_test (local_assistente\infrastructure\moodle\forum_reader_test)
+ ✔ Forum discussions and messages
+ ✔ Missing data
+ ✔ Deleted messages are not returned
+ ✔ Post counts by user
+
+forum_separate_groups_test (local_assistente\application\forum\forum_separate_groups_test)
+ ✔ The reader and the analysis consider the messages of every group
+
+frequency_calculator_test (local_assistente\domain\frequency\frequency_calculator_test)
+ ✔ Percentage is participating over total truncated
+ ✔ An activity counts once
+ ✔ A repeated activity joins the participation
+ ✔ What counts as participation with data set "submission sent"
+ ✔ What counts as participation with data set "attempt finished"
+ ✔ What counts as participation with data set "grade given"
+ ✔ What counts as participation with data set "completion complete"
+ ✔ What counts as participation with data set "completion passed"
+ ✔ What counts as participation with data set "completion failed"
+ ✔ What counts as participation with data set "a post"
+ ✔ What counts as participation with data set "completion incomplete"
+ ✔ What counts as participation with data set "everything false"
+ ✔ What counts as participation with data set "no record"
+ ✔ Resources and modules without a category are out
+ ✔ Each category makes an activity eligible
+ ✔ An unavailable activity is out
+ ✔ The end of the course is the reference without a due date
+ ✔ The due date is the reference when there is one
+ ✔ An activity without any date is out and listed
+ ✔ A future activity enters only when the student took part
+ ✔ When the date passes the activity enters with participated zero
+ ✔ On the second of the date the activity has not entered
+ ✔ No data and a valid zero
+ ✔ Participating never exceeds total
+ ✔ Precision of the truncation
+ ✔ Invalid facts are refused with data set "activity id zero"
+ ✔ Invalid facts are refused with data set "activity id not an integer"
+ ✔ Invalid facts are refused with data set "unknown category"
+ ✔ Invalid facts are refused with data set "negative due date"
+ ✔ Invalid facts are refused with data set "unknown completion state"
+ ✔ Invalid facts are refused with data set "a fact that is not an array"
+
+frequency_handler_test (local_assistente\application\frequency\frequency_handler_test)
+ ✔ Forum post gives one of two in the section and the rest follows the rules
+ ✔ Reference dates are the due date or the end of the course
+ ✔ A future activity enters only for the student who took part
+ ✔ Course access goes in the context and does not change the percentage
+ ✔ An activity without any date is listed in the context
+ ✔ An activity the student cannot reach is out for that student
+ ✔ A reference date event recalculates the whole course
+ ✔ A user who is not a student writes nothing
+ ✔ A reader failure is an error and writes nothing
+ ✔ Repeated delivery is idempotent and history is kept
+ ✔ Registered and run by the queue
+
+frequency_repository_test (local_assistente\infrastructure\persistence\frequency_repository_test)
+ ✔ Saves and reads the rows and their activities
+ ✔ No data row has no activities and a valid zero keeps them
+ ✔ Only derived results are stored
+ ✔ Current is the latest per student and the history is kept
+ ✔ A student with several sections is found in the history
+ ✔ Second save for the same processing is rejected
+ ✔ Invalid input writes nothing with data set "unknown student"
+ ✔ Invalid input writes nothing with data set "section of no course"
+ ✔ Invalid input writes nothing with data set "result missing"
+ ✔ Invalid input writes nothing with data set "total that does not match the activities"
+ ✔ Invalid input writes nothing with data set "percentage that does not match the totals"
+ ✔ Invalid input writes nothing with data set "no_data state with activities"
+ ✔ Invalid input writes nothing with data set "participated that is not 0 or 1"
+ ✔ Activity of another course and repeated rows are refused
+ ✔ Failure midway rolls back everything
+ ✔ Unknown processing is rejected
+ ✔ Missing records read as null or empty
+
+generator_test (local_assistente\generator_test)
+ ✔ Config and criteria defaults
+ ✔ Given values override defaults
+ ✔ Materials have unique natural keys
+ ✔ Criteria result has its analysis and statuses
+ ✔ Syntheses are numbered per section
+
+grade_normalizer_test (local_assistente\domain\grade\grade_normalizer_test)
+ ✔ Percentage with data set "Q4: 0 to 20, 13.333"
+ ✔ Percentage with data set "Q5: 5 to 10, 7 (minimum other than zero)"
+ ✔ Percentage with data set "Q6: scale of four levels, level 3"
+ ✔ Percentage with data set "scale, lowest level"
+ ✔ Percentage with data set "scale, highest level"
+ ✔ Percentage with data set "real zero is a value"
+ ✔ Percentage with data set "full grade"
+ ✔ Percentage with data set "truncated, not rounded"
+ ✔ Percentage with data set "binary noise does not lower the value"
+ ✔ Percentage with data set "minimum at the end of the range"
+ ✔ Percentage with data set "negative range"
+ ✔ No data is null and zero is a value
+ ✔ Grade outside the range is not limited
+ ✔ Invalid input is refused with data set "maximum below minimum"
+ ✔ Invalid input is refused with data set "not a number grade"
+ ✔ Invalid input is refused with data set "infinite grade"
+ ✔ Invalid input is refused with data set "infinite maximum"
+
+grade_observer_test (local_assistente\observer\grade_observer_test)
+ ✔ Observers are registered after the commit
+ ✔ Giving a grade enqueues the item and its totals
+ ✔ Change and removal are enqueued
+ ✔ Deleting a grade enqueues it
+ ✔ A repeated occurrence keeps one queue event
+ ✔ Course without the assistant enqueues nothing
+ ✔ Incomplete event data is refused safely
+ ✔ A failure is contained and logged
+ ✔ A real grade reaches the performance through the queue
+ ✔ An event refused during the erasure of the student is handed to a retry not lost
+
+gradebook_reader_test (local_assistente\infrastructure\moodle\gradebook_reader_test)
+ ✔ Final grade of an activity
+ ✔ Zero is different from no grade
+ ✔ Items and scales
+ ✔ Missing module gives null
+ ✔ Course total after regrade
+ ✔ Course total without grades is null
+ ✔ Grades read together equal grades read one by one
+
+handler_registry_test (local_assistente\application\queue\handler_registry_test)
+ ✔ Registered handler is found by type
+ ✔ A type cannot have two handlers
+ ✔ Empty registry and default
+ ✔ Every event type has a default handler
+ ✔ Failure classes and their text
+ ✔ Handler results
+
+history_filter_test (local_assistente\application\query\history_filter_test)
+ ✔ Without a filter the history is what it was
+ ✔ Filter by version
+ ✔ Filter by dates
+ ✔ Filter by version and dates
+ ✔ The filter does not change which version is current
+ ✔ An inverted interval is refused
+ ✔ The filter applies only to the history of the report
+ ✔ Access and the assistant off
+ ✔ Reading with a filter writes nothing
+
+history_growth_test (local_assistente\application\history\history_growth_test)
+ ✔ Repeated executions purge nothing and every analysis stays readable
+ ✔ The scheduled tasks purge nothing
+ ✔ No code deletes history except the erasures that the decisions allow
+
+http_adapter_test (local_assistente\infrastructure\llm\http_adapter_test)
+ ✔ Url or model missing is transport without request
+ ✔ Key missing is auth without request
+ ✔ Refused url sends nothing with data set "http"
+ ✔ Refused url sends nothing with data set "user and password"
+ ✔ Refused url sends nothing with data set "user only"
+ ✔ Refused url sends nothing with data set "no scheme"
+ ✔ Refused url sends nothing with data set "loopback"
+ ✔ Refused url sends nothing with data set "localhost"
+ ✔ Refused url sends nothing with data set "private 10"
+ ✔ Refused url sends nothing with data set "private 192.168"
+ ✔ Refused url sends nothing with data set "private 172.16"
+ ✔ Refused url sends nothing with data set "cloud metadata"
+ ✔ Refused url sends nothing with data set "port outside the allowed ones"
+ ✔ Is acceptable url
+ ✔ Redirect is not followed
+ ✔ Request content
+ ✔ Zdr is a site setting
+ ✔ Zdr on is never relaxed after a failure
+ ✔ Settings are read at every call
+ ✔ Valid answer for each use with data set "material_summary"
+ ✔ Valid answer for each use with data set "quiz_coverage"
+ ✔ Valid answer for each use with data set "question_complexity"
+ ✔ Valid answer for each use with data set "forum_analysis"
+ ✔ Valid answer for each use with data set "pedagogical_synthesis"
+ ✔ One markdown fence around the object is accepted
+ ✔ Invalid answer with data set "not json"
+ ✔ Invalid answer with data set "empty body"
+ ✔ Invalid answer with data set "finish_reason length"
+ ✔ Invalid answer with data set "finish_reason missing"
+ ✔ Invalid answer with data set "error not null"
+ ✔ Invalid answer with data set "no choices"
+ ✔ Invalid answer with data set "choices missing"
+ ✔ Invalid answer with data set "two choices"
+ ✔ Invalid answer with data set "no message"
+ ✔ Invalid answer with data set "refusal"
+ ✔ Invalid answer with data set "content null"
+ ✔ Invalid answer with data set "content is a list"
+ ✔ Invalid answer with data set "empty text"
+ ✔ Invalid answer with data set "blank text"
+ ✔ Invalid answer with data set "text is not json"
+ ✔ Invalid answer with data set "text is a list"
+ ✔ Invalid answer with data set "text is a scalar"
+ ✔ Invalid answer with data set "wrong fields"
+ ✔ Invalid answer with data set "empty summary"
+ ✔ Values out of range are rejected
+ ✔ Http status mapping with data set #0
+ ✔ Http status mapping with data set #1
+ ✔ Http status mapping with data set #2
+ ✔ Http status mapping with data set #3
+ ✔ Http status mapping with data set #4
+ ✔ Http status mapping with data set #5
+ ✔ Http status mapping with data set #6
+ ✔ Http status mapping with data set #7
+ ✔ Http status mapping with data set #8
+ ✔ Http status mapping with data set #9
+ ✔ Http status mapping with data set #10
+ ✔ Http status mapping with data set #11
+ ✔ Http status mapping with data set #12
+ ✔ Http status mapping with data set #13
+ ✔ Http status mapping with data set #14
+ ✔ Network failures
+ ✔ Key never in a failure message
+ ✔ Refuses to run in a transaction
+
+index_page_test (local_assistente\output\index_page_test)
+ ✔ User without the capability is denied
+ ✔ Configuration tab only for manage
+ ✔ Every tab says not enabled for a disabled course
+ ✔ Enabled course renders and config is not a query
+ ✔ Group filter offers only the visible groups
+ ✔ Each tab offers its own filters
+ ✔ The report and the history use the filter
+ ✔ The section filter only affects data of a section
+
+individual_queries_test (local_assistente\application\query\individual_queries_test)
+ ✔ Grades of the own course with only the contract fields
+ ✔ Frequency with only the contract fields
+ ✔ Students below the criteria
+ ✔ The current execution is the latest
+ ✔ A removed activity keeps the result and says so
+ ✔ A course that is not theirs is refused
+ ✔ A course without the assistant enabled shows no results
+ ✔ The filter by group and the visible groups
+ ✔ Queries write nothing
+
+initial_analysis_handler_test (local_assistente\application\quiz\initial_analysis_handler_test)
+ ✔ Three questions give one analysis
+ ✔ Invalid values are rejected and nothing is persisted
+ ✔ Material of another section is not in the context
+ ✔ Two versions of a question give distinct rows
+ ✔ Description question is left out
+ ✔ Random position contributes candidates without duplicates
+ ✔ Essay is analysed with the statement only
+ ✔ No eligible material gives zero coverage without a call
+ ✔ Failure midway writes nothing and the retry redoes it
+ ✔ Unresolved section is a technical error
+ ✔ Context has no student data
+ ✔ Repeated delivery is idempotent
+ ✔ The analysis is saved when run by the queue
+ ✔ Registered for the publication event
+
+initial_sync_service_test (local_assistente\application\sync\initial_sync_service_test)
+ ✔ New course creates no event
+ ✔ Enabling queues the events of the current state
+ ✔ Saving the configuration with the course enabled queues one event per item
+ ✔ Enabling without criteria
+ ✔ The report counts the events by kind
+ ✔ Disabled course creates no event
+ ✔ Enabling again creates no second analysis and no redundant version
+ ✔ The memory of the run queues the same events
+ ✔ A forum with several discussions has one request
+ ✔ Each forum of the course has its request
+ ✔ A course without forums has no request
+ ✔ A course that is not enabled has no request
+ ✔ Enabling again while the request is pending coalesces
+ ✔ Enabling again after the processing asks for a new rebuild
+ ✔ The real queue rebuilds the complete snapshot
+ ✔ An empty forum is an empty snapshot
+ ✔ A failed rebuild keeps the previous snapshot
+ ✔ A real deletion after the synchronization is not discarded
+ ✔ The default registry rebuilds the forum after the initial synchronization
+ ✔ Hidden forums and forums of announcements take part
+
+install_schema_test (local_assistente\install_schema_test)
+ ✔ Exactly 21 tables are created
+ ✔ XML against the inventory: counts of fields, keys and indexes (physical schema: I-16)
+ ✔ XML against the inventory: unique indexes exactly where defined (physical schema: I-16)
+ ✔ Duplicate in unique index is rejected
+ ✔ I-02: the circular pairs can be written in order (pointer null, version, pointer)
+ ✔ XML against the inventory: nothing outside it, and the removed indicators are absent (physical schema: I-16)
+
+instruction_builder_test (local_assistente\application\llm\instruction_builder_test)
+ ✔ Language directive is added
+ ✔ Empty task or language is rejected
+ ✔ Language of a course
+ ✔ New language applies to the next instruction only
+
+lang_parity_test (local_assistente\lang_parity_test)
+ ✔ En and pt br have the same keys
+
+lang_usage_test (local_assistente\lang_usage_test)
+ ✔ Every string in use is defined in both packs
+ ✔ Tabs and report blocks have titles
+
+lineage_reader_test (local_assistente\application\history\lineage_reader_test)
+ ✔ A forum difficulty reaches the event and the moodle source
+ ✔ An update keeps the earlier state reachable
+ ✔ A processing with three materials lists them with their versions
+ ✔ Absence of a snapshot or of materials is not an error
+ ✔ A synthesis is traced and its versions are its history
+ ✔ Performance history is of the student and of the course
+ ✔ Missing rows are null and other tables are refused
+ ✔ Broken links are errors
+ ✔ A history that cannot be read is an error
+ ✔ The history of an erased student does not mix students
+
+material_classifier_test (local_assistente\domain\material\material_classifier_test)
+ ✔ The three functional types
+ ✔ Names are normalised
+ ✔ A resource that is not a pdf is not a material with data set "word"
+ ✔ A resource that is not a pdf is not a material with data set "text"
+ ✔ A resource that is not a pdf is not a material with data set "image"
+ ✔ A resource that is not a pdf is not a material with data set "video"
+ ✔ A resource that is not a pdf is not a material with data set "zip"
+ ✔ A resource that is not a pdf is not a material with data set "octet stream"
+ ✔ A resource that is not a pdf is not a material with data set "pdf look-alike"
+ ✔ A resource that is not a pdf is not a material with data set "empty"
+ ✔ Absent or invalid content is not a material
+ ✔ Other modules are not materials with data set "label"
+ ✔ Other modules are not materials with data set "book"
+ ✔ Other modules are not materials with data set "folder"
+ ✔ Other modules are not materials with data set "forum"
+ ✔ Other modules are not materials with data set "quiz"
+ ✔ Other modules are not materials with data set "assign"
+ ✔ Other modules are not materials with data set "lesson"
+ ✔ Other modules are not materials with data set "imscp"
+ ✔ Other modules are not materials with data set "scorm"
+ ✔ Other modules are not materials with data set "empty"
+ ✔ Other modules are not materials with data set "unknown"
+ ✔ Other modules are not materials with data set "prefixed label"
+ ✔ Other modules are not materials with data set "pageish"
+ ✔ Candidates
+
+material_concurrency_test (local_assistente\infrastructure\persistence\material_concurrency_test)
+ ✔ Four processes adding versions get consecutive numbers
+ ✔ Four processes running the full cycle leave a valid pointer
+ ✔ Without the lock the unique index refuses duplicate versions
+
+material_domains_test (local_assistente\domain\material\material_domains_test)
+ ✔ Approved values
+ ✔ Invalid values do not exist
+ ✔ Transitions with data set "pending to completed"
+ ✔ Transitions with data set "pending to failed"
+ ✔ Transitions with data set "pending to pending"
+ ✔ Transitions with data set "failed to pending (new attempt)"
+ ✔ Transitions with data set "failed to completed"
+ ✔ Transitions with data set "failed to failed"
+ ✔ Transitions with data set "completed to pending"
+ ✔ Transitions with data set "completed to failed"
+ ✔ Transitions with data set "completed to completed"
+
+material_failure_test (local_assistente\infrastructure\persistence\material_failure_test)
+ ✔ A failure in the switch keeps the previous version current
+ ✔ A failure in the insert of the version does not consume the number with data set "first version of the material"
+ ✔ A failure in the insert of the version does not consume the number with data set "next version of the material"
+ ✔ A failure when the version becomes completed keeps it pending
+ ✔ The check of the pointer detects a broken pointer with data set "a pending version of the same material"
+ ✔ The check of the pointer detects a broken pointer with data set "a completed version of another material"
+
+material_monotonic_concurrency_test (local_assistente\infrastructure\persistence\material_monotonic_concurrency_test)
+ ✔ M-12 (Q17-1): v3 arrives before v2: v3 is current; v2 is refused, completed and historical
+ ✔ M-12 (Q17-1): v2 arrives before v3: both are accepted; v3 is current
+ ✔ M-12 (Q17-1): v2 and v3 contend for the lock: v3 is always current, whatever the order
+ ✔ M-13 (Q17-2): two processes with the same version: one accepted, the other refused as already current
+ ✔ M-13 (Q17-3): selecting the version that is already current is refused and writes nothing
+ ✔ M-13 (Q17-4): two processes dispute a null pointer: the first to get the lock is accepted, the other follows the rule
+
+material_observer_test (local_assistente\observer\material_observer_test)
+ ✔ Creating a page enqueues a material event and creates version one
+ ✔ Content change creates a new version
+ ✔ Rename visibility and restrictions create no version
+ ✔ Moving a module emits no event and the section follows the next processing
+ ✔ Other modules and not enabled courses produce no material event
+ ✔ Candidate that is not a material creates nothing
+ ✔ Quiz flow is preserved
+ ✔ A failure is contained and logged
+
+material_reader_test (local_assistente\infrastructure\moodle\material_reader_test)
+ ✔ Only pdf text and youtube are materials
+ ✔ Content hash changes only with the content
+ ✔ Content references
+ ✔ Material being deleted is not listed
+
+material_recovery_test (local_assistente\application\material\material_recovery_test)
+ ✔ A switch that failed after completed is finished without calling the llm with data set "a previous current version"
+ ✔ A switch that failed after completed is finished without calling the llm with data set "no current version before"
+ ✔ A pending version left behind is taken up and completed with data set "exception of the extractor"
+ ✔ A pending version left behind is taken up and completed with data set "process that died after the first step"
+ ✔ A summary that could not be persisted is asked again
+
+material_repository_test (local_assistente\infrastructure\persistence\material_repository_test)
+ ✔ Register creates a material without versions
+ ✔ A module is registered once
+ ✔ New versions start pending and do not become current
+ ✔ Completing persists the summary and keeps the availability
+ ✔ Empty summary cannot complete
+ ✔ Switch makes the version current and keeps the history
+ ✔ A version that is not completed cannot become current
+ ✔ Failure preserves the last valid summary
+ ✔ A completed summary is final
+ ✔ Transitions of the summary status
+ ✔ Logical rejection before any write: an invalid transition keeps the status (not a database write failure)
+ ✔ Logical rejection before any write: a foreign or missing target keeps the previous version (not a database write failure)
+ ✔ Update details creates no version
+ ✔ Update details needs the lock of the material
+ ✔ Update details does not overwrite a newer current version
+ ✔ Update details preserves the availability
+ ✔ Update details changes only the section and the name
+ ✔ Material availability is independent
+ ✔ Availability transitions leave versions and current version alone
+ ✔ Same availability is not written again
+ ✔ Availability is updated under the lock of the material
+ ✔ State is that of the current version
+ ✔ Invalid input stores nothing
+ ✔ Values outside the domains are refused
+ ✔ Version of a missing material is not created
+ ✔ Missing version is refused
+ ✔ Add version inside a transaction is rejected
+ ✔ Q16: null pointer and greater number accepted; equal and lower refused with nothing changed; history still readable
+ ✔ The comparison is by number and not by id
+ ✔ The refusal is its own type and leaves nothing open
+ ✔ CL-51: the greatest completed version above the current one (or with no current), ignoring pending and failed
+ ✔ CL-51: the pending versions without a later completed one, in enabled courses; the query writes nothing
+ ✔ CL-51: the question of the caller is asked inside the lock; "no" leaves the version, "yes" marks it, an exception rolls back
+ ✔ CL-51: pending becomes failed; a version no longer pending or superseded is left as it is; the pointer is untouched
+
+material_service_test (local_assistente\application\material\material_service_test)
+ ✔ Pdf creates version one with a summary
+ ✔ Page creates version one
+ ✔ Same content does nothing
+ ✔ A changed text creates version two and preserves one
+ ✔ A replaced file and a changed url create versions
+ ✔ Rename creates no version
+ ✔ Moving to another section creates no version
+ ✔ Failure keeps the previous valid summary
+ ✔ Retry resumes the failed version
+ ✔ Empty page fails without calling the port
+ ✔ Invalid answer completes nothing
+ ✔ Exception of the port is a technical failure
+ ✔ Port is called outside a transaction
+ ✔ A module that is not a material is ignored
+ ✔ Availability all and partial are available
+ ✔ Availability none is unavailable and no students is pending
+ ✔ No students keeps the value held
+ ✔ Reevaluation moves the material both ways without a version
+ ✔ Each version keeps the availability observed at its creation
+ ✔ Retry does not rewrite the availability of the version
+ ✔ Failed evaluation neither changes the state nor stops the processing
+ ✔ Simulated failure (subclass that throws) in the write of the material: keeps the state, processing goes on
+ ✔ Lock held in the same process: the service keeps the state and logs the failure (not evidence of CR-07 or CR-12)
+ ✔ Failure log has no content and no personal data
+ ✔ Failure log is written again for another material or operation
+ ✔ Snapshot is independent of the persisted availability
+ ✔ Event handler
+ ✔ Default registry has the material handler
+ ✔ Q18 rejection of a completed version is a success without a new call
+ ✔ A version failed while the llm answers is finished by the same attempt
+ ✔ Q18 rejection after the summary is a success and keeps the winner
+ ✔ Q18 rejection of a completed version by a newer current is a success without a new call
+ ✔ New completed version requests the synthesis of its section
+ ✔ Two materials of a section are one pending request
+ ✔ Availability change alone requests no synthesis
+ ✔ Failed summary requests no synthesis
+
+metrics_calculator_test (local_assistente\domain\quiz\metrics_calculator_test)
+ ✔ Partial result is truncated to three decimals
+ ✔ Partial result is the mean among the answers
+ ✔ Counts and average correctness
+ ✔ Single answer question has no partial result
+ ✔ No graded answer is no data and zeros are valid
+ ✔ Answer waiting for manual grading is left out
+ ✔ Truncation ignores binary noise
+ ✔ Aggregate with known values
+ ✔ Standard deviation is populational
+ ✔ Partial result is independent of the grade and leaves out answers without items
+ ✔ Partial result null is distinct from zero
+ ✔ Final result follows the grading method
+ ✔ Invalid input is refused with data set "fraction above 1"
+ ✔ Invalid input is refused with data set "negative fraction"
+ ✔ Invalid input is refused with data set "more items answered than correct"
+ ✔ Invalid input is refused with data set "unknown method"
+
+multiple_choice_selection_test (local_assistente\domain\quiz\multiple_choice_selection_test)
+ ✔ Items answered with data set "all correct, no incorrect"
+ ✔ Items answered with data set "some correct"
+ ✔ Items answered with data set "any incorrect gives zero, even with all correct"
+ ✔ Items answered with data set "only incorrect"
+ ✔ Items answered with data set "recorded and nothing selected"
+ ✔ Items answered with data set "nothing recorded is no data"
+ ✔ Items answered with data set "nothing recorded wins over counts"
+ ✔ Negative count is refused
+
+name_redactor_test (local_assistente\domain\privacy\name_redactor_test)
+ ✔ Redaction with data set "full name is one occurrence"
+ ✔ Redaction with data set "first name alone"
+ ✔ Redaction with data set "last name alone"
+ ✔ Redaction with data set "first and last apart"
+ ✔ Redaction with data set "upper case"
+ ✔ Redaction with data set "lower case"
+ ✔ Redaction with data set "accents of the text"
+ ✔ Redaction with data set "blanks between the names"
+ ✔ Redaction with data set "several occurrences"
+ ✔ Redaction with data set "inside a longer word is not found"
+ ✔ Redaction with data set "touching letters or digits"
+ ✔ Redaction with data set "punctuation is a boundary"
+ ✔ Redaction with data set "hyphen is a boundary, a risk that is accepted"
+ ✔ Redaction with data set "empty text"
+ ✔ Redaction with data set "no name"
+ ✔ Redaction with data set "other characters are kept"
+ ✔ Accents in the name and in the text
+ ✔ Compound names repetition and the marker
+ ✔ Coinciding and partly coinciding names
+ ✔ No usable name redacts nothing
+ ✔ Json documents
+
+navigation_test (local_assistente\navigation_test)
+ ✔ The hook is registered
+ ✔ The entry is shown with the view capability
+ ✔ The entry is hidden without the view capability
+
+occurrence_identity_test (local_assistente\domain\event\occurrence_identity_test)
+ ✔ Same occurrence same identity
+ ✔ Type is part of the identity
+ ✔ Two legitimate edits differ but the same second collapses
+ ✔ Once per object uses only the object
+ ✔ Missing identity field is an error
+ ✔ Lock resource
+ ✔ Every type is well formed with data set "quiz_published"
+ ✔ Every type is well formed with data set "material_changed"
+ ✔ Every type is well formed with data set "quiz_attempt_submitted"
+ ✔ Every type is well formed with data set "quiz_attempt_manually_graded"
+ ✔ Every type is well formed with data set "quiz_attempt_regraded"
+ ✔ Every type is well formed with data set "quiz_closed"
+ ✔ Every type is well formed with data set "grade_changed"
+ ✔ Every type is well formed with data set "forum_post_created"
+ ✔ Every type is well formed with data set "forum_post_updated"
+ ✔ Every type is well formed with data set "forum_post_deleted"
+ ✔ Every type is well formed with data set "forum_discussion_deleted"
+ ✔ Every type is well formed with data set "forum_rebuild_requested"
+ ✔ Every type is well formed with data set "participation_changed"
+ ✔ Every type is well formed with data set "reference_date_reached"
+ ✔ Every type is well formed with data set "synthesis_requested"
+ ✔ Every type is well formed with data set "criteria_check_requested"
+ ✔ Every type is well formed with data set "course_criteria_check_requested"
+ ✔ Strategies
+ ✔ Forum rebuild requested
+ ✔ Forum rebuild requested refuses an invalid payload with data set "no forum"
+ ✔ Forum rebuild requested refuses an invalid payload with data set "a discussion"
+ ✔ Forum rebuild requested refuses an invalid payload with data set "a message"
+ ✔ Forum rebuild requested refuses an invalid payload with data set "a text forum"
+ ✔ Forum rebuild requested is not a deletion
+ ✔ Publication payload has the cmid
+ ✔ Payload normalisation
+
+participation_observer_test (local_assistente\observer\participation_observer_test)
+ ✔ The events are registered outside the transaction
+ ✔ A submission queues the participation
+ ✔ A submission by somebody else counts for the student
+ ✔ A completion queues the participation
+ ✔ A grade of the main item queues the participation and the totals do not
+ ✔ A manual item does not queue the participation
+ ✔ The same grade does not queue again
+ ✔ The messages queue the participation of the author and an edit does not
+ ✔ A deleted discussion queues no participation
+ ✔ Invalid users and contexts are refused safely
+ ✔ A failure is contained and logged
+ ✔ Processing the queue does not start a cycle
+ ✔ The same occurrence is queued once
+ ✔ A course without the assistant queues nothing and students are isolated
+ ✔ A real event reaches the frequency handler through the queue
+
+participation_reader_run_memo_test (local_assistente\infrastructure\moodle\participation_reader_run_memo_test)
+ ✔ Answers inside the run equal the answers outside
+ ✔ A forum is read once for many students
+ ✔ A quiz is read once for many students
+ ✔ Empty modules are read once and nobody participates
+ ✔ Each module is read once and answers for itself
+ ✔ Two runs do not share what was read
+ ✔ Nothing leaks between courses
+ ✔ The memory is dropped when the work fails and nested runs share it
+
+participation_reader_test (local_assistente\infrastructure\moodle\participation_reader_test)
+ ✔ No signal means no participation
+ ✔ Submitted assignment counts and draft does not
+ ✔ Grade counts
+ ✔ Forum post counts
+ ✔ Completion states
+ ⚠ Finished attempt counts
+ ✔ Last course access
+ ✔ A grade handed in gives the same participation
+
+performance_handler_test (local_assistente\application\grade\performance_handler_test)
+ ✔ Grade is the percentage of the range of the item
+ ✔ Course total follows the weights configured in the gradebook
+ ✔ Scale level is converted with the range of the scale
+ ✔ No grade is no data and zero is a row
+ ✔ Change and removal keep the earlier analysis
+ ✔ Manual category and text items are not activities
+ ✔ Activity with several items uses the main item only
+ ✔ Main item without grade is no data even if another item has one
+ ✔ A user who is not a student writes nothing
+ ✔ A technical failure writes nothing
+ ✔ Repeated delivery is idempotent
+ ✔ Registered and runs under the queue
+
+performance_repository_test (local_assistente\infrastructure\persistence\performance_repository_test)
+ ✔ Saves and reads the analysis and its rows
+ ✔ No data is the absence of a row and zero is a row
+ ✔ Current is the latest per student and the history is kept
+ ✔ Second save for the same processing is rejected
+ ✔ Invalid input writes nothing with data set "unknown student"
+ ✔ Invalid input writes nothing with data set "activity of no module"
+ ✔ Invalid input writes nothing with data set "activity id zero"
+ ✔ Invalid input writes nothing with data set "grade missing"
+ ✔ Invalid input writes nothing with data set "grade not finite"
+ ✔ Invalid input writes nothing with data set "grade too large for the column"
+ ✔ Activity of another course is refused
+ ✔ Repeated activity is rejected
+ ✔ Failure midway rolls back everything
+ ✔ Unknown processing is rejected
+ ✔ Missing records read as null or empty
+
+presentation_test (local_assistente\application\query\presentation_test)
+ ✔ Percentages are truncated to two decimals
+ ✔ Zero and the limits
+ ✔ Values outside the domain are refused
+ ✔ The decimal separator
+ ✔ States are never shown as zero
+ ✔ Every state has a text
+ ✔ The status of a criterion
+ ✔ No materials only when there were none
+ ✔ The scale of the coverage and the complexity
+ ✔ The access is complementary evidence
+ ✔ Removed sources come from the resolver
+ ✔ A course without the assistant enabled shows no results
+ ✔ Names are ordered from a to z with a stable tie break
+ ✔ The order is deterministic
+ ✔ Ordering by the value shown
+ ✔ The labels exist in both languages
+
+process_queue_test (local_assistente\task\process_queue_test)
+ ✔ Initial interval is 15 minutes
+ ✔ Queue task declared once and no own interval setting
+ ✔ Interval changed in the native schedule is in force
+ ✔ Execute runs a cycle and logs one line
+
+provider_test (local_assistente\privacy\provider_test)
+ ✔ Openrouter is declared as the external location
+ ✔ The metadata is complete
+ ✔ The contexts of a student
+ ✔ The users in a context
+ ✔ The export has the individual data by course
+ ✔ Export for a user without data and for all contexts
+ ✔ Deleting a student in one course changes that course only
+ ✔ Deleting in every course leaves nothing individual
+ ✔ The snapshots lose only the entries of the student
+ ✔ Messages with and without the identifier
+ ✔ Deleting for a context
+ ✔ Deleting for a list of users
+ ✔ Repeating the deletion changes nothing
+ ✔ A failure in the middle undoes everything
+ ✔ Compatibility with the queue and the locks
+ ✔ The lineage survives the deletion
+
+query_filter_form_test (local_assistente\form\query_filter_form_test)
+ ✔ Selected filters
+ ✔ Values outside the choices are not applied
+ ✔ The group exists only in the individual queries
+ ✔ The dates exist only when asked
+ ✔ Valid periods
+ ✔ An inverted period is refused by the form
+ ✔ The form feeds the filter
+
+questionnaire_reader_test (local_assistente\infrastructure\moodle\questionnaire_reader_test)
+ ✔ Questionnaire data
+ ✔ Question versions are told apart without the slot
+ ✔ Description question keeps its type
+ ✔ Answers and correct response
+ ✔ Random slot and candidates
+ ⚠ Attempts states and fractions
+
+queue_processor_test (local_assistente\application\queue\queue_processor_test)
+ ✔ All pending events are processed in one cycle
+ ✔ Empty queue
+ ✔ Events are processed in creation order
+ ✔ One attempt per cycle and three attempts in total
+ ✔ Failures are recorded with their class and do not stop the cycle
+ ✔ Processed event is not processed again
+ ✔ A new occurrence has its own processing
+ ✔ Disabled course events are not processed
+ ✔ Course disabled before the lock is detected
+ ✔ Events without a handler wait
+ ✔ Event arriving during the cycle is processed in it
+ ✔ Cycle stops at the deadline and finishes the event in progress
+ ✔ Deadline already reached processes nothing
+ ✔ Handler runs without a transaction and sees the event in processing
+ ✔ Event lock is held while the handler runs
+ ✔ Event held by another run is skipped
+ ✔ Two simultaneous runs process no event twice
+ ✔ Interrupted run is recovered on the same processing
+ ✔ Exhausted by interruptions goes to failure without calling the handler
+ ✔ Event in processing with a live lock is not recovered
+
+quiz_initial_repository_test (local_assistente\infrastructure\persistence\quiz_initial_repository_test)
+ ✔ Saves and reads the whole analysis
+ ✔ Coverage zero without questions
+ ✔ Invalid values write nothing with data set "coverage above 1"
+ ✔ Invalid values write nothing with data set "coverage negative"
+ ✔ Invalid values write nothing with data set "coverage not a tenth"
+ ✔ Invalid values write nothing with data set "complexity above 1"
+ ✔ Invalid values write nothing with data set "complexity not a tenth"
+ ✔ Invalid values write nothing with data set "complexity missing"
+ ✔ Invalid values write nothing with data set "question id zero"
+ ✔ Invalid values write nothing with data set "version zero"
+ ✔ Repeated question version is rejected
+ ✔ Second save for the same processing is rejected
+ ✔ Failure midway rolls back everything
+ ✔ Unknown processing is rejected
+ ✔ Reads are isolated by course and questionnaire
+
+quiz_observer_test (local_assistente\observer\quiz_observer_test)
+ ✔ Observers are registered after the commit
+ ✔ Submitting an attempt enqueues it
+ ✔ The submit event comes before the grading
+ ✔ A preview enqueues nothing
+ ✔ A repeated submit event keeps one queue event
+ ✔ Manual grading enqueues one event per question saved
+ ✔ Regrading enqueues the attempt
+ ✔ Course without the assistant enqueues nothing
+ ✔ Incomplete event data is refused safely
+ ✔ A failure is contained and logged
+
+quiz_publication_service_test (local_assistente\application\quiz\quiz_publication_service_test)
+ ✔ Quiz created visible produces one pending event
+ ✔ Second dispatch keeps one event
+ ✔ Created hidden then made visible
+ ✔ Hide show and edit after publication keep one event
+ ✔ Timeopen does not matter
+ ✔ Other modules are ignored
+ ✔ No event while the assistant is not enabled
+
+quiz_results_repository_test (local_assistente\infrastructure\persistence\quiz_results_repository_test)
+ ✔ Saves and reads the results and the aggregate
+ ✔ No data is the absence of rows and a real zero is a row
+ ✔ Answered version may differ from the analysed one
+ ✔ Current is the latest and the history is kept
+ ✔ Second save for the same processing is rejected
+ ✔ Invalid input writes nothing with data set "aggregate above 100"
+ ✔ Invalid input writes nothing with data set "negative minimum"
+ ✔ Invalid input writes nothing with data set "average above 100"
+ ✔ Invalid input writes nothing with data set "metrics missing"
+ ✔ Invalid input writes nothing with data set "question id zero"
+ ✔ Invalid input writes nothing with data set "analysed row does not exist"
+ ✔ References and reads are isolated by course and questionnaire
+ ✔ Repeated question version is rejected
+ ✔ Failure midway rolls back everything
+ ✔ Unknown processing is rejected
+ ✔ Missing records read as null or empty
+
+readers_conformance_test (local_assistente\infrastructure\moodle\readers_conformance_test)
+ ✔ The readers exist
+ ✔ Readers do not write plugin tables
+ ✔ Each reader documents its api or the dml justification
+ ✔ Readers contain no write operations
+
+reconcile_material_versions_concurrency_test (local_assistente\task\reconcile_material_versions_concurrency_test)
+ ✔ The promotion races with other switches and the pointer never goes back
+ ✔ A pending version with an active event is not classified as failed
+ ✔ An abandoned version is classified once by two tasks at the same time
+ ✔ An event that arrives after the first reading keeps the version
+ ✔ A version failed under a worker is finished by the same attempt
+ ✔ The exhaustion is consistent and a new event takes up the same version
+ ✔ A failure to save the result is recovered by the next cycle
+ ✔ The task and the queue respect the locks and the timeouts
+
+reconcile_material_versions_test (local_assistente\task\reconcile_material_versions_test)
+ ✔ Task is installed with a name in both languages
+ ✔ It promotes the candidates changes only the pointer and is repeatable
+ ✔ A candidate overtaken meanwhile is a normal outcome
+ ✔ A material removed after the candidates were read is ignored
+ ✔ A missing version of an existing material is a failure not a removal
+ ✔ A failure by the lock is counted the others continue and the run signals failure
+ ✔ An abandoned pending version is marked failed and the run is repeatable
+ ✔ An active event of the same module prevents the classification
+ ✔ A version that changed after the candidates were read is kept
+ ✔ A material removed after the pending candidates were read is ignored
+ ✔ A failure by the lock on a pending version is counted and the run signals failure
+ ✔ A failure to read the events classifies nothing and the run signals failure
+ ✔ A missing pending version of an existing material is a failure not a removal
+
+redeliver_event_test (local_assistente\task\redeliver_event_test)
+ ✔ The task has a name
+ ✔ It delivers with the original identity and a second run reuses
+ ✔ A course without the assistant is done without failure
+ ✔ The guard stops a task whose record is gone
+ ✔ A busy lock throws a message without the student
+ ✔ The last attempt says so and a questionnaire attempt is named
+ ✔ A failure that is not a lock gives up the attempts
+ ✔ Data that is not a delivery gives up
+ ✔ A task without an identifier fails closed
+ ✔ A deleted account revokes the delivery
+ ✔ An account that does not exist revokes the delivery
+ ✔ A delivery without a student does not ask for an account
+ ✔ The delivery takes the lock of the course first and the others after it in order
+
+redelivery_erasure_race_test (local_assistente\application\privacy\redelivery_erasure_race_test)
+ ✔ The erasure of the course first and the task waits for the lock of the course
+ ✔ The task first and the erasure of the course waits for the lock of the course
+ ✔ Five rounds of the triangle end without deadlock
+ ✔ A busy lock of the erasure of the course is logged by the observer and the data stay
+
+redelivery_observers_test (local_assistente\observer\redelivery_observers_test)
+ ✔ A free lock creates the event and no task
+ ✔ A busy lock is handed to a task after about three seconds
+ ✔ A questionnaire attempt is handed to a task with its module and attempt
+
+redelivery_task_repository_test (local_assistente\infrastructure\persistence\redelivery_task_repository_test)
+ ✔ It reads what the scheduler writes and only that
+ ✔ It finds by student and by course and does not reach the others
+ ✔ A delivery of no student belongs to the course only
+ ✔ Removal by student and by course touches nothing else
+
+renderables_test (local_assistente\output\renderables_test)
+ ✔ States are shown as text in a native table
+ ✔ Removed source and no materials are visible
+ ✔ Generated text is escaped
+ ✔ Stored content keeps its language and labels follow the user
+ ✔ Unavailable and empty
+ ✔ Report shows the current version with the link to the history
+ ✔ History lists the versions
+ ✔ No results for a filter has its own message
+
+report_builder_test (local_assistente\application\report\report_builder_test)
+ ✔ Manifest has type moment blocks and references only
+ ✔ Output is deterministic
+ ✔ No value can be copied with data set "grade as extra field"
+ ✔ No value can be copied with data set "student name"
+ ✔ No value can be copied with data set "text as reference"
+ ✔ No value can be copied with data set "float as reference"
+ ✔ No value can be copied with data set "negative id"
+ ✔ No value can be copied with data set "zero id"
+ ✔ No value can be copied with data set "nested value"
+ ✔ No value can be copied with data set "references not a list"
+ ✔ Structure and states are enforced
+ ✔ A stored version leads to its analyses and syntheses
+ ✔ Read refuses what is not a manifest
+
+report_collector_test (local_assistente\application\report\report_collector_test)
+ ✔ Only eligible activities with their own date count
+ ✔ No date and no data
+
+report_concurrency_test (local_assistente\infrastructure\persistence\report_concurrency_test)
+ ✔ Four processes adding report versions get consecutive numbers
+
+report_dispatcher_test (local_assistente\task\report_dispatcher_test)
+ ✔ First version and the 72 hours
+ ✔ The version references the current analyses
+ ✔ Final update closes the report and nothing follows
+ ✔ Periodic and final together are one final version
+ ✔ A date extended after the final reopens the report
+ ✔ A moved date recalculates the final update
+ ✔ No report without a dated activity or with the assistant off
+ ✔ A failure keeps the last version and the interval
+ ✔ A report whose lock is held is left for the next run
+ ✔ The task is registered
+ ✔ The tasks api runs the task and schedules the next run
+
+report_repository_test (local_assistente\infrastructure\persistence\report_repository_test)
+ ✔ Report is created without schedule and without version
+ ✔ Schedule is stored as calculated
+ ✔ One report per course and the course must exist
+ ✔ Versions are numbered and current version is switched
+ ✔ New version stores the next update and the report becomes due
+ ✔ Final version completes the report
+ ✔ Reopening clears final completed at and keeps the versions
+ ✔ Schedule can go back to nulls
+ ✔ Find due returns the due reports oldest first
+ ✔ Invalid manifest writes nothing with data set "empty"
+ ✔ Invalid manifest writes nothing with data set "not json"
+ ✔ Invalid manifest writes nothing with data set "empty object"
+ ✔ Invalid manifest writes nothing with data set "scalar"
+ ✔ Invalid manifest writes nothing with data set "null"
+ ✔ Missing report is refused and nothing is written
+ ✔ Failure midway keeps the last valid version and schedule
+ ✔ Version is not written without the lock of the report
+ ✔ Generator rows follow the schema
+
+report_schedule_test (local_assistente\domain\report\report_schedule_test)
+ ✔ Periodic update is due after 72 absolute hours
+ ✔ Failure does not restart the interval
+ ✔ Success starts new 72 hours from its instant
+ ✔ 72 hours do not align to calendar days
+ ✔ Farthest eligible date defines the final update
+ ✔ Next update never passes the final update
+ ✔ Nothing is scheduled after the final update
+ ✔ Coinciding periodic and final is one final update
+ ✔ Without final date nothing is scheduled
+ ✔ Removing every date clears the schedule
+ ✔ Changing the farthest date recalculates the final update
+ ✔ Site time zone utc minus 3
+ ✔ Local date is not read as utc
+ ✔ Result does not depend on the machine time zone
+ ✔ Extending the deadline after the final reopens the cycle
+ ✔ A past or unchanged date does not reopen
+ ✔ Moving the date earlier before the final brings it forward
+ ✔ A missed final update stays due
+ ✔ Invalid input is refused
+
+report_view_model_test (local_assistente\application\report\report_view_model_test)
+ ✔ A user without access is denied
+ ✔ No version and assistant not enabled
+ ✔ An old version shows its own values
+ ✔ Individual blocks follow the groups and aggregate blocks do not
+ ✔ A deleted student does not appear
+ ✔ An analysis of another course is ignored
+ ✔ Reading writes nothing
+ ✔ Without a filter the current version is shown
+ ✔ A version is selected by its number
+ ✔ The execution date interval is inclusive and combines with the number
+ ✔ Group and version filters together follow the permissions
+ ✔ The filters do not open the report to who has no access
+ ✔ Reading an old version through the filters changes nothing
+ ✔ The versions offered to the filter
+ ✔ Questionnaire and material blocks are never filtered by group
+
+repository_test (local_assistente\infrastructure\persistence\repository_test)
+ ✔ Insert find and update
+ ✔ Unique violation is handled without duplicating
+ ✔ Unknown analysis type is rejected
+ ✔ Status outside the domain is rejected
+ ✔ Event status domain with data set "unknown"
+ ✔ Event status domain with data set "empty"
+ ✔ Event status domain with data set "null"
+ ✔ Event status domain with data set "case differs"
+ ✔ Book is not a material type
+ ✔ Material domains are validated
+
+result_validator_test (local_assistente\infrastructure\llm\result_validator_test)
+ ✔ Valid answers for each use
+ ✔ Coverage and complexity accept the step with data set #0
+ ✔ Coverage and complexity accept the step with data set #1
+ ✔ Coverage and complexity accept the step with data set #2
+ ✔ Coverage and complexity accept the step with data set #3
+ ✔ Coverage and complexity accept the step with data set #4
+ ✔ Coverage and complexity accept the step with data set #5
+ ✔ Coverage and complexity accept the step with data set #6
+ ✔ Coverage and complexity accept the step with data set #7
+ ✔ Coverage and complexity accept the step with data set #8
+ ✔ Coverage and complexity accept the step with data set #9
+ ✔ Coverage and complexity reject what is off the contract with data set "above one"
+ ✔ Coverage and complexity reject what is off the contract with data set "negative"
+ ✔ Coverage and complexity reject what is off the contract with data set "off the step"
+ ✔ Coverage and complexity reject what is off the contract with data set "hundredth"
+ ✔ Coverage and complexity reject what is off the contract with data set "two"
+ ✔ Coverage and complexity reject what is off the contract with data set "string"
+ ✔ Coverage and complexity reject what is off the contract with data set "null"
+ ✔ Coverage and complexity reject what is off the contract with data set "true"
+ ✔ Coverage and complexity reject what is off the contract with data set "nan"
+ ✔ Coverage and complexity reject what is off the contract with data set "infinite"
+ ✔ Coverage and complexity reject what is off the contract with data set "array"
+ ✔ Wrong use or missing field is invalid
+ ✔ Garbage is invalid
+ ✔ Texts must not be empty
+ ✔ Forum analysis
+ ✔ Errors reported by the provider
+
+results_handler_parts_test (local_assistente\application\quiz\results_handler_parts_test)
+ ✔ Partial result is the mean of parts right with data set "match"
+ ✔ Partial result is the mean of parts right with data set "ddwtos"
+ ✔ A wrong part does not zero the answer and the value is truncated with data set "match"
+ ✔ A wrong part does not zero the answer and the value is truncated with data set "ddwtos"
+ ✔ Questions never answered are no data with data set "match"
+ ✔ Questions never answered are no data with data set "ddwtos"
+ ✔ The count of parts is used not the fraction
+ ✔ Regrade with another key is recounted with data set "match"
+ ✔ Regrade with another key is recounted with data set "ddwtos"
+ ✔ Graded question enters while another waits for manual grading with data set "match"
+ ✔ Graded question enters while another waits for manual grading with data set "ddwtos"
+ ✔ Other types keep their rules
+ ✔ Randomsamatch is out of the indicator
+ ✔ Cloze counts the subquestions graded right with data set "all four right"
+ ✔ Cloze counts the subquestions graded right with data set "two right, two wrong"
+ ✔ Cloze counts the subquestions graded right with data set "text answer with 50% credit"
+ ✔ Cloze counts the subquestions graded right with data set "multiple response with half of the right ones"
+ ✔ Cloze counts the subquestions graded right with data set "multiple choice and multiple response unanswered"
+ ✔ Cloze counts the subquestions graded right with data set "numerical unanswered"
+ ✔ Cloze counts the subquestions graded right with data set "all four answered wrong"
+ ✔ Cloze never answered is no data
+ ✔ Cloze mean leaves the unanswered out
+ ✔ Cloze percentage is truncated
+ ✔ Cloze with one subquestion has no indicator
+ ✔ Cloze without a fraction is out
+ ✔ Cloze with a numerical left out gives no php warning
+ ✔ Other warnings of the count stay visible
+
+results_handler_test (local_assistente\application\quiz\results_handler_test)
+ ✔ Metrics by question and aggregate
+ ✔ Unfinished previews and non students stay out
+ ✔ Final result follows the grading method
+ ✔ New version is linked to the analysed row
+ ✔ Question added later is only in the aggregate and the context
+ ✔ Answer waiting for manual grading is out
+ ✔ No data valid zero and error
+ ✔ Closing is the final recalculation
+ ✔ Partial result of multiple choice
+ ✔ Partial result is null without data and for other types
+ ✔ Recorded empty selection counts as zero
+ ✔ Handler does not write results while the regrade is not persisted
+ ✔ After the grade is persisted the same event gives the correct results
+ ✔ The queue retries until the grade is persisted
+ ✔ A regrade that never completes leaves the event failed
+ ✔ Settled attempts pass the check
+ ✔ Repeated delivery is idempotent
+ ✔ Registered for the four events and history is kept
+
+source_status_resolver_test (local_assistente\application\history\source_status_resolver_test)
+ ✔ A removed activity is reported as removed
+ ✔ The history of a removed activity stays and its source is removed
+ ✔ A deleted discussion keeps its text in the history
+ ✔ Messages attempts grade items users and sections
+ ✔ A record of another course is an error not a removal
+ ✔ Invalid references are errors
+ ✔ A failure to read is not taken as a removal
+ ✔ Resolving writes nothing
+
+structured_result_test (local_assistente\infrastructure\llm\structured_result_test)
+ ✔ The five allowed uses
+ ✔ Valid result
+ ✔ Error result
+ ✔ Unknown error code is rejected
+ ✔ Context
+
+student_event_eraser_test (local_assistente\application\privacy\student_event_eraser_test)
+ ✔ Final events are neutralized and the history stays
+ ✔ Pending events are neutralized and the queue finishes them without results
+ ✔ An interrupted event is neutralized and recovered by the queue
+ ✔ A running handler makes the request fail without changes and it can be repeated
+ ✔ A handler that ends while the request waits has its results removed
+ ✔ An event born between the reading and the locks is detected
+ ✔ The rounds are bounded
+ ✔ The locks that forbid creating or starting events are held during the erasure
+ ✔ An event of the student cannot be created while the erasure holds the lock
+ ✔ The queue skips an event that the erasure holds
+ ✔ A quiz attempt event loses only the userid
+ ✔ Repeating the erasure changes nothing
+ ✔ A new request after the erasure creates a new event
+ ✔ A failure in the other steps undoes everything
+ ✔ Other students are untouched and the student is erased in every course
+ ✔ An invalid student is refused
+
+student_reader_test (local_assistente\infrastructure\moodle\student_reader_test)
+ ✔ Students are active enrolments with a graded role
+ ✔ Students are listed while the gradebook needs regrading
+ ✔ List follows enrolment at query time
+ ✔ Groups and students by group
+ ✔ Separate groups restrict the teacher
+ ✔ Names
+
+student_redelivery_erasure_test (local_assistente\application\privacy\student_redelivery_erasure_test)
+ ✔ The erasure removes the deliveries of the student and only those
+ ✔ An erasure of one course leaves the other courses
+ ✔ A failed erasure keeps the deliveries
+ ✔ A task already handed to a run creates nothing after the erasure
+ ✔ An event delivered before the erasure is neutralised
+ ✔ A student with only a delivery is found and erased by the privacy api
+ ✔ A student with only an exhausted delivery is found and erased
+ ✔ Erasing a course context reaches the students with only a delivery
+ ✔ Exporting a student with only a delivery does not fail
+ ✔ A deleted course with a pending delivery loses it
+ ✔ A deleted course with an exhausted delivery loses it
+ ✔ A failed course erasure keeps the deliveries
+ ✔ A failure in the removal of the tasks undoes the erasure of the course
+ ✔ After the erasure a delivery for an active student still makes an event
+ ✔ The erasure of a student takes no lock of the course and the erasure of the course takes only that
+ ✔ The tasks are removed after the rows of the plugin
+
+student_scope_test (local_assistente\application\query\student_scope_test)
+ ✔ Students are active enrolments with an evaluated role
+ ✔ The filter by group in an individual query
+ ✔ A group of another course gives nothing
+ ✔ Separate groups restrict a teacher without the capability
+ ✔ The capability to access all groups lifts the restriction
+ ✔ Visible or no groups do not restrict
+ ✔ Aggregate queries are not filtered by group
+ ✔ The backend requires the view capability
+ ✔ A new student is listed with no data
+ ✔ A removed student leaves the lists and the history stays
+ ✔ A course without students
+
+synthesis_handler_test (local_assistente\application\synthesis\synthesis_handler_test)
+ ✔ The first synthesis is version one linked to its processing
+ ✔ What is sent has only aggregates and texts
+ ✔ The same information makes no call and no version
+ ✔ A change makes a new version and keeps the history
+ ✔ Going back to an older value is a new version
+ ✔ A failure of the llm makes no version and keeps the current one
+ ✔ A section without a result waits and is made when one appears
+ ✔ An invalid section makes no synthesis
+ ✔ Sections are independent
+ ✔ The answer is kept as text
+ ✔ The same processing is idempotent
+ ✔ A concurrent writer of the same information makes no redundant version
+ ✔ A persistence failure rolls back everything and the retry succeeds
+ ✔ The questionnaires of the section enter the set
+ ✔ The real queue makes the synthesis
+
+synthesis_repository_test (local_assistente\infrastructure\persistence\synthesis_repository_test)
+ ✔ The first version is one and is linked to its processing
+ ✔ Versions are numbered in sequence and the history is kept
+ ✔ Sections are independent
+ ✔ Missing records read as null or empty
+ ✔ Second save for the same processing is rejected
+ ✔ Invalid input writes nothing with data set "empty content"
+ ✔ Invalid input writes nothing with data set "blank content"
+ ✔ Invalid input writes nothing with data set "short fingerprint"
+ ✔ Invalid input writes nothing with data set "long fingerprint"
+ ✔ Invalid input writes nothing with data set "uppercase fingerprint"
+ ✔ Invalid input writes nothing with data set "not hexadecimal"
+ ✔ Invalid input writes nothing with data set "unknown section"
+ ✔ Invalid input writes nothing with data set "section zero"
+ ✔ Invalid input writes nothing with data set "section of another course"
+ ✔ Unknown course and processing are refused
+ ✔ A taken number is refused by the unique index
+ ✔ Failure midway rolls back everything
+ ✔ Only the synthesis is stored
+
+synthesis_trigger_test (local_assistente\application\synthesis\synthesis_trigger_test)
+ ✔ A pending request is reused and a new one is made after it ran
+ ✔ Several sections once each and nothing without the assistant
+ ✔ The section of a module is read from the course and a bad one fails loudly
+ ✔ A grade item belongs to the section of its module
+ ✔ Performance asks for the section of the item
+ ✔ Frequency asks for every section of the analysis
+ ✔ Forum asks for the section of the forum
+ ✔ Questionnaire analyses ask for the section of the questionnaire
+ ✔ Handling an existing analysis asks again in every domain
+ ✔ A failure to queue fails the attempt and the retry asks again
+
+unit_of_work_concurrency_test (local_assistente\infrastructure\persistence\unit_of_work_concurrency_test)
+ ✔ The effective lock factory is the database one
+ ✔ The effective lock factory is recognised behind the timing wrapper
+ ✔ The lock is exclusive while held and free after commit or rollback with data set "commit"
+ ✔ The lock is exclusive while held and free after commit or rollback with data set "rollback"
+ ✔ The lock timeout expires while another process holds the lock
+ ✔ The lock is released when the holder is killed
+ ✔ An unconfirmed write is rolled back when the process is killed
+ ✔ A connection killed by the server fails cleanly and the work can be repeated
+ ✔ Independent resources progress while the same resource waits
+
+unit_of_work_test (local_assistente\infrastructure\persistence\unit_of_work_test)
+ ✔ Failure in the middle leaves no partial state
+ ✔ Successful unit commits and returns the result
+ ✔ Llm guard rejects an open transaction
+ ✔ Locks inside an open transaction are rejected
+ ✔ Run shares the lock held by run locked
+ ✔ Nested run locked on the same resource is refused
+ ✔ The held mark is cleared after an exception
+ ✔ Lock logic in the process: refused while held, released after commit and rollback (database exclusion: M-06)
+ ✔ Run locked holds the lock without a transaction
+ ✔ run_locked logic in the process: refused while held, refused inside a transaction (database exclusion: M-07)
+ ✔ Resource names
+ ✔ The privacy lock and the global order of the resources
+
+upgrade_test (local_assistente\upgrade_test)
+ ✔ The upgrade function exists and has no steps
+ ✔ Every step of the file ends with a savepoint
+
+version_filter_test (local_assistente\domain\report\version_filter_test)
+ ✔ The empty filter is the default
+ ✔ The limits are inclusive
+ ✔ Outside the interval does not pass
+ ✔ One limit alone
+ ✔ The number and the dates combine
+ ✔ The day is the one of the site time zone
+ ✔ A day of 25 hours is included to the end
+ ✔ Invalid input is refused
+
+vocabulary_test (local_assistente\domain\vocabulary_test)
+ ✔ Event status has only the four states
+ ✔ Attempt status values
+ ✔ Analysis types fit the field
+ ✔ Material types are only pdf text youtube
+ ✔ Criteria status values
+ ✔ Only enabled processes data
+ ✔ Result states
+
+youtube_url_test (local_assistente\domain\material\youtube_url_test)
+ ✔ Youtube urls are recognised with data set "watch"
+ ✔ Youtube urls are recognised with data set "no www"
+ ✔ Youtube urls are recognised with data set "mobile"
+ ✔ Youtube urls are recognised with data set "short"
+ ✔ Youtube urls are recognised with data set "nocookie embed"
+ ✔ Youtube urls are recognised with data set "http"
+ ✔ Youtube urls are recognised with data set "upper case host"
+ ✔ Youtube urls are recognised with data set "surrounding spaces"
+ ✔ Other urls are not with data set "other site"
+ ✔ Other urls are not with data set "look-alike suffix"
+ ✔ Other urls are not with data set "look-alike prefix"
+ ✔ Other urls are not with data set "youtube in the path"
+ ✔ Other urls are not with data set "no scheme"
+ ✔ Other urls are not with data set "other scheme"
+ ✔ Other urls are not with data set "empty"
+ ✔ Other urls are not with data set "not a url"
+
+4 tests triggered 4 notices:
+
+1) /var/www/html/public/lib/phpunit/classes/advanced_testcase.php:89
+Unexpected debugging() call detected.
+Debugging: Variant requested for unknown seed unknownhost+261104052103+KwCcC1. You must add all questions to the usage before creating the least_used_strategy. Continuing, but the variant choses may not actually be least used.
+* line 95 of /public/question/classes/engine/variants/least_used_strategy.php: call to debugging()
+* line 1025 of /public/question/engine/questionattempt.php: call to core_question\engine\variants\least_used_strategy->choose_variant()
+* line 604 of /public/question/engine/questionusage.php: call to question_attempt->select_variant()
+* line 260 of /public/mod/quiz/locallib.php: call to question_usage_by_activity->start_all_questions()
+* line 188 of /public/local/assistente/tests/application/quiz/cl33_types_test.php: call to quiz_start_new_attempt()
+* line 104 of /public/local/assistente/tests/application/quiz/cl33_types_test.php: call to local_assistente\application\quiz\cl33_types_test->start()
+* line 1667 of /vendor/phpunit/phpunit/src/Framework/TestCase.php: call to local_assistente\application\quiz\cl33_types_test->test_type_in_a_real_attempt()
+* line 519 of /vendor/phpunit/phpunit/src/Framework/TestCase.php: call to PHPUnit\Framework\TestCase->runTest()
+* line 87 of /vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php: call to PHPUnit\Framework\TestCase->runBare()
+* line 365 of /vendor/phpunit/phpunit/src/Framework/TestCase.php: call to PHPUnit\Framework\TestRunner->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestCase->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestSuite->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestSuite->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestSuite->run()
+* line 64 of /vendor/phpunit/phpunit/src/TextUI/TestRunner.php: call to PHPUnit\Framework\TestSuite->run()
+* line 211 of /vendor/phpunit/phpunit/src/TextUI/Application.php: call to PHPUnit\TextUI\TestRunner->run()
+* line 104 of /vendor/phpunit/phpunit/phpunit: call to PHPUnit\TextUI\Application->run()
+* line 122 of /vendor/bin/phpunit: call to include()
+
+Triggered by:
+
+* local_assistente\application\quiz\cl33_types_test::test_type_in_a_real_attempt#calculated
+  /var/www/html/public/local/assistente/tests/application/quiz/cl33_types_test.php:66
+
+2) /var/www/html/public/lib/phpunit/classes/advanced_testcase.php:89
+Unexpected debugging() call detected.
+Debugging: Variant requested for unknown seed unknownhost+261104052104+mYmRRh. You must add all questions to the usage before creating the least_used_strategy. Continuing, but the variant choses may not actually be least used.
+* line 95 of /public/question/classes/engine/variants/least_used_strategy.php: call to debugging()
+* line 1025 of /public/question/engine/questionattempt.php: call to core_question\engine\variants\least_used_strategy->choose_variant()
+* line 604 of /public/question/engine/questionusage.php: call to question_attempt->select_variant()
+* line 260 of /public/mod/quiz/locallib.php: call to question_usage_by_activity->start_all_questions()
+* line 188 of /public/local/assistente/tests/application/quiz/cl33_types_test.php: call to quiz_start_new_attempt()
+* line 104 of /public/local/assistente/tests/application/quiz/cl33_types_test.php: call to local_assistente\application\quiz\cl33_types_test->start()
+* line 1667 of /vendor/phpunit/phpunit/src/Framework/TestCase.php: call to local_assistente\application\quiz\cl33_types_test->test_type_in_a_real_attempt()
+* line 519 of /vendor/phpunit/phpunit/src/Framework/TestCase.php: call to PHPUnit\Framework\TestCase->runTest()
+* line 87 of /vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php: call to PHPUnit\Framework\TestCase->runBare()
+* line 365 of /vendor/phpunit/phpunit/src/Framework/TestCase.php: call to PHPUnit\Framework\TestRunner->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestCase->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestSuite->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestSuite->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestSuite->run()
+* line 64 of /vendor/phpunit/phpunit/src/TextUI/TestRunner.php: call to PHPUnit\Framework\TestSuite->run()
+* line 211 of /vendor/phpunit/phpunit/src/TextUI/Application.php: call to PHPUnit\TextUI\TestRunner->run()
+* line 104 of /vendor/phpunit/phpunit/phpunit: call to PHPUnit\TextUI\Application->run()
+* line 122 of /vendor/bin/phpunit: call to include()
+
+Triggered by:
+
+* local_assistente\application\quiz\cl33_types_test::test_type_in_a_real_attempt#calculatedmulti
+  /var/www/html/public/local/assistente/tests/application/quiz/cl33_types_test.php:66
+
+3) /var/www/html/public/lib/phpunit/classes/advanced_testcase.php:89
+Unexpected debugging() call detected.
+Debugging: quiz_attempt::process_finish is deprecated. Please use quiz_attempt::process_submit to store answers and mark an attempt submitted, and quiz_attempt::process_grade_submission to do automatic grading.
+* line 1844 of /public/mod/quiz/classes/quiz_attempt.php: call to debugging()
+* line 182 of /public/local/assistente/tests/infrastructure/moodle/participation_reader_test.php: call to mod_quiz\quiz_attempt->process_finish()
+* line 1667 of /vendor/phpunit/phpunit/src/Framework/TestCase.php: call to local_assistente\infrastructure\moodle\participation_reader_test->test_finished_attempt_counts()
+* line 519 of /vendor/phpunit/phpunit/src/Framework/TestCase.php: call to PHPUnit\Framework\TestCase->runTest()
+* line 87 of /vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php: call to PHPUnit\Framework\TestCase->runBare()
+* line 365 of /vendor/phpunit/phpunit/src/Framework/TestCase.php: call to PHPUnit\Framework\TestRunner->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestCase->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestSuite->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestSuite->run()
+* line 64 of /vendor/phpunit/phpunit/src/TextUI/TestRunner.php: call to PHPUnit\Framework\TestSuite->run()
+* line 211 of /vendor/phpunit/phpunit/src/TextUI/Application.php: call to PHPUnit\TextUI\TestRunner->run()
+* line 104 of /vendor/phpunit/phpunit/phpunit: call to PHPUnit\TextUI\Application->run()
+* line 122 of /vendor/bin/phpunit: call to include()
+
+Triggered by:
+
+* local_assistente\infrastructure\moodle\participation_reader_test::test_finished_attempt_counts
+  /var/www/html/public/local/assistente/tests/infrastructure/moodle/participation_reader_test.php:155
+
+4) /var/www/html/public/lib/phpunit/classes/advanced_testcase.php:89
+Unexpected debugging() call detected.
+Debugging: quiz_attempt::process_finish is deprecated. Please use quiz_attempt::process_submit to store answers and mark an attempt submitted, and quiz_attempt::process_grade_submission to do automatic grading.
+* line 1844 of /public/mod/quiz/classes/quiz_attempt.php: call to debugging()
+* line 262 of /public/local/assistente/tests/infrastructure/moodle/questionnaire_reader_test.php: call to mod_quiz\quiz_attempt->process_finish()
+* line 1667 of /vendor/phpunit/phpunit/src/Framework/TestCase.php: call to local_assistente\infrastructure\moodle\questionnaire_reader_test->test_attempts_states_and_fractions()
+* line 519 of /vendor/phpunit/phpunit/src/Framework/TestCase.php: call to PHPUnit\Framework\TestCase->runTest()
+* line 87 of /vendor/phpunit/phpunit/src/Framework/TestRunner/TestRunner.php: call to PHPUnit\Framework\TestCase->runBare()
+* line 365 of /vendor/phpunit/phpunit/src/Framework/TestCase.php: call to PHPUnit\Framework\TestRunner->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestCase->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestSuite->run()
+* line 369 of /vendor/phpunit/phpunit/src/Framework/TestSuite.php: call to PHPUnit\Framework\TestSuite->run()
+* line 64 of /vendor/phpunit/phpunit/src/TextUI/TestRunner.php: call to PHPUnit\Framework\TestSuite->run()
+* line 211 of /vendor/phpunit/phpunit/src/TextUI/Application.php: call to PHPUnit\TextUI\TestRunner->run()
+* line 104 of /vendor/phpunit/phpunit/phpunit: call to PHPUnit\TextUI\Application->run()
+* line 122 of /vendor/bin/phpunit: call to include()
+
+Triggered by:
+
+* local_assistente\infrastructure\moodle\questionnaire_reader_test::test_attempts_states_and_fractions
+  /var/www/html/public/local/assistente/tests/infrastructure/moodle/questionnaire_reader_test.php:246
+
+OK, but there were issues!
+Tests: 1588, Assertions: 10389, Notices: 4, Skipped: 5.
+
+
+Code Coverage Report:
+  2026-11-04 13:34:32
+
+ Summary:
+  Classes: 59.78% (107/179)
+  Methods: 84.99% (719/846)
+  Lines:   91.91% (6114/6652)
+
+local_assistente\application\access_service
+  Methods: 100.00% ( 7/ 7)   Lines: 100.00% ( 16/ 16)
+local_assistente\application\capability_correction_policy
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  2/  2)
+local_assistente\application\context\context_snapshot_builder
+  Methods:  80.00% ( 4/ 5)   Lines:  98.41% ( 62/ 63)
+local_assistente\application\course_config_service
+  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 50/ 50)
+local_assistente\application\criteria\criteria_handler
+  Methods: 100.00% ( 7/ 7)   Lines: 100.00% (153/153)
+local_assistente\application\criteria\criteria_request_service
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  7/  7)
+local_assistente\application\delivery\event_redelivery_scheduler
+  Methods: 100.00% (12/12)   Lines: 100.00% ( 33/ 33)
+local_assistente\application\delivery\lock_failure_budget
+  Methods:  80.00% ( 4/ 5)   Lines:  91.67% ( 11/ 12)
+local_assistente\application\delivery\observer_event_service
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  3/  3)
+local_assistente\application\enqueue_result
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+local_assistente\application\event_service
+  Methods:  50.00% ( 2/ 4)   Lines:  97.92% ( 94/ 96)
+local_assistente\application\forum\forum_analysis_handler
+  Methods:  50.00% ( 3/ 6)   Lines:  91.34% (116/127)
+local_assistente\application\forum\forum_event_service
+  Methods:  75.00% ( 6/ 8)   Lines:  89.29% ( 25/ 28)
+local_assistente\application\frequency\frequency_handler
+  Methods:  60.00% ( 3/ 5)   Lines:  92.98% (106/114)
+local_assistente\application\frequency\participation_event_service
+  Methods:  50.00% ( 2/ 4)   Lines:  55.56% ( 15/ 27)
+local_assistente\application\frequency\reference_date_detector
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 22/ 22)
+local_assistente\application\grade\grade_event_service
+  Methods:  66.67% ( 2/ 3)   Lines:  43.75% (  7/ 16)
+local_assistente\application\grade\performance_handler
+  Methods:  50.00% ( 1/ 2)   Lines:  96.49% ( 55/ 57)
+local_assistente\application\history\lineage
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\application\history\lineage_reader
+  Methods:  60.00% ( 6/10)   Lines:  96.77% (120/124)
+local_assistente\application\history\source_status_resolver
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 11/ 11)
+local_assistente\application\llm\context_guard
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 21/ 21)
+local_assistente\application\llm\guarded_llm_port
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  4/  4)
+local_assistente\application\llm\instruction_builder
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  6/  6)
+local_assistente\application\llm\llm_result_adapter
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  6/  6)
+local_assistente\application\material\extracted_content
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 10/ 10)
+local_assistente\application\material\material_event_handler
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  7/  7)
+local_assistente\application\material\material_event_service
+  Methods:  66.67% ( 2/ 3)   Lines:  88.89% (  8/  9)
+local_assistente\application\material\material_service
+  Methods:  63.64% ( 7/11)   Lines:  93.94% (124/132)
+local_assistente\application\material\page_extractor
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 11/ 11)
+local_assistente\application\material\pdf_extractor
+  Methods:  33.33% ( 1/ 3)   Lines:  80.00% (  8/ 10)
+local_assistente\application\material\youtube_extractor
+  Methods:  80.00% ( 4/ 5)   Lines:  96.55% ( 28/ 29)
+local_assistente\application\privacy\course_data_eraser
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+local_assistente\application\privacy\erasure_audit
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 12/ 12)
+local_assistente\application\privacy\erasure_retry_scheduler
+  Methods:  71.43% ( 5/ 7)   Lines:  95.35% ( 41/ 43)
+local_assistente\application\privacy\erasure_state_resolver
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 23/ 23)
+local_assistente\application\privacy\student_data_eraser
+  Methods:  66.67% ( 2/ 3)   Lines:  97.56% ( 40/ 41)
+local_assistente\application\privacy\student_event_eraser
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 39/ 39)
+local_assistente\application\query\aggregate_query
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  8/  8)
+local_assistente\application\query\below_criteria_query
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 25/ 25)
+local_assistente\application\query\forums_query
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 27/ 27)
+local_assistente\application\query\frequency_query
+  Methods:  80.00% ( 4/ 5)   Lines:  98.04% ( 50/ 51)
+local_assistente\application\query\grades_query
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 35/ 35)
+local_assistente\application\query\history_query
+  Methods:  88.89% ( 8/ 9)   Lines:  98.55% ( 68/ 69)
+local_assistente\application\query\material_summaries_query
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 15/ 15)
+local_assistente\application\query\presentation
+  Methods:  94.44% (17/18)   Lines:  98.59% ( 70/ 71)
+local_assistente\application\query\quiz_metrics_query
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 51/ 51)
+local_assistente\application\query\student_scope
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 19/ 19)
+local_assistente\application\query\synthesis_query
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 12/ 12)
+local_assistente\application\queue\attempt_failure
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  4/  4)
+local_assistente\application\queue\cycle_report
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 13/ 13)
+local_assistente\application\queue\handler_registry
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  9/  9)
+local_assistente\application\queue\handler_result
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  4/  4)
+local_assistente\application\queue\queue_processor
+  Methods:  75.00% ( 3/ 4)   Lines:  98.00% ( 49/ 50)
+local_assistente\application\quiz\initial_analysis_handler
+  Methods:  85.71% ( 6/ 7)   Lines:  90.99% (101/111)
+local_assistente\application\quiz\quiz_attempt_event_service
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 16/ 16)
+local_assistente\application\quiz\quiz_close_detector
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 12/ 12)
+local_assistente\application\quiz\quiz_publication_service
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 10/ 10)
+local_assistente\application\quiz\results_handler
+  Methods:  55.56% ( 5/ 9)   Lines:  94.07% (127/135)
+local_assistente\application\report\report_builder
+  Methods:  80.00% ( 4/ 5)   Lines:  98.72% ( 77/ 78)
+local_assistente\application\report\report_collector
+  Methods:  60.00% ( 3/ 5)   Lines:  71.43% ( 45/ 63)
+local_assistente\application\report\report_generator
+  Methods:  75.00% ( 3/ 4)   Lines:  91.84% ( 45/ 49)
+local_assistente\application\report\report_view_model
+  Methods:  63.16% (12/19)   Lines:  88.79% (198/223)
+local_assistente\application\sync\initial_sync_service
+  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 61/ 61)
+local_assistente\application\synthesis\synthesis_handler
+  Methods:  50.00% ( 3/ 6)   Lines:  86.75% (131/151)
+local_assistente\application\synthesis\synthesis_trigger
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 18/ 18)
+local_assistente\domain\analysis_type
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\attempt_status
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\criteria\assistant_state
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\criteria\criteria_evaluation
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\criteria\criteria_evaluator
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 67/ 67)
+local_assistente\domain\criteria\criterion_percentage
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% ( 11/ 11)
+local_assistente\domain\event\event_transitions
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  6/  6)
+local_assistente\domain\event\event_type
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 73/ 73)
+local_assistente\domain\event\occurrence_identity
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  7/  7)
+local_assistente\domain\event_status
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\frequency\frequency_calculator
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 54/ 54)
+local_assistente\domain\frequency\frequency_result
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\grade\grade_normalizer
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% ( 12/ 12)
+local_assistente\domain\llm\llm_context
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  3/  3)
+local_assistente\domain\material\change_detector
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  8/  8)
+local_assistente\domain\material\material_availability
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\material\material_change
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  4/  4)
+local_assistente\domain\material\material_classifier
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 12/ 12)
+local_assistente\domain\material\material_state
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  4/  4)
+local_assistente\domain\material\summary_status
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  6/  6)
+local_assistente\domain\material\youtube_url
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  6/  6)
+local_assistente\domain\material_type
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\privacy\erasure_key
+  Methods: 100.00% ( 7/ 7)   Lines: 100.00% ( 17/ 17)
+local_assistente\domain\privacy\erasure_result
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\privacy\erasure_state_calculator
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 61/ 61)
+local_assistente\domain\privacy\name_redactor
+  Methods:  71.43% ( 5/ 7)   Lines:  97.10% ( 67/ 69)
+local_assistente\domain\quiz\aggregate_metrics
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\quiz\metrics_calculator
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 49/ 49)
+local_assistente\domain\quiz\multiple_choice_selection
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  5/  5)
+local_assistente\domain\quiz\question_metrics
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\report\report_schedule
+  Methods:  87.50% ( 7/ 8)   Lines:  97.37% ( 37/ 38)
+local_assistente\domain\report\version_filter
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 18/ 18)
+local_assistente\domain\result_state
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\section\section_resolution
+  Methods:  50.00% ( 2/ 4)   Lines:  66.67% (  4/  6)
+local_assistente\domain\synthesis\comparable_set
+  Methods: 100.00% (14/14)   Lines: 100.00% (122/122)
+local_assistente\domain\synthesis\fingerprint
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 10/ 10)
+local_assistente\domain\truncated_percentage
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\event\student_erasure_event
+  Methods:  50.00% ( 2/ 4)   Lines:  80.00% ( 12/ 15)
+local_assistente\form\course_config_form
+  Methods:  83.33% ( 5/ 6)   Lines:  98.11% ( 52/ 53)
+local_assistente\form\query_filter_form
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 41/ 41)
+local_assistente\hook_callbacks
+  Methods:   0.00% ( 0/ 1)   Lines:  86.67% ( 13/ 15)
+local_assistente\infrastructure\llm\adapter_factory
+  Methods:  66.67% ( 2/ 3)   Lines:  66.67% (  4/  6)
+local_assistente\infrastructure\llm\fake_adapter
+  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 31/ 31)
+local_assistente\infrastructure\llm\http_adapter
+  Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 90/ 90)
+local_assistente\infrastructure\llm\result_validator
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 55/ 55)
+local_assistente\infrastructure\llm\structured_result
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  6/  6)
+local_assistente\infrastructure\moodle\course_module_reader
+  Methods:  87.50% ( 7/ 8)   Lines:  98.44% ( 63/ 64)
+local_assistente\infrastructure\moodle\course_section_reader
+  Methods:  88.89% ( 8/ 9)   Lines:  97.50% ( 39/ 40)
+local_assistente\infrastructure\moodle\erasure_audit_reader
+  Methods:  75.00% ( 3/ 4)   Lines:  96.88% ( 31/ 32)
+local_assistente\infrastructure\moodle\forum_reader
+  Methods:  71.43% ( 5/ 7)   Lines:  97.40% ( 75/ 77)
+local_assistente\infrastructure\moodle\gradebook_reader
+  Methods:  62.50% ( 5/ 8)   Lines:  95.18% ( 79/ 83)
+local_assistente\infrastructure\moodle\material_reader
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 55/ 55)
+local_assistente\infrastructure\moodle\participation_reader
+  Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 63/ 63)
+local_assistente\infrastructure\moodle\questionnaire_reader
+  Methods:  54.55% ( 6/11)   Lines:  75.00% (159/212)
+local_assistente\infrastructure\moodle\source_record_reader
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% ( 48/ 48)
+local_assistente\infrastructure\moodle\student_reader
+  Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 48/ 48)
+local_assistente\infrastructure\moodle\ytdlp_client
+  Methods:  57.14% ( 4/ 7)   Lines:  59.62% ( 31/ 52)
+local_assistente\infrastructure\persistence\config_repository
+  Methods:  88.89% ( 8/ 9)   Lines:  87.50% ( 28/ 32)
+local_assistente\infrastructure\persistence\course_erasure_repository
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 48/ 48)
+local_assistente\infrastructure\persistence\criteria_repository
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  9/  9)
+local_assistente\infrastructure\persistence\criteria_result_repository
+  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 63/ 63)
+local_assistente\infrastructure\persistence\event_repository
+  Methods: 100.00% (17/17)   Lines: 100.00% (155/155)
+local_assistente\infrastructure\persistence\forum_analysis_repository
+  Methods: 100.00% ( 7/ 7)   Lines: 100.00% ( 54/ 54)
+local_assistente\infrastructure\persistence\frequency_repository
+  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 85/ 85)
+local_assistente\infrastructure\persistence\history_redaction_writer
+  Methods:  20.00% ( 1/ 5)   Lines:  84.62% ( 66/ 78)
+local_assistente\infrastructure\persistence\material_repository
+  Methods: 100.00% (22/22)   Lines: 100.00% (126/126)
+local_assistente\infrastructure\persistence\performance_repository
+  Methods: 100.00% ( 7/ 7)   Lines: 100.00% ( 56/ 56)
+local_assistente\infrastructure\persistence\quiz_initial_repository
+  Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 54/ 54)
+local_assistente\infrastructure\persistence\quiz_results_repository
+  Methods:  90.00% ( 9/10)   Lines:  98.81% ( 83/ 84)
+local_assistente\infrastructure\persistence\redelivery_task_repository
+  Methods:  90.00% ( 9/10)   Lines:  97.62% ( 41/ 42)
+local_assistente\infrastructure\persistence\report_repository
+  Methods:  91.67% (11/12)   Lines:  97.62% ( 41/ 42)
+local_assistente\infrastructure\persistence\repository
+  Methods:  87.50% ( 7/ 8)   Lines:  93.94% ( 31/ 33)
+local_assistente\infrastructure\persistence\schema_domains
+  Methods:   0.00% ( 0/ 1)   Lines:  80.00% ( 20/ 25)
+local_assistente\infrastructure\persistence\student_data_repository
+  Methods:  46.15% ( 6/13)   Lines:  94.19% (146/155)
+local_assistente\infrastructure\persistence\synthesis_repository
+  Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 43/ 43)
+local_assistente\infrastructure\persistence\table_repository
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+local_assistente\infrastructure\persistence\unit_of_work
+  Methods: 100.00% (12/12)   Lines: 100.00% ( 44/ 44)
+local_assistente\observer\course_module_observer
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 22/ 22)
+local_assistente\observer\course_observer
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  6/  6)
+local_assistente\observer\forum_observer
+  Methods:  77.78% ( 7/ 9)   Lines:  88.46% ( 46/ 52)
+local_assistente\observer\grade_observer
+  Methods:  80.00% ( 4/ 5)   Lines:  93.33% ( 14/ 15)
+local_assistente\observer\participation_observer
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 15/ 15)
+local_assistente\observer\quiz_observer
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 26/ 26)
+local_assistente\output\configure_page
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 15/ 15)
+local_assistente\output\history_page
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+local_assistente\output\page_controller
+  Methods:  88.89% ( 8/ 9)   Lines:  98.46% ( 64/ 65)
+local_assistente\output\query_page
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 10/ 10)
+local_assistente\output\renderer
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  3/  3)
+local_assistente\output\report_page
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 24/ 24)
+local_assistente\output\table_data
+  Methods:  66.67% ( 2/ 3)   Lines:  73.68% ( 28/ 38)
+local_assistente\privacy\provider
+  Methods:  91.67% (11/12)   Lines:  98.85% ( 86/ 87)
+local_assistente\task\detect_quiz_close
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  4/  4)
+local_assistente\task\detect_reference_dates
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  4/  4)
+local_assistente\task\process_queue
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  4/  4)
+local_assistente\task\reconcile_material_versions
+  Methods:  87.50% ( 7/ 8)   Lines:  98.10% (103/105)
+local_assistente\task\redeliver_event
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 34/ 34)
+local_assistente\task\report_dispatcher
+  Methods:  50.00% ( 1/ 2)   Lines:  90.00% (  9/ 10)
+local_assistente\task\retry_student_erasure
+  Methods:  50.00% ( 1/ 2)   Lines:  95.24% ( 20/ 21)

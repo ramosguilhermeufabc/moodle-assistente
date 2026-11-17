@@ -1,0 +1,20 @@
+{
+    "name": "moodle",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "moodle",
+    "forwardPorts": [8080, 8025],
+    "postCreateCommand": "sh .devcontainer/scripts/fixmoodleowner.sh && bash .devcontainer/scripts/install-moodle.sh",
+    "postStartCommand": "bash .devcontainer/scripts/write-codespaces-wwwroot.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "editorconfig.editorconfig",
+                "wongjn.php-sniffer",
+                "bmewburn.vscode-intelephense-client",
+                "felixfbecker.php-debug",
+                "ms-azuretools.vscode-docker",
+                "dbaeumer.vscode-eslint"
+            ]
+        }
+    }
+}

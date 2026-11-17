@@ -1,0 +1,2128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+  bootstrap="public/lib/phpunit/bootstrap.php"
+  processIsolation="false"
+  backupGlobals="false"
+  cacheResult="false"
+  failOnDeprecation="true"
+  failOnWarning="true"
+  stopOnError="false"
+  stopOnFailure="false"
+  stopOnIncomplete="false"
+  stopOnSkipped="false"
+  beStrictAboutTestsThatDoNotTestAnything="false"
+  beStrictAboutOutputDuringTests="true"
+  cacheDirectory=".phpunit.cache"
+  backupStaticProperties="false"
+>
+
+  <php>
+    <!--<const name="PHPUNIT_LONGTEST" value="1"/> uncomment to execute also slow or otherwise expensive tests-->
+    <const name="PHPUNIT_SEQUENCE_START" value="162000"/>
+
+    <!--Following constants instruct tests to fetch external test files from alternative location
+        or skip tests if empty, clone https://github.com/moodlehq/moodle-exttests to local web server-->
+    <!--<const name="TEST_EXTERNAL_FILES_HTTP_URL" value="http://download.moodle.org/unittest"/>
+        uncomment and alter to fetch external test files from alternative location-->
+    <!--<const name="TEST_EXTERNAL_FILES_HTTPS_URL" value="https://download.moodle.org/unittest"/>
+        uncomment and alter to fetch external test files from alternative location-->
+  </php>
+
+  <extensions>
+    <bootstrap class="core\tests\phpunit\moodle_extension"/>
+  </extensions>
+
+  <!--All core suites need to be manually added here-->
+
+  <testsuites>
+    <testsuite name="core_phpunit_testsuite">
+      <directory suffix="_test.php">public/lib/phpunit/tests</directory>
+      <exclude>public/lib/phpunit/tests/classes</exclude>
+      <exclude>public/lib/phpunit/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_test_testsuite">
+      <directory suffix="_test.php">public/lib/testing/tests</directory>
+      <exclude>public/lib/testing/tests/classes</exclude>
+      <exclude>public/lib/testing/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_ddl_testsuite">
+      <directory suffix="_test.php">public/lib/ddl/tests</directory>
+      <exclude>public/lib/ddl/tests/classes</exclude>
+      <exclude>public/lib/ddl/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_dml_testsuite">
+      <directory suffix="_test.php">public/lib/dml/tests</directory>
+      <exclude>public/lib/dml/tests/classes</exclude>
+      <exclude>public/lib/dml/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_testsuite">
+      <directory suffix="_test.php">public/lib/tests</directory>
+      <exclude>public/lib/tests/classes</exclude>
+      <exclude>public/lib/tests/fixtures</exclude>
+      <!-- <directory suffix="_test.php">public/lib/ajax/tests</directory> -->
+    </testsuite>
+    <testsuite name="core_external_testsuite">
+      <directory suffix="_test.php">public/lib/external/tests</directory>
+      <exclude>public/lib/external/tests/classes</exclude>
+      <exclude>public/lib/external/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_favourites_testsuite">
+      <directory suffix="_test.php">public/favourites/tests</directory>
+      <exclude>public/favourites/tests/classes</exclude>
+      <exclude>public/favourites/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_form_testsuite">
+      <directory suffix="_test.php">public/lib/form/tests</directory>
+      <exclude>public/lib/form/tests/classes</exclude>
+      <exclude>public/lib/form/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_files_testsuite">
+      <directory suffix="_test.php">public/lib/filestorage/tests</directory>
+      <directory suffix="_test.php">public/lib/filebrowser/tests</directory>
+      <directory suffix="_test.php">public/files/tests</directory>
+      <exclude>public/lib/filestorage/tests/classes</exclude>
+      <exclude>public/lib/filestorage/tests/fixtures</exclude>
+      <exclude>public/lib/filebrowser/tests/classes</exclude>
+      <exclude>public/lib/filebrowser/tests/fixtures</exclude>
+      <exclude>public/files/tests/classes</exclude>
+      <exclude>public/files/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_filter_testsuite">
+      <directory suffix="_test.php">public/filter/tests</directory>
+      <exclude>public/filter/tests/classes</exclude>
+      <exclude>public/filter/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_role_testsuite">
+      <directory suffix="_test.php">public/admin/roles/tests</directory>
+      <exclude>public/admin/roles/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_cohort_testsuite">
+      <directory suffix="_test.php">public/cohort/tests</directory>
+      <exclude>public/cohort/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_grades_testsuite">
+      <directory suffix="_test.php">public/lib/grade/tests</directory>
+      <directory suffix="_test.php">public/grade/tests</directory>
+      <directory suffix="_test.php">public/grade/grading/tests</directory>
+      <exclude>public/lib/grade/tests/classes</exclude>
+      <exclude>public/grade/tests/classes</exclude>
+      <exclude>public/grade/grading/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_analytics_testsuite">
+      <directory suffix="_test.php">public/analytics/tests</directory>
+      <exclude>public/analytics/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_availability_testsuite">
+      <directory suffix="_test.php">public/availability/tests</directory>
+      <exclude>public/availability/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_backup_testsuite">
+      <directory suffix="_test.php">public/backup/controller/tests</directory>
+      <directory suffix="_test.php">public/backup/converter/moodle1/tests</directory>
+      <directory suffix="_test.php">public/backup/moodle2/tests</directory>
+      <directory suffix="_test.php">public/backup/tests</directory>
+      <directory suffix="_test.php">public/backup/util</directory>
+      <exclude>public/backup/controller/tests/classes</exclude>
+      <exclude>public/backup/converter/moodle1/tests/classes</exclude>
+      <exclude>public/backup/moodle2/tests/classes</exclude>
+      <exclude>public/backup/tests/classes</exclude>
+      <exclude>public/backup/util/classes</exclude>
+    </testsuite>
+    <testsuite name="core_badges_testsuite">
+      <directory suffix="_test.php">public/badges/tests</directory>
+      <exclude>public/badges/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_blog_testsuite">
+      <directory suffix="_test.php">public/blog/tests</directory>
+      <exclude>public/blog/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_customfield_testsuite">
+      <directory suffix="_test.php">public/customfield/tests</directory>
+      <exclude>public/customfield/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_iplookup_testsuite">
+      <directory suffix="_test.php">public/iplookup/tests</directory>
+      <exclude>public/iplookup/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_course_testsuite">
+      <directory suffix="_test.php">public/course/tests</directory>
+      <exclude>public/course/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_courseformat_testsuite">
+      <directory suffix="_test.php">public/course/format/tests</directory>
+      <exclude>public/course/format/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_privacy_testsuite">
+      <directory suffix="_test.php">public/privacy/tests</directory>
+      <exclude>public/privacy/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_question_testsuite">
+      <directory suffix="_test.php">public/question/engine/tests</directory>
+      <directory suffix="_test.php">public/question/tests</directory>
+      <directory suffix="_test.php">public/question/type/tests</directory>
+      <directory suffix="_test.php">public/question/engine/upgrade/tests</directory>
+      <exclude>public/question/engine/tests/classes</exclude>
+      <exclude>public/question/tests/classes</exclude>
+      <exclude>public/question/type/tests/classes</exclude>
+      <exclude>public/question/engine/upgrade/tests/classes</exclude>
+    </testsuite>
+    <testsuite name="core_cache_testsuite">
+      <directory suffix="_test.php">public/cache/tests</directory>
+      <exclude>public/cache/tests/classes</exclude>
+      <exclude>public/cache/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_calendar_testsuite">
+      <directory suffix="_test.php">public/calendar/tests</directory>
+      <exclude>public/calendar/tests/classes</exclude>
+      <exclude>public/calendar/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_enrol_testsuite">
+      <directory suffix="_test.php">public/enrol/tests</directory>
+      <exclude>public/enrol/tests/classes</exclude>
+      <exclude>public/enrol/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_group_testsuite">
+      <directory suffix="_test.php">public/group/tests</directory>
+      <exclude>public/group/tests/classes</exclude>
+      <exclude>public/group/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_message_testsuite">
+      <directory suffix="_test.php">public/message/tests</directory>
+      <exclude>public/message/tests/classes</exclude>
+      <exclude>public/message/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_notes_testsuite">
+      <directory suffix="_test.php">public/notes/tests</directory>
+      <exclude>public/notes/tests/classes</exclude>
+      <exclude>public/notes/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_tag_testsuite">
+      <directory suffix="_test.php">public/tag/tests</directory>
+      <exclude>public/tag/tests/classes</exclude>
+      <exclude>public/tag/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_rating_testsuite">
+      <directory suffix="_test.php">public/rating/tests</directory>
+      <exclude>public/rating/tests/classes</exclude>
+      <exclude>public/rating/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_repository_testsuite">
+      <directory suffix="_test.php">public/repository/tests</directory>
+      <exclude>public/repository/tests/classes</exclude>
+      <exclude>public/repository/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_userkey_testsuite">
+      <directory suffix="_test.php">public/lib/userkey/tests</directory>
+      <exclude>public/lib/userkey/tests/classes</exclude>
+      <exclude>public/lib/userkey/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_user_testsuite">
+      <directory suffix="_test.php">public/user/tests</directory>
+      <exclude>public/user/tests/classes</exclude>
+      <exclude>public/user/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_webservice_testsuite">
+      <directory suffix="_test.php">public/webservice/tests</directory>
+      <exclude>public/webservice/tests/classes</exclude>
+      <exclude>public/webservice/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_mnet_testsuite">
+      <directory suffix="_test.php">public/mnet/tests</directory>
+      <exclude>public/mnet/tests/classes</exclude>
+      <exclude>public/mnet/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_completion_testsuite">
+      <directory suffix="_test.php">public/completion/tests</directory>
+      <exclude>public/completion/tests/classes</exclude>
+      <exclude>public/completion/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_comment_testsuite">
+      <directory suffix="_test.php">public/comment/tests</directory>
+      <exclude>public/comment/tests/classes</exclude>
+      <exclude>public/comment/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_search_testsuite">
+      <directory suffix="_test.php">public/search/tests</directory>
+      <exclude>public/search/tests/classes</exclude>
+      <exclude>public/search/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_competency_testsuite">
+      <directory suffix="_test.php">public/competency/tests</directory>
+      <exclude>public/competency/tests/classes</exclude>
+      <exclude>public/competency/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_my_testsuite">
+      <directory suffix="_test.php">public/my/tests</directory>
+      <exclude>public/my/tests/classes</exclude>
+      <exclude>public/my/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_auth_testsuite">
+      <directory suffix="_test.php">public/auth/tests</directory>
+      <exclude>public/auth/tests/classes</exclude>
+      <exclude>public/auth/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_block_testsuite">
+      <directory suffix="_test.php">public/blocks/tests</directory>
+      <exclude>public/blocks/tests/classes</exclude>
+      <exclude>public/blocks/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_login_testsuite">
+      <directory suffix="_test.php">public/login/tests</directory>
+      <exclude>public/login/tests/classes</exclude>
+      <exclude>public/login/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_plagiarism_testsuite">
+      <directory suffix="_test.php">public/plagiarism/tests</directory>
+      <exclude>public/plagiarism/tests/classes</exclude>
+      <exclude>public/plagiarism/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_portfolio_testsuite">
+      <directory suffix="_test.php">public/portfolio/tests</directory>
+      <exclude>public/portfolio/tests/classes</exclude>
+      <exclude>public/portfolio/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_editor_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tests</directory>
+      <exclude>public/lib/editor/tests/classes</exclude>
+      <exclude>public/lib/editor/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_rss_testsuite">
+      <directory suffix="_test.php">public/rss/tests</directory>
+      <exclude>public/rss/tests/classes</exclude>
+      <exclude>public/rss/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_table_testsuite">
+      <directory suffix="_test.php">public/lib/table/tests</directory>
+      <exclude>public/lib/table/tests/classes</exclude>
+      <exclude>public/lib/table/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_h5p_testsuite">
+      <directory suffix="_test.php">public/h5p/tests</directory>
+      <exclude>public/h5p/tests/classes</exclude>
+      <exclude>public/h5p/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_xapi_testsuite">
+      <directory suffix="_test.php">public/lib/xapi/tests</directory>
+      <exclude>public/lib/xapi/tests/classes</exclude>
+      <exclude>public/lib/xapi/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_contentbank_testsuite">
+      <directory suffix="_test.php">public/contentbank/tests</directory>
+      <exclude>public/contentbank/tests/classes</exclude>
+      <exclude>public/contentbank/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_payment_testsuite">
+      <directory suffix="_test.php">public/payment/tests</directory>
+      <exclude>public/payment/tests/classes</exclude>
+      <exclude>public/payment/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_reportbuilder_testsuite">
+      <directory suffix="_test.php">public/reportbuilder/tests</directory>
+      <exclude>public/reportbuilder/tests/classes</exclude>
+      <exclude>public/reportbuilder/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_adminpresets_testsuite">
+      <directory suffix="_test.php">public/admin/presets/tests</directory>
+      <exclude>public/admin/presets/tests/classes</exclude>
+      <exclude>public/admin/presets/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_admin_testsuite">
+      <directory suffix="_test.php">public/admin/tests</directory>
+      <exclude>public/admin/tests/classes</exclude>
+      <exclude>public/admin/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_communication_testsuite">
+      <directory suffix="_test.php">public/communication/tests</directory>
+      <exclude>public/communication/tests/classes</exclude>
+      <exclude>public/communication/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_ai_testsuite">
+      <directory suffix="_test.php">public/ai/tests</directory>
+      <exclude>public/ai/tests/classes</exclude>
+      <exclude>public/ai/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="core_sms_testsuite">
+      <directory suffix="_test.php">public/sms/tests</directory>
+      <exclude>public/sms/tests/classes</exclude>
+      <exclude>public/sms/tests/fixtures</exclude>
+    </testsuite>
+
+    <!--Plugin suites: use admin/tool/phpunit/cli/util.php to build phpunit.xml from
+        phpunit.xml.dist with up-to-date list of plugins in current install-->
+
+    <testsuite name="aiplacement_courseassist_testsuite">
+      <directory suffix="_test.php">public/ai/placement/courseassist/tests</directory>
+      <exclude>public/ai/placement/courseassist/tests/classes</exclude>
+      <exclude>public/ai/placement/courseassist/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="aiplacement_editor_testsuite">
+      <directory suffix="_test.php">public/ai/placement/editor/tests</directory>
+      <exclude>public/ai/placement/editor/tests/classes</exclude>
+      <exclude>public/ai/placement/editor/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="aiprovider_awsbedrock_testsuite">
+      <directory suffix="_test.php">public/ai/provider/awsbedrock/tests</directory>
+      <exclude>public/ai/provider/awsbedrock/tests/classes</exclude>
+      <exclude>public/ai/provider/awsbedrock/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="aiprovider_azureai_testsuite">
+      <directory suffix="_test.php">public/ai/provider/azureai/tests</directory>
+      <exclude>public/ai/provider/azureai/tests/classes</exclude>
+      <exclude>public/ai/provider/azureai/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="aiprovider_deepseek_testsuite">
+      <directory suffix="_test.php">public/ai/provider/deepseek/tests</directory>
+      <exclude>public/ai/provider/deepseek/tests/classes</exclude>
+      <exclude>public/ai/provider/deepseek/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="aiprovider_gemini_testsuite">
+      <directory suffix="_test.php">public/ai/provider/gemini/tests</directory>
+      <exclude>public/ai/provider/gemini/tests/classes</exclude>
+      <exclude>public/ai/provider/gemini/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="aiprovider_ollama_testsuite">
+      <directory suffix="_test.php">public/ai/provider/ollama/tests</directory>
+      <exclude>public/ai/provider/ollama/tests/classes</exclude>
+      <exclude>public/ai/provider/ollama/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="aiprovider_openai_testsuite">
+      <directory suffix="_test.php">public/ai/provider/openai/tests</directory>
+      <exclude>public/ai/provider/openai/tests/classes</exclude>
+      <exclude>public/ai/provider/openai/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="antivirus_clamav_testsuite">
+      <directory suffix="_test.php">public/lib/antivirus/clamav/tests</directory>
+      <exclude>public/lib/antivirus/clamav/tests/classes</exclude>
+      <exclude>public/lib/antivirus/clamav/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="assignfeedback_comments_testsuite">
+      <directory suffix="_test.php">public/mod/assign/feedback/comments/tests</directory>
+      <exclude>public/mod/assign/feedback/comments/tests/classes</exclude>
+      <exclude>public/mod/assign/feedback/comments/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="assignfeedback_editpdf_testsuite">
+      <directory suffix="_test.php">public/mod/assign/feedback/editpdf/tests</directory>
+      <exclude>public/mod/assign/feedback/editpdf/tests/classes</exclude>
+      <exclude>public/mod/assign/feedback/editpdf/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="assignfeedback_file_testsuite">
+      <directory suffix="_test.php">public/mod/assign/feedback/file/tests</directory>
+      <exclude>public/mod/assign/feedback/file/tests/classes</exclude>
+      <exclude>public/mod/assign/feedback/file/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="assignsubmission_comments_testsuite">
+      <directory suffix="_test.php">public/mod/assign/submission/comments/tests</directory>
+      <exclude>public/mod/assign/submission/comments/tests/classes</exclude>
+      <exclude>public/mod/assign/submission/comments/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="assignsubmission_file_testsuite">
+      <directory suffix="_test.php">public/mod/assign/submission/file/tests</directory>
+      <exclude>public/mod/assign/submission/file/tests/classes</exclude>
+      <exclude>public/mod/assign/submission/file/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="assignsubmission_onlinetext_testsuite">
+      <directory suffix="_test.php">public/mod/assign/submission/onlinetext/tests</directory>
+      <exclude>public/mod/assign/submission/onlinetext/tests/classes</exclude>
+      <exclude>public/mod/assign/submission/onlinetext/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="auth_db_testsuite">
+      <directory suffix="_test.php">public/auth/db/tests</directory>
+      <exclude>public/auth/db/tests/classes</exclude>
+      <exclude>public/auth/db/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="auth_email_testsuite">
+      <directory suffix="_test.php">public/auth/email/tests</directory>
+      <exclude>public/auth/email/tests/classes</exclude>
+      <exclude>public/auth/email/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="auth_ldap_testsuite">
+      <directory suffix="_test.php">public/auth/ldap/tests</directory>
+      <exclude>public/auth/ldap/tests/classes</exclude>
+      <exclude>public/auth/ldap/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="auth_lti_testsuite">
+      <directory suffix="_test.php">public/auth/lti/tests</directory>
+      <exclude>public/auth/lti/tests/classes</exclude>
+      <exclude>public/auth/lti/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="auth_manual_testsuite">
+      <directory suffix="_test.php">public/auth/manual/tests</directory>
+      <exclude>public/auth/manual/tests/classes</exclude>
+      <exclude>public/auth/manual/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="auth_oauth2_testsuite">
+      <directory suffix="_test.php">public/auth/oauth2/tests</directory>
+      <exclude>public/auth/oauth2/tests/classes</exclude>
+      <exclude>public/auth/oauth2/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="availability_completion_testsuite">
+      <directory suffix="_test.php">public/availability/condition/completion/tests</directory>
+      <exclude>public/availability/condition/completion/tests/classes</exclude>
+      <exclude>public/availability/condition/completion/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="availability_date_testsuite">
+      <directory suffix="_test.php">public/availability/condition/date/tests</directory>
+      <exclude>public/availability/condition/date/tests/classes</exclude>
+      <exclude>public/availability/condition/date/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="availability_grade_testsuite">
+      <directory suffix="_test.php">public/availability/condition/grade/tests</directory>
+      <exclude>public/availability/condition/grade/tests/classes</exclude>
+      <exclude>public/availability/condition/grade/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="availability_group_testsuite">
+      <directory suffix="_test.php">public/availability/condition/group/tests</directory>
+      <exclude>public/availability/condition/group/tests/classes</exclude>
+      <exclude>public/availability/condition/group/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="availability_grouping_testsuite">
+      <directory suffix="_test.php">public/availability/condition/grouping/tests</directory>
+      <exclude>public/availability/condition/grouping/tests/classes</exclude>
+      <exclude>public/availability/condition/grouping/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="availability_profile_testsuite">
+      <directory suffix="_test.php">public/availability/condition/profile/tests</directory>
+      <exclude>public/availability/condition/profile/tests/classes</exclude>
+      <exclude>public/availability/condition/profile/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_accessreview_testsuite">
+      <directory suffix="_test.php">public/blocks/accessreview/tests</directory>
+      <exclude>public/blocks/accessreview/tests/classes</exclude>
+      <exclude>public/blocks/accessreview/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_activity_results_testsuite">
+      <directory suffix="_test.php">public/blocks/activity_results/tests</directory>
+      <exclude>public/blocks/activity_results/tests/classes</exclude>
+      <exclude>public/blocks/activity_results/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_admin_bookmarks_testsuite">
+      <directory suffix="_test.php">public/blocks/admin_bookmarks/tests</directory>
+      <exclude>public/blocks/admin_bookmarks/tests/classes</exclude>
+      <exclude>public/blocks/admin_bookmarks/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_badges_testsuite">
+      <directory suffix="_test.php">public/blocks/badges/tests</directory>
+      <exclude>public/blocks/badges/tests/classes</exclude>
+      <exclude>public/blocks/badges/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_blog_menu_testsuite">
+      <directory suffix="_test.php">public/blocks/blog_menu/tests</directory>
+      <exclude>public/blocks/blog_menu/tests/classes</exclude>
+      <exclude>public/blocks/blog_menu/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_blog_recent_testsuite">
+      <directory suffix="_test.php">public/blocks/blog_recent/tests</directory>
+      <exclude>public/blocks/blog_recent/tests/classes</exclude>
+      <exclude>public/blocks/blog_recent/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_blog_tags_testsuite">
+      <directory suffix="_test.php">public/blocks/blog_tags/tests</directory>
+      <exclude>public/blocks/blog_tags/tests/classes</exclude>
+      <exclude>public/blocks/blog_tags/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_calendar_month_testsuite">
+      <directory suffix="_test.php">public/blocks/calendar_month/tests</directory>
+      <exclude>public/blocks/calendar_month/tests/classes</exclude>
+      <exclude>public/blocks/calendar_month/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_calendar_upcoming_testsuite">
+      <directory suffix="_test.php">public/blocks/calendar_upcoming/tests</directory>
+      <exclude>public/blocks/calendar_upcoming/tests/classes</exclude>
+      <exclude>public/blocks/calendar_upcoming/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_comments_testsuite">
+      <directory suffix="_test.php">public/blocks/comments/tests</directory>
+      <exclude>public/blocks/comments/tests/classes</exclude>
+      <exclude>public/blocks/comments/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_completionstatus_testsuite">
+      <directory suffix="_test.php">public/blocks/completionstatus/tests</directory>
+      <exclude>public/blocks/completionstatus/tests/classes</exclude>
+      <exclude>public/blocks/completionstatus/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_course_list_testsuite">
+      <directory suffix="_test.php">public/blocks/course_list/tests</directory>
+      <exclude>public/blocks/course_list/tests/classes</exclude>
+      <exclude>public/blocks/course_list/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_course_summary_testsuite">
+      <directory suffix="_test.php">public/blocks/course_summary/tests</directory>
+      <exclude>public/blocks/course_summary/tests/classes</exclude>
+      <exclude>public/blocks/course_summary/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_globalsearch_testsuite">
+      <directory suffix="_test.php">public/blocks/globalsearch/tests</directory>
+      <exclude>public/blocks/globalsearch/tests/classes</exclude>
+      <exclude>public/blocks/globalsearch/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_glossary_random_testsuite">
+      <directory suffix="_test.php">public/blocks/glossary_random/tests</directory>
+      <exclude>public/blocks/glossary_random/tests/classes</exclude>
+      <exclude>public/blocks/glossary_random/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_html_testsuite">
+      <directory suffix="_test.php">public/blocks/html/tests</directory>
+      <exclude>public/blocks/html/tests/classes</exclude>
+      <exclude>public/blocks/html/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_login_testsuite">
+      <directory suffix="_test.php">public/blocks/login/tests</directory>
+      <exclude>public/blocks/login/tests/classes</exclude>
+      <exclude>public/blocks/login/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_lp_testsuite">
+      <directory suffix="_test.php">public/blocks/lp/tests</directory>
+      <exclude>public/blocks/lp/tests/classes</exclude>
+      <exclude>public/blocks/lp/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_mentees_testsuite">
+      <directory suffix="_test.php">public/blocks/mentees/tests</directory>
+      <exclude>public/blocks/mentees/tests/classes</exclude>
+      <exclude>public/blocks/mentees/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_myoverview_testsuite">
+      <directory suffix="_test.php">public/blocks/myoverview/tests</directory>
+      <exclude>public/blocks/myoverview/tests/classes</exclude>
+      <exclude>public/blocks/myoverview/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_myprofile_testsuite">
+      <directory suffix="_test.php">public/blocks/myprofile/tests</directory>
+      <exclude>public/blocks/myprofile/tests/classes</exclude>
+      <exclude>public/blocks/myprofile/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_navigation_testsuite">
+      <directory suffix="_test.php">public/blocks/navigation/tests</directory>
+      <exclude>public/blocks/navigation/tests/classes</exclude>
+      <exclude>public/blocks/navigation/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_news_items_testsuite">
+      <directory suffix="_test.php">public/blocks/news_items/tests</directory>
+      <exclude>public/blocks/news_items/tests/classes</exclude>
+      <exclude>public/blocks/news_items/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_online_users_testsuite">
+      <directory suffix="_test.php">public/blocks/online_users/tests</directory>
+      <exclude>public/blocks/online_users/tests/classes</exclude>
+      <exclude>public/blocks/online_users/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_private_files_testsuite">
+      <directory suffix="_test.php">public/blocks/private_files/tests</directory>
+      <exclude>public/blocks/private_files/tests/classes</exclude>
+      <exclude>public/blocks/private_files/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_recent_activity_testsuite">
+      <directory suffix="_test.php">public/blocks/recent_activity/tests</directory>
+      <exclude>public/blocks/recent_activity/tests/classes</exclude>
+      <exclude>public/blocks/recent_activity/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_recentlyaccessedcourses_testsuite">
+      <directory suffix="_test.php">public/blocks/recentlyaccessedcourses/tests</directory>
+      <exclude>public/blocks/recentlyaccessedcourses/tests/classes</exclude>
+      <exclude>public/blocks/recentlyaccessedcourses/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_recentlyaccesseditems_testsuite">
+      <directory suffix="_test.php">public/blocks/recentlyaccesseditems/tests</directory>
+      <exclude>public/blocks/recentlyaccesseditems/tests/classes</exclude>
+      <exclude>public/blocks/recentlyaccesseditems/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_rss_client_testsuite">
+      <directory suffix="_test.php">public/blocks/rss_client/tests</directory>
+      <exclude>public/blocks/rss_client/tests/classes</exclude>
+      <exclude>public/blocks/rss_client/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_search_forums_testsuite">
+      <directory suffix="_test.php">public/blocks/search_forums/tests</directory>
+      <exclude>public/blocks/search_forums/tests/classes</exclude>
+      <exclude>public/blocks/search_forums/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_site_main_menu_testsuite">
+      <directory suffix="_test.php">public/blocks/site_main_menu/tests</directory>
+      <exclude>public/blocks/site_main_menu/tests/classes</exclude>
+      <exclude>public/blocks/site_main_menu/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_social_activities_testsuite">
+      <directory suffix="_test.php">public/blocks/social_activities/tests</directory>
+      <exclude>public/blocks/social_activities/tests/classes</exclude>
+      <exclude>public/blocks/social_activities/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_starredcourses_testsuite">
+      <directory suffix="_test.php">public/blocks/starredcourses/tests</directory>
+      <exclude>public/blocks/starredcourses/tests/classes</exclude>
+      <exclude>public/blocks/starredcourses/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_tag_flickr_testsuite">
+      <directory suffix="_test.php">public/blocks/tag_flickr/tests</directory>
+      <exclude>public/blocks/tag_flickr/tests/classes</exclude>
+      <exclude>public/blocks/tag_flickr/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_tag_youtube_testsuite">
+      <directory suffix="_test.php">public/blocks/tag_youtube/tests</directory>
+      <exclude>public/blocks/tag_youtube/tests/classes</exclude>
+      <exclude>public/blocks/tag_youtube/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_tags_testsuite">
+      <directory suffix="_test.php">public/blocks/tags/tests</directory>
+      <exclude>public/blocks/tags/tests/classes</exclude>
+      <exclude>public/blocks/tags/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="block_timeline_testsuite">
+      <directory suffix="_test.php">public/blocks/timeline/tests</directory>
+      <exclude>public/blocks/timeline/tests/classes</exclude>
+      <exclude>public/blocks/timeline/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="booktool_exportimscp_testsuite">
+      <directory suffix="_test.php">public/mod/book/tool/exportimscp/tests</directory>
+      <exclude>public/mod/book/tool/exportimscp/tests/classes</exclude>
+      <exclude>public/mod/book/tool/exportimscp/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="booktool_importhtml_testsuite">
+      <directory suffix="_test.php">public/mod/book/tool/importhtml/tests</directory>
+      <exclude>public/mod/book/tool/importhtml/tests/classes</exclude>
+      <exclude>public/mod/book/tool/importhtml/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="booktool_print_testsuite">
+      <directory suffix="_test.php">public/mod/book/tool/print/tests</directory>
+      <exclude>public/mod/book/tool/print/tests/classes</exclude>
+      <exclude>public/mod/book/tool/print/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="cachestore_apcu_testsuite">
+      <directory suffix="_test.php">public/cache/stores/apcu/tests</directory>
+      <exclude>public/cache/stores/apcu/tests/classes</exclude>
+      <exclude>public/cache/stores/apcu/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="cachestore_file_testsuite">
+      <directory suffix="_test.php">public/cache/stores/file/tests</directory>
+      <exclude>public/cache/stores/file/tests/classes</exclude>
+      <exclude>public/cache/stores/file/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="cachestore_redis_testsuite">
+      <directory suffix="_test.php">public/cache/stores/redis/tests</directory>
+      <exclude>public/cache/stores/redis/tests/classes</exclude>
+      <exclude>public/cache/stores/redis/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="cachestore_session_testsuite">
+      <directory suffix="_test.php">public/cache/stores/session/tests</directory>
+      <exclude>public/cache/stores/session/tests/classes</exclude>
+      <exclude>public/cache/stores/session/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="cachestore_static_testsuite">
+      <directory suffix="_test.php">public/cache/stores/static/tests</directory>
+      <exclude>public/cache/stores/static/tests/classes</exclude>
+      <exclude>public/cache/stores/static/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="calendartype_gregorian_testsuite">
+      <directory suffix="_test.php">public/calendar/type/gregorian/tests</directory>
+      <exclude>public/calendar/type/gregorian/tests/classes</exclude>
+      <exclude>public/calendar/type/gregorian/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="communication_customlink_testsuite">
+      <directory suffix="_test.php">public/communication/provider/customlink/tests</directory>
+      <exclude>public/communication/provider/customlink/tests/classes</exclude>
+      <exclude>public/communication/provider/customlink/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="communication_matrix_testsuite">
+      <directory suffix="_test.php">public/communication/provider/matrix/tests</directory>
+      <exclude>public/communication/provider/matrix/tests/classes</exclude>
+      <exclude>public/communication/provider/matrix/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="contenttype_h5p_testsuite">
+      <directory suffix="_test.php">public/contentbank/contenttype/h5p/tests</directory>
+      <exclude>public/contentbank/contenttype/h5p/tests/classes</exclude>
+      <exclude>public/contentbank/contenttype/h5p/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="customfield_checkbox_testsuite">
+      <directory suffix="_test.php">public/customfield/field/checkbox/tests</directory>
+      <exclude>public/customfield/field/checkbox/tests/classes</exclude>
+      <exclude>public/customfield/field/checkbox/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="customfield_date_testsuite">
+      <directory suffix="_test.php">public/customfield/field/date/tests</directory>
+      <exclude>public/customfield/field/date/tests/classes</exclude>
+      <exclude>public/customfield/field/date/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="customfield_number_testsuite">
+      <directory suffix="_test.php">public/customfield/field/number/tests</directory>
+      <exclude>public/customfield/field/number/tests/classes</exclude>
+      <exclude>public/customfield/field/number/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="customfield_select_testsuite">
+      <directory suffix="_test.php">public/customfield/field/select/tests</directory>
+      <exclude>public/customfield/field/select/tests/classes</exclude>
+      <exclude>public/customfield/field/select/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="customfield_text_testsuite">
+      <directory suffix="_test.php">public/customfield/field/text/tests</directory>
+      <exclude>public/customfield/field/text/tests/classes</exclude>
+      <exclude>public/customfield/field/text/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="customfield_textarea_testsuite">
+      <directory suffix="_test.php">public/customfield/field/textarea/tests</directory>
+      <exclude>public/customfield/field/textarea/tests/classes</exclude>
+      <exclude>public/customfield/field/textarea/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="dataformat_excel_testsuite">
+      <directory suffix="_test.php">public/dataformat/excel/tests</directory>
+      <exclude>public/dataformat/excel/tests/classes</exclude>
+      <exclude>public/dataformat/excel/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="dataformat_ods_testsuite">
+      <directory suffix="_test.php">public/dataformat/ods/tests</directory>
+      <exclude>public/dataformat/ods/tests/classes</exclude>
+      <exclude>public/dataformat/ods/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="dataformat_pdf_testsuite">
+      <directory suffix="_test.php">public/dataformat/pdf/tests</directory>
+      <exclude>public/dataformat/pdf/tests/classes</exclude>
+      <exclude>public/dataformat/pdf/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="datapreset_imagegallery_testsuite">
+      <directory suffix="_test.php">public/mod/data/preset/imagegallery/tests</directory>
+      <exclude>public/mod/data/preset/imagegallery/tests/classes</exclude>
+      <exclude>public/mod/data/preset/imagegallery/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="datapreset_journal_testsuite">
+      <directory suffix="_test.php">public/mod/data/preset/journal/tests</directory>
+      <exclude>public/mod/data/preset/journal/tests/classes</exclude>
+      <exclude>public/mod/data/preset/journal/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="datapreset_proposals_testsuite">
+      <directory suffix="_test.php">public/mod/data/preset/proposals/tests</directory>
+      <exclude>public/mod/data/preset/proposals/tests/classes</exclude>
+      <exclude>public/mod/data/preset/proposals/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="datapreset_resources_testsuite">
+      <directory suffix="_test.php">public/mod/data/preset/resources/tests</directory>
+      <exclude>public/mod/data/preset/resources/tests/classes</exclude>
+      <exclude>public/mod/data/preset/resources/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="editor_textarea_testsuite">
+      <directory suffix="_test.php">public/lib/editor/textarea/tests</directory>
+      <exclude>public/lib/editor/textarea/tests/classes</exclude>
+      <exclude>public/lib/editor/textarea/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="editor_tiny_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tiny/tests</directory>
+      <exclude>public/lib/editor/tiny/tests/classes</exclude>
+      <exclude>public/lib/editor/tiny/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_category_testsuite">
+      <directory suffix="_test.php">public/enrol/category/tests</directory>
+      <exclude>public/enrol/category/tests/classes</exclude>
+      <exclude>public/enrol/category/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_cohort_testsuite">
+      <directory suffix="_test.php">public/enrol/cohort/tests</directory>
+      <exclude>public/enrol/cohort/tests/classes</exclude>
+      <exclude>public/enrol/cohort/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_database_testsuite">
+      <directory suffix="_test.php">public/enrol/database/tests</directory>
+      <exclude>public/enrol/database/tests/classes</exclude>
+      <exclude>public/enrol/database/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_fee_testsuite">
+      <directory suffix="_test.php">public/enrol/fee/tests</directory>
+      <exclude>public/enrol/fee/tests/classes</exclude>
+      <exclude>public/enrol/fee/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_flatfile_testsuite">
+      <directory suffix="_test.php">public/enrol/flatfile/tests</directory>
+      <exclude>public/enrol/flatfile/tests/classes</exclude>
+      <exclude>public/enrol/flatfile/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_guest_testsuite">
+      <directory suffix="_test.php">public/enrol/guest/tests</directory>
+      <exclude>public/enrol/guest/tests/classes</exclude>
+      <exclude>public/enrol/guest/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_imsenterprise_testsuite">
+      <directory suffix="_test.php">public/enrol/imsenterprise/tests</directory>
+      <exclude>public/enrol/imsenterprise/tests/classes</exclude>
+      <exclude>public/enrol/imsenterprise/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_ldap_testsuite">
+      <directory suffix="_test.php">public/enrol/ldap/tests</directory>
+      <exclude>public/enrol/ldap/tests/classes</exclude>
+      <exclude>public/enrol/ldap/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_lti_testsuite">
+      <directory suffix="_test.php">public/enrol/lti/tests</directory>
+      <exclude>public/enrol/lti/tests/classes</exclude>
+      <exclude>public/enrol/lti/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_manual_testsuite">
+      <directory suffix="_test.php">public/enrol/manual/tests</directory>
+      <exclude>public/enrol/manual/tests/classes</exclude>
+      <exclude>public/enrol/manual/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_meta_testsuite">
+      <directory suffix="_test.php">public/enrol/meta/tests</directory>
+      <exclude>public/enrol/meta/tests/classes</exclude>
+      <exclude>public/enrol/meta/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_paypal_testsuite">
+      <directory suffix="_test.php">public/enrol/paypal/tests</directory>
+      <exclude>public/enrol/paypal/tests/classes</exclude>
+      <exclude>public/enrol/paypal/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="enrol_self_testsuite">
+      <directory suffix="_test.php">public/enrol/self/tests</directory>
+      <exclude>public/enrol/self/tests/classes</exclude>
+      <exclude>public/enrol/self/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="factor_cohort_testsuite">
+      <directory suffix="_test.php">public/admin/tool/mfa/factor/cohort/tests</directory>
+      <exclude>public/admin/tool/mfa/factor/cohort/tests/classes</exclude>
+      <exclude>public/admin/tool/mfa/factor/cohort/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="factor_email_testsuite">
+      <directory suffix="_test.php">public/admin/tool/mfa/factor/email/tests</directory>
+      <exclude>public/admin/tool/mfa/factor/email/tests/classes</exclude>
+      <exclude>public/admin/tool/mfa/factor/email/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="factor_grace_testsuite">
+      <directory suffix="_test.php">public/admin/tool/mfa/factor/grace/tests</directory>
+      <exclude>public/admin/tool/mfa/factor/grace/tests/classes</exclude>
+      <exclude>public/admin/tool/mfa/factor/grace/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="factor_role_testsuite">
+      <directory suffix="_test.php">public/admin/tool/mfa/factor/role/tests</directory>
+      <exclude>public/admin/tool/mfa/factor/role/tests/classes</exclude>
+      <exclude>public/admin/tool/mfa/factor/role/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="factor_sms_testsuite">
+      <directory suffix="_test.php">public/admin/tool/mfa/factor/sms/tests</directory>
+      <exclude>public/admin/tool/mfa/factor/sms/tests/classes</exclude>
+      <exclude>public/admin/tool/mfa/factor/sms/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="factor_token_testsuite">
+      <directory suffix="_test.php">public/admin/tool/mfa/factor/token/tests</directory>
+      <exclude>public/admin/tool/mfa/factor/token/tests/classes</exclude>
+      <exclude>public/admin/tool/mfa/factor/token/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="factor_totp_testsuite">
+      <directory suffix="_test.php">public/admin/tool/mfa/factor/totp/tests</directory>
+      <exclude>public/admin/tool/mfa/factor/totp/tests/classes</exclude>
+      <exclude>public/admin/tool/mfa/factor/totp/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="fileconverter_googledrive_testsuite">
+      <directory suffix="_test.php">public/files/converter/googledrive/tests</directory>
+      <exclude>public/files/converter/googledrive/tests/classes</exclude>
+      <exclude>public/files/converter/googledrive/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="fileconverter_unoconv_testsuite">
+      <directory suffix="_test.php">public/files/converter/unoconv/tests</directory>
+      <exclude>public/files/converter/unoconv/tests/classes</exclude>
+      <exclude>public/files/converter/unoconv/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_activitynames_testsuite">
+      <directory suffix="_test.php">public/filter/activitynames/tests</directory>
+      <exclude>public/filter/activitynames/tests/classes</exclude>
+      <exclude>public/filter/activitynames/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_algebra_testsuite">
+      <directory suffix="_test.php">public/filter/algebra/tests</directory>
+      <exclude>public/filter/algebra/tests/classes</exclude>
+      <exclude>public/filter/algebra/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_codehighlighter_testsuite">
+      <directory suffix="_test.php">public/filter/codehighlighter/tests</directory>
+      <exclude>public/filter/codehighlighter/tests/classes</exclude>
+      <exclude>public/filter/codehighlighter/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_data_testsuite">
+      <directory suffix="_test.php">public/filter/data/tests</directory>
+      <exclude>public/filter/data/tests/classes</exclude>
+      <exclude>public/filter/data/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_displayh5p_testsuite">
+      <directory suffix="_test.php">public/filter/displayh5p/tests</directory>
+      <exclude>public/filter/displayh5p/tests/classes</exclude>
+      <exclude>public/filter/displayh5p/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_emailprotect_testsuite">
+      <directory suffix="_test.php">public/filter/emailprotect/tests</directory>
+      <exclude>public/filter/emailprotect/tests/classes</exclude>
+      <exclude>public/filter/emailprotect/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_emoticon_testsuite">
+      <directory suffix="_test.php">public/filter/emoticon/tests</directory>
+      <exclude>public/filter/emoticon/tests/classes</exclude>
+      <exclude>public/filter/emoticon/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_glossary_testsuite">
+      <directory suffix="_test.php">public/filter/glossary/tests</directory>
+      <exclude>public/filter/glossary/tests/classes</exclude>
+      <exclude>public/filter/glossary/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_mathjaxloader_testsuite">
+      <directory suffix="_test.php">public/filter/mathjaxloader/tests</directory>
+      <exclude>public/filter/mathjaxloader/tests/classes</exclude>
+      <exclude>public/filter/mathjaxloader/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_mediaplugin_testsuite">
+      <directory suffix="_test.php">public/filter/mediaplugin/tests</directory>
+      <exclude>public/filter/mediaplugin/tests/classes</exclude>
+      <exclude>public/filter/mediaplugin/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_multilang_testsuite">
+      <directory suffix="_test.php">public/filter/multilang/tests</directory>
+      <exclude>public/filter/multilang/tests/classes</exclude>
+      <exclude>public/filter/multilang/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_tex_testsuite">
+      <directory suffix="_test.php">public/filter/tex/tests</directory>
+      <exclude>public/filter/tex/tests/classes</exclude>
+      <exclude>public/filter/tex/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="filter_urltolink_testsuite">
+      <directory suffix="_test.php">public/filter/urltolink/tests</directory>
+      <exclude>public/filter/urltolink/tests/classes</exclude>
+      <exclude>public/filter/urltolink/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="format_singleactivity_testsuite">
+      <directory suffix="_test.php">public/course/format/singleactivity/tests</directory>
+      <exclude>public/course/format/singleactivity/tests/classes</exclude>
+      <exclude>public/course/format/singleactivity/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="format_social_testsuite">
+      <directory suffix="_test.php">public/course/format/social/tests</directory>
+      <exclude>public/course/format/social/tests/classes</exclude>
+      <exclude>public/course/format/social/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="format_topics_testsuite">
+      <directory suffix="_test.php">public/course/format/topics/tests</directory>
+      <exclude>public/course/format/topics/tests/classes</exclude>
+      <exclude>public/course/format/topics/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="format_weeks_testsuite">
+      <directory suffix="_test.php">public/course/format/weeks/tests</directory>
+      <exclude>public/course/format/weeks/tests/classes</exclude>
+      <exclude>public/course/format/weeks/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="forumreport_summary_testsuite">
+      <directory suffix="_test.php">public/mod/forum/report/summary/tests</directory>
+      <exclude>public/mod/forum/report/summary/tests/classes</exclude>
+      <exclude>public/mod/forum/report/summary/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradeexport_ods_testsuite">
+      <directory suffix="_test.php">public/grade/export/ods/tests</directory>
+      <exclude>public/grade/export/ods/tests/classes</exclude>
+      <exclude>public/grade/export/ods/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradeexport_txt_testsuite">
+      <directory suffix="_test.php">public/grade/export/txt/tests</directory>
+      <exclude>public/grade/export/txt/tests/classes</exclude>
+      <exclude>public/grade/export/txt/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradeexport_xls_testsuite">
+      <directory suffix="_test.php">public/grade/export/xls/tests</directory>
+      <exclude>public/grade/export/xls/tests/classes</exclude>
+      <exclude>public/grade/export/xls/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradeexport_xml_testsuite">
+      <directory suffix="_test.php">public/grade/export/xml/tests</directory>
+      <exclude>public/grade/export/xml/tests/classes</exclude>
+      <exclude>public/grade/export/xml/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradeimport_csv_testsuite">
+      <directory suffix="_test.php">public/grade/import/csv/tests</directory>
+      <exclude>public/grade/import/csv/tests/classes</exclude>
+      <exclude>public/grade/import/csv/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradeimport_xml_testsuite">
+      <directory suffix="_test.php">public/grade/import/xml/tests</directory>
+      <exclude>public/grade/import/xml/tests/classes</exclude>
+      <exclude>public/grade/import/xml/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradepenalty_duedate_testsuite">
+      <directory suffix="_test.php">public/grade/penalty/duedate/tests</directory>
+      <exclude>public/grade/penalty/duedate/tests/classes</exclude>
+      <exclude>public/grade/penalty/duedate/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradereport_grader_testsuite">
+      <directory suffix="_test.php">public/grade/report/grader/tests</directory>
+      <exclude>public/grade/report/grader/tests/classes</exclude>
+      <exclude>public/grade/report/grader/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradereport_history_testsuite">
+      <directory suffix="_test.php">public/grade/report/history/tests</directory>
+      <exclude>public/grade/report/history/tests/classes</exclude>
+      <exclude>public/grade/report/history/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradereport_overview_testsuite">
+      <directory suffix="_test.php">public/grade/report/overview/tests</directory>
+      <exclude>public/grade/report/overview/tests/classes</exclude>
+      <exclude>public/grade/report/overview/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradereport_singleview_testsuite">
+      <directory suffix="_test.php">public/grade/report/singleview/tests</directory>
+      <exclude>public/grade/report/singleview/tests/classes</exclude>
+      <exclude>public/grade/report/singleview/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradereport_user_testsuite">
+      <directory suffix="_test.php">public/grade/report/user/tests</directory>
+      <exclude>public/grade/report/user/tests/classes</exclude>
+      <exclude>public/grade/report/user/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradingform_guide_testsuite">
+      <directory suffix="_test.php">public/grade/grading/form/guide/tests</directory>
+      <exclude>public/grade/grading/form/guide/tests/classes</exclude>
+      <exclude>public/grade/grading/form/guide/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="gradingform_rubric_testsuite">
+      <directory suffix="_test.php">public/grade/grading/form/rubric/tests</directory>
+      <exclude>public/grade/grading/form/rubric/tests/classes</exclude>
+      <exclude>public/grade/grading/form/rubric/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="local_assistente_testsuite">
+      <directory suffix="_test.php">public/local/assistente/tests</directory>
+      <exclude>public/local/assistente/tests/classes</exclude>
+      <exclude>public/local/assistente/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="logstore_database_testsuite">
+      <directory suffix="_test.php">public/admin/tool/log/store/database/tests</directory>
+      <exclude>public/admin/tool/log/store/database/tests/classes</exclude>
+      <exclude>public/admin/tool/log/store/database/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="logstore_standard_testsuite">
+      <directory suffix="_test.php">public/admin/tool/log/store/standard/tests</directory>
+      <exclude>public/admin/tool/log/store/standard/tests/classes</exclude>
+      <exclude>public/admin/tool/log/store/standard/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="ltiservice_gradebookservices_testsuite">
+      <directory suffix="_test.php">public/mod/lti/service/gradebookservices/tests</directory>
+      <exclude>public/mod/lti/service/gradebookservices/tests/classes</exclude>
+      <exclude>public/mod/lti/service/gradebookservices/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="ltiservice_memberships_testsuite">
+      <directory suffix="_test.php">public/mod/lti/service/memberships/tests</directory>
+      <exclude>public/mod/lti/service/memberships/tests/classes</exclude>
+      <exclude>public/mod/lti/service/memberships/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="media_html5audio_testsuite">
+      <directory suffix="_test.php">public/media/player/html5audio/tests</directory>
+      <exclude>public/media/player/html5audio/tests/classes</exclude>
+      <exclude>public/media/player/html5audio/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="media_html5video_testsuite">
+      <directory suffix="_test.php">public/media/player/html5video/tests</directory>
+      <exclude>public/media/player/html5video/tests/classes</exclude>
+      <exclude>public/media/player/html5video/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="media_videojs_testsuite">
+      <directory suffix="_test.php">public/media/player/videojs/tests</directory>
+      <exclude>public/media/player/videojs/tests/classes</exclude>
+      <exclude>public/media/player/videojs/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="media_vimeo_testsuite">
+      <directory suffix="_test.php">public/media/player/vimeo/tests</directory>
+      <exclude>public/media/player/vimeo/tests/classes</exclude>
+      <exclude>public/media/player/vimeo/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="media_youtube_testsuite">
+      <directory suffix="_test.php">public/media/player/youtube/tests</directory>
+      <exclude>public/media/player/youtube/tests/classes</exclude>
+      <exclude>public/media/player/youtube/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="message_airnotifier_testsuite">
+      <directory suffix="_test.php">public/message/output/airnotifier/tests</directory>
+      <exclude>public/message/output/airnotifier/tests/classes</exclude>
+      <exclude>public/message/output/airnotifier/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="message_email_testsuite">
+      <directory suffix="_test.php">public/message/output/email/tests</directory>
+      <exclude>public/message/output/email/tests/classes</exclude>
+      <exclude>public/message/output/email/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="message_popup_testsuite">
+      <directory suffix="_test.php">public/message/output/popup/tests</directory>
+      <exclude>public/message/output/popup/tests/classes</exclude>
+      <exclude>public/message/output/popup/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="message_sms_testsuite">
+      <directory suffix="_test.php">public/message/output/sms/tests</directory>
+      <exclude>public/message/output/sms/tests/classes</exclude>
+      <exclude>public/message/output/sms/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mlbackend_python_testsuite">
+      <directory suffix="_test.php">public/lib/mlbackend/python/tests</directory>
+      <exclude>public/lib/mlbackend/python/tests/classes</exclude>
+      <exclude>public/lib/mlbackend/python/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_assign_testsuite">
+      <directory suffix="_test.php">public/mod/assign/tests</directory>
+      <exclude>public/mod/assign/tests/classes</exclude>
+      <exclude>public/mod/assign/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_bigbluebuttonbn_testsuite">
+      <directory suffix="_test.php">public/mod/bigbluebuttonbn/tests</directory>
+      <exclude>public/mod/bigbluebuttonbn/tests/classes</exclude>
+      <exclude>public/mod/bigbluebuttonbn/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_book_testsuite">
+      <directory suffix="_test.php">public/mod/book/tests</directory>
+      <exclude>public/mod/book/tests/classes</exclude>
+      <exclude>public/mod/book/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_choice_testsuite">
+      <directory suffix="_test.php">public/mod/choice/tests</directory>
+      <exclude>public/mod/choice/tests/classes</exclude>
+      <exclude>public/mod/choice/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_data_testsuite">
+      <directory suffix="_test.php">public/mod/data/tests</directory>
+      <exclude>public/mod/data/tests/classes</exclude>
+      <exclude>public/mod/data/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_feedback_testsuite">
+      <directory suffix="_test.php">public/mod/feedback/tests</directory>
+      <exclude>public/mod/feedback/tests/classes</exclude>
+      <exclude>public/mod/feedback/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_folder_testsuite">
+      <directory suffix="_test.php">public/mod/folder/tests</directory>
+      <exclude>public/mod/folder/tests/classes</exclude>
+      <exclude>public/mod/folder/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_forum_testsuite">
+      <directory suffix="_test.php">public/mod/forum/tests</directory>
+      <exclude>public/mod/forum/tests/classes</exclude>
+      <exclude>public/mod/forum/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_glossary_testsuite">
+      <directory suffix="_test.php">public/mod/glossary/tests</directory>
+      <exclude>public/mod/glossary/tests/classes</exclude>
+      <exclude>public/mod/glossary/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_h5pactivity_testsuite">
+      <directory suffix="_test.php">public/mod/h5pactivity/tests</directory>
+      <exclude>public/mod/h5pactivity/tests/classes</exclude>
+      <exclude>public/mod/h5pactivity/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_imscp_testsuite">
+      <directory suffix="_test.php">public/mod/imscp/tests</directory>
+      <exclude>public/mod/imscp/tests/classes</exclude>
+      <exclude>public/mod/imscp/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_label_testsuite">
+      <directory suffix="_test.php">public/mod/label/tests</directory>
+      <exclude>public/mod/label/tests/classes</exclude>
+      <exclude>public/mod/label/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_lesson_testsuite">
+      <directory suffix="_test.php">public/mod/lesson/tests</directory>
+      <exclude>public/mod/lesson/tests/classes</exclude>
+      <exclude>public/mod/lesson/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_lti_testsuite">
+      <directory suffix="_test.php">public/mod/lti/tests</directory>
+      <exclude>public/mod/lti/tests/classes</exclude>
+      <exclude>public/mod/lti/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_page_testsuite">
+      <directory suffix="_test.php">public/mod/page/tests</directory>
+      <exclude>public/mod/page/tests/classes</exclude>
+      <exclude>public/mod/page/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_qbank_testsuite">
+      <directory suffix="_test.php">public/mod/qbank/tests</directory>
+      <exclude>public/mod/qbank/tests/classes</exclude>
+      <exclude>public/mod/qbank/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_quiz_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/tests</directory>
+      <exclude>public/mod/quiz/tests/classes</exclude>
+      <exclude>public/mod/quiz/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_resource_testsuite">
+      <directory suffix="_test.php">public/mod/resource/tests</directory>
+      <exclude>public/mod/resource/tests/classes</exclude>
+      <exclude>public/mod/resource/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_scorm_testsuite">
+      <directory suffix="_test.php">public/mod/scorm/tests</directory>
+      <exclude>public/mod/scorm/tests/classes</exclude>
+      <exclude>public/mod/scorm/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_subsection_testsuite">
+      <directory suffix="_test.php">public/mod/subsection/tests</directory>
+      <exclude>public/mod/subsection/tests/classes</exclude>
+      <exclude>public/mod/subsection/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_url_testsuite">
+      <directory suffix="_test.php">public/mod/url/tests</directory>
+      <exclude>public/mod/url/tests/classes</exclude>
+      <exclude>public/mod/url/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_wiki_testsuite">
+      <directory suffix="_test.php">public/mod/wiki/tests</directory>
+      <exclude>public/mod/wiki/tests/classes</exclude>
+      <exclude>public/mod/wiki/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="mod_workshop_testsuite">
+      <directory suffix="_test.php">public/mod/workshop/tests</directory>
+      <exclude>public/mod/workshop/tests/classes</exclude>
+      <exclude>public/mod/workshop/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="portfolio_flickr_testsuite">
+      <directory suffix="_test.php">public/portfolio/flickr/tests</directory>
+      <exclude>public/portfolio/flickr/tests/classes</exclude>
+      <exclude>public/portfolio/flickr/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="portfolio_googledocs_testsuite">
+      <directory suffix="_test.php">public/portfolio/googledocs/tests</directory>
+      <exclude>public/portfolio/googledocs/tests/classes</exclude>
+      <exclude>public/portfolio/googledocs/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="profilefield_checkbox_testsuite">
+      <directory suffix="_test.php">public/user/profile/field/checkbox/tests</directory>
+      <exclude>public/user/profile/field/checkbox/tests/classes</exclude>
+      <exclude>public/user/profile/field/checkbox/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="profilefield_datetime_testsuite">
+      <directory suffix="_test.php">public/user/profile/field/datetime/tests</directory>
+      <exclude>public/user/profile/field/datetime/tests/classes</exclude>
+      <exclude>public/user/profile/field/datetime/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="profilefield_menu_testsuite">
+      <directory suffix="_test.php">public/user/profile/field/menu/tests</directory>
+      <exclude>public/user/profile/field/menu/tests/classes</exclude>
+      <exclude>public/user/profile/field/menu/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="profilefield_social_testsuite">
+      <directory suffix="_test.php">public/user/profile/field/social/tests</directory>
+      <exclude>public/user/profile/field/social/tests/classes</exclude>
+      <exclude>public/user/profile/field/social/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="profilefield_text_testsuite">
+      <directory suffix="_test.php">public/user/profile/field/text/tests</directory>
+      <exclude>public/user/profile/field/text/tests/classes</exclude>
+      <exclude>public/user/profile/field/text/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="profilefield_textarea_testsuite">
+      <directory suffix="_test.php">public/user/profile/field/textarea/tests</directory>
+      <exclude>public/user/profile/field/textarea/tests/classes</exclude>
+      <exclude>public/user/profile/field/textarea/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_bulkmove_testsuite">
+      <directory suffix="_test.php">public/question/bank/bulkmove/tests</directory>
+      <exclude>public/question/bank/bulkmove/tests/classes</exclude>
+      <exclude>public/question/bank/bulkmove/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_columnsortorder_testsuite">
+      <directory suffix="_test.php">public/question/bank/columnsortorder/tests</directory>
+      <exclude>public/question/bank/columnsortorder/tests/classes</exclude>
+      <exclude>public/question/bank/columnsortorder/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_comment_testsuite">
+      <directory suffix="_test.php">public/question/bank/comment/tests</directory>
+      <exclude>public/question/bank/comment/tests/classes</exclude>
+      <exclude>public/question/bank/comment/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_customfields_testsuite">
+      <directory suffix="_test.php">public/question/bank/customfields/tests</directory>
+      <exclude>public/question/bank/customfields/tests/classes</exclude>
+      <exclude>public/question/bank/customfields/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_deletequestion_testsuite">
+      <directory suffix="_test.php">public/question/bank/deletequestion/tests</directory>
+      <exclude>public/question/bank/deletequestion/tests/classes</exclude>
+      <exclude>public/question/bank/deletequestion/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_editquestion_testsuite">
+      <directory suffix="_test.php">public/question/bank/editquestion/tests</directory>
+      <exclude>public/question/bank/editquestion/tests/classes</exclude>
+      <exclude>public/question/bank/editquestion/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_exporttoxml_testsuite">
+      <directory suffix="_test.php">public/question/bank/exporttoxml/tests</directory>
+      <exclude>public/question/bank/exporttoxml/tests/classes</exclude>
+      <exclude>public/question/bank/exporttoxml/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_history_testsuite">
+      <directory suffix="_test.php">public/question/bank/history/tests</directory>
+      <exclude>public/question/bank/history/tests/classes</exclude>
+      <exclude>public/question/bank/history/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_managecategories_testsuite">
+      <directory suffix="_test.php">public/question/bank/managecategories/tests</directory>
+      <exclude>public/question/bank/managecategories/tests/classes</exclude>
+      <exclude>public/question/bank/managecategories/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_previewquestion_testsuite">
+      <directory suffix="_test.php">public/question/bank/previewquestion/tests</directory>
+      <exclude>public/question/bank/previewquestion/tests/classes</exclude>
+      <exclude>public/question/bank/previewquestion/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_statistics_testsuite">
+      <directory suffix="_test.php">public/question/bank/statistics/tests</directory>
+      <exclude>public/question/bank/statistics/tests/classes</exclude>
+      <exclude>public/question/bank/statistics/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_tagquestion_testsuite">
+      <directory suffix="_test.php">public/question/bank/tagquestion/tests</directory>
+      <exclude>public/question/bank/tagquestion/tests/classes</exclude>
+      <exclude>public/question/bank/tagquestion/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_usage_testsuite">
+      <directory suffix="_test.php">public/question/bank/usage/tests</directory>
+      <exclude>public/question/bank/usage/tests/classes</exclude>
+      <exclude>public/question/bank/usage/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_viewcreator_testsuite">
+      <directory suffix="_test.php">public/question/bank/viewcreator/tests</directory>
+      <exclude>public/question/bank/viewcreator/tests/classes</exclude>
+      <exclude>public/question/bank/viewcreator/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_viewquestionname_testsuite">
+      <directory suffix="_test.php">public/question/bank/viewquestionname/tests</directory>
+      <exclude>public/question/bank/viewquestionname/tests/classes</exclude>
+      <exclude>public/question/bank/viewquestionname/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_viewquestiontext_testsuite">
+      <directory suffix="_test.php">public/question/bank/viewquestiontext/tests</directory>
+      <exclude>public/question/bank/viewquestiontext/tests/classes</exclude>
+      <exclude>public/question/bank/viewquestiontext/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbank_viewquestiontype_testsuite">
+      <directory suffix="_test.php">public/question/bank/viewquestiontype/tests</directory>
+      <exclude>public/question/bank/viewquestiontype/tests/classes</exclude>
+      <exclude>public/question/bank/viewquestiontype/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbehaviour_adaptive_testsuite">
+      <directory suffix="_test.php">public/question/behaviour/adaptive/tests</directory>
+      <exclude>public/question/behaviour/adaptive/tests/classes</exclude>
+      <exclude>public/question/behaviour/adaptive/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbehaviour_adaptivenopenalty_testsuite">
+      <directory suffix="_test.php">public/question/behaviour/adaptivenopenalty/tests</directory>
+      <exclude>public/question/behaviour/adaptivenopenalty/tests/classes</exclude>
+      <exclude>public/question/behaviour/adaptivenopenalty/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbehaviour_deferredcbm_testsuite">
+      <directory suffix="_test.php">public/question/behaviour/deferredcbm/tests</directory>
+      <exclude>public/question/behaviour/deferredcbm/tests/classes</exclude>
+      <exclude>public/question/behaviour/deferredcbm/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbehaviour_deferredfeedback_testsuite">
+      <directory suffix="_test.php">public/question/behaviour/deferredfeedback/tests</directory>
+      <exclude>public/question/behaviour/deferredfeedback/tests/classes</exclude>
+      <exclude>public/question/behaviour/deferredfeedback/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbehaviour_immediatecbm_testsuite">
+      <directory suffix="_test.php">public/question/behaviour/immediatecbm/tests</directory>
+      <exclude>public/question/behaviour/immediatecbm/tests/classes</exclude>
+      <exclude>public/question/behaviour/immediatecbm/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbehaviour_immediatefeedback_testsuite">
+      <directory suffix="_test.php">public/question/behaviour/immediatefeedback/tests</directory>
+      <exclude>public/question/behaviour/immediatefeedback/tests/classes</exclude>
+      <exclude>public/question/behaviour/immediatefeedback/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbehaviour_informationitem_testsuite">
+      <directory suffix="_test.php">public/question/behaviour/informationitem/tests</directory>
+      <exclude>public/question/behaviour/informationitem/tests/classes</exclude>
+      <exclude>public/question/behaviour/informationitem/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbehaviour_interactive_testsuite">
+      <directory suffix="_test.php">public/question/behaviour/interactive/tests</directory>
+      <exclude>public/question/behaviour/interactive/tests/classes</exclude>
+      <exclude>public/question/behaviour/interactive/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbehaviour_interactivecountback_testsuite">
+      <directory suffix="_test.php">public/question/behaviour/interactivecountback/tests</directory>
+      <exclude>public/question/behaviour/interactivecountback/tests/classes</exclude>
+      <exclude>public/question/behaviour/interactivecountback/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbehaviour_manualgraded_testsuite">
+      <directory suffix="_test.php">public/question/behaviour/manualgraded/tests</directory>
+      <exclude>public/question/behaviour/manualgraded/tests/classes</exclude>
+      <exclude>public/question/behaviour/manualgraded/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qbehaviour_missing_testsuite">
+      <directory suffix="_test.php">public/question/behaviour/missing/tests</directory>
+      <exclude>public/question/behaviour/missing/tests/classes</exclude>
+      <exclude>public/question/behaviour/missing/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qformat_aiken_testsuite">
+      <directory suffix="_test.php">public/question/format/aiken/tests</directory>
+      <exclude>public/question/format/aiken/tests/classes</exclude>
+      <exclude>public/question/format/aiken/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qformat_blackboard_six_testsuite">
+      <directory suffix="_test.php">public/question/format/blackboard_six/tests</directory>
+      <exclude>public/question/format/blackboard_six/tests/classes</exclude>
+      <exclude>public/question/format/blackboard_six/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qformat_gift_testsuite">
+      <directory suffix="_test.php">public/question/format/gift/tests</directory>
+      <exclude>public/question/format/gift/tests/classes</exclude>
+      <exclude>public/question/format/gift/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qformat_missingword_testsuite">
+      <directory suffix="_test.php">public/question/format/missingword/tests</directory>
+      <exclude>public/question/format/missingword/tests/classes</exclude>
+      <exclude>public/question/format/missingword/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qformat_multianswer_testsuite">
+      <directory suffix="_test.php">public/question/format/multianswer/tests</directory>
+      <exclude>public/question/format/multianswer/tests/classes</exclude>
+      <exclude>public/question/format/multianswer/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qformat_xml_testsuite">
+      <directory suffix="_test.php">public/question/format/xml/tests</directory>
+      <exclude>public/question/format/xml/tests/classes</exclude>
+      <exclude>public/question/format/xml/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_calculated_testsuite">
+      <directory suffix="_test.php">public/question/type/calculated/tests</directory>
+      <exclude>public/question/type/calculated/tests/classes</exclude>
+      <exclude>public/question/type/calculated/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_calculatedmulti_testsuite">
+      <directory suffix="_test.php">public/question/type/calculatedmulti/tests</directory>
+      <exclude>public/question/type/calculatedmulti/tests/classes</exclude>
+      <exclude>public/question/type/calculatedmulti/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_calculatedsimple_testsuite">
+      <directory suffix="_test.php">public/question/type/calculatedsimple/tests</directory>
+      <exclude>public/question/type/calculatedsimple/tests/classes</exclude>
+      <exclude>public/question/type/calculatedsimple/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_ddimageortext_testsuite">
+      <directory suffix="_test.php">public/question/type/ddimageortext/tests</directory>
+      <exclude>public/question/type/ddimageortext/tests/classes</exclude>
+      <exclude>public/question/type/ddimageortext/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_ddmarker_testsuite">
+      <directory suffix="_test.php">public/question/type/ddmarker/tests</directory>
+      <exclude>public/question/type/ddmarker/tests/classes</exclude>
+      <exclude>public/question/type/ddmarker/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_ddwtos_testsuite">
+      <directory suffix="_test.php">public/question/type/ddwtos/tests</directory>
+      <exclude>public/question/type/ddwtos/tests/classes</exclude>
+      <exclude>public/question/type/ddwtos/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_description_testsuite">
+      <directory suffix="_test.php">public/question/type/description/tests</directory>
+      <exclude>public/question/type/description/tests/classes</exclude>
+      <exclude>public/question/type/description/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_essay_testsuite">
+      <directory suffix="_test.php">public/question/type/essay/tests</directory>
+      <exclude>public/question/type/essay/tests/classes</exclude>
+      <exclude>public/question/type/essay/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_gapselect_testsuite">
+      <directory suffix="_test.php">public/question/type/gapselect/tests</directory>
+      <exclude>public/question/type/gapselect/tests/classes</exclude>
+      <exclude>public/question/type/gapselect/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_match_testsuite">
+      <directory suffix="_test.php">public/question/type/match/tests</directory>
+      <exclude>public/question/type/match/tests/classes</exclude>
+      <exclude>public/question/type/match/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_missingtype_testsuite">
+      <directory suffix="_test.php">public/question/type/missingtype/tests</directory>
+      <exclude>public/question/type/missingtype/tests/classes</exclude>
+      <exclude>public/question/type/missingtype/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_multianswer_testsuite">
+      <directory suffix="_test.php">public/question/type/multianswer/tests</directory>
+      <exclude>public/question/type/multianswer/tests/classes</exclude>
+      <exclude>public/question/type/multianswer/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_multichoice_testsuite">
+      <directory suffix="_test.php">public/question/type/multichoice/tests</directory>
+      <exclude>public/question/type/multichoice/tests/classes</exclude>
+      <exclude>public/question/type/multichoice/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_numerical_testsuite">
+      <directory suffix="_test.php">public/question/type/numerical/tests</directory>
+      <exclude>public/question/type/numerical/tests/classes</exclude>
+      <exclude>public/question/type/numerical/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_ordering_testsuite">
+      <directory suffix="_test.php">public/question/type/ordering/tests</directory>
+      <exclude>public/question/type/ordering/tests/classes</exclude>
+      <exclude>public/question/type/ordering/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_randomsamatch_testsuite">
+      <directory suffix="_test.php">public/question/type/randomsamatch/tests</directory>
+      <exclude>public/question/type/randomsamatch/tests/classes</exclude>
+      <exclude>public/question/type/randomsamatch/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_shortanswer_testsuite">
+      <directory suffix="_test.php">public/question/type/shortanswer/tests</directory>
+      <exclude>public/question/type/shortanswer/tests/classes</exclude>
+      <exclude>public/question/type/shortanswer/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="qtype_truefalse_testsuite">
+      <directory suffix="_test.php">public/question/type/truefalse/tests</directory>
+      <exclude>public/question/type/truefalse/tests/classes</exclude>
+      <exclude>public/question/type/truefalse/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quiz_grading_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/report/grading/tests</directory>
+      <exclude>public/mod/quiz/report/grading/tests/classes</exclude>
+      <exclude>public/mod/quiz/report/grading/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quiz_overview_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/report/overview/tests</directory>
+      <exclude>public/mod/quiz/report/overview/tests/classes</exclude>
+      <exclude>public/mod/quiz/report/overview/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quiz_responses_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/report/responses/tests</directory>
+      <exclude>public/mod/quiz/report/responses/tests/classes</exclude>
+      <exclude>public/mod/quiz/report/responses/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quiz_statistics_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/report/statistics/tests</directory>
+      <exclude>public/mod/quiz/report/statistics/tests/classes</exclude>
+      <exclude>public/mod/quiz/report/statistics/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quizaccess_delaybetweenattempts_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/accessrule/delaybetweenattempts/tests</directory>
+      <exclude>public/mod/quiz/accessrule/delaybetweenattempts/tests/classes</exclude>
+      <exclude>public/mod/quiz/accessrule/delaybetweenattempts/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quizaccess_ipaddress_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/accessrule/ipaddress/tests</directory>
+      <exclude>public/mod/quiz/accessrule/ipaddress/tests/classes</exclude>
+      <exclude>public/mod/quiz/accessrule/ipaddress/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quizaccess_numattempts_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/accessrule/numattempts/tests</directory>
+      <exclude>public/mod/quiz/accessrule/numattempts/tests/classes</exclude>
+      <exclude>public/mod/quiz/accessrule/numattempts/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quizaccess_offlineattempts_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/accessrule/offlineattempts/tests</directory>
+      <exclude>public/mod/quiz/accessrule/offlineattempts/tests/classes</exclude>
+      <exclude>public/mod/quiz/accessrule/offlineattempts/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quizaccess_openclosedate_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/accessrule/openclosedate/tests</directory>
+      <exclude>public/mod/quiz/accessrule/openclosedate/tests/classes</exclude>
+      <exclude>public/mod/quiz/accessrule/openclosedate/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quizaccess_password_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/accessrule/password/tests</directory>
+      <exclude>public/mod/quiz/accessrule/password/tests/classes</exclude>
+      <exclude>public/mod/quiz/accessrule/password/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quizaccess_seb_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/accessrule/seb/tests</directory>
+      <exclude>public/mod/quiz/accessrule/seb/tests/classes</exclude>
+      <exclude>public/mod/quiz/accessrule/seb/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quizaccess_securewindow_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/accessrule/securewindow/tests</directory>
+      <exclude>public/mod/quiz/accessrule/securewindow/tests/classes</exclude>
+      <exclude>public/mod/quiz/accessrule/securewindow/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="quizaccess_timelimit_testsuite">
+      <directory suffix="_test.php">public/mod/quiz/accessrule/timelimit/tests</directory>
+      <exclude>public/mod/quiz/accessrule/timelimit/tests/classes</exclude>
+      <exclude>public/mod/quiz/accessrule/timelimit/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_competency_testsuite">
+      <directory suffix="_test.php">public/report/competency/tests</directory>
+      <exclude>public/report/competency/tests/classes</exclude>
+      <exclude>public/report/competency/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_completion_testsuite">
+      <directory suffix="_test.php">public/report/completion/tests</directory>
+      <exclude>public/report/completion/tests/classes</exclude>
+      <exclude>public/report/completion/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_configlog_testsuite">
+      <directory suffix="_test.php">public/report/configlog/tests</directory>
+      <exclude>public/report/configlog/tests/classes</exclude>
+      <exclude>public/report/configlog/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_eventlist_testsuite">
+      <directory suffix="_test.php">public/report/eventlist/tests</directory>
+      <exclude>public/report/eventlist/tests/classes</exclude>
+      <exclude>public/report/eventlist/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_insights_testsuite">
+      <directory suffix="_test.php">public/report/insights/tests</directory>
+      <exclude>public/report/insights/tests/classes</exclude>
+      <exclude>public/report/insights/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_log_testsuite">
+      <directory suffix="_test.php">public/report/log/tests</directory>
+      <exclude>public/report/log/tests/classes</exclude>
+      <exclude>public/report/log/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_loglive_testsuite">
+      <directory suffix="_test.php">public/report/loglive/tests</directory>
+      <exclude>public/report/loglive/tests/classes</exclude>
+      <exclude>public/report/loglive/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_outline_testsuite">
+      <directory suffix="_test.php">public/report/outline/tests</directory>
+      <exclude>public/report/outline/tests/classes</exclude>
+      <exclude>public/report/outline/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_participation_testsuite">
+      <directory suffix="_test.php">public/report/participation/tests</directory>
+      <exclude>public/report/participation/tests/classes</exclude>
+      <exclude>public/report/participation/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_progress_testsuite">
+      <directory suffix="_test.php">public/report/progress/tests</directory>
+      <exclude>public/report/progress/tests/classes</exclude>
+      <exclude>public/report/progress/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_questioninstances_testsuite">
+      <directory suffix="_test.php">public/report/questioninstances/tests</directory>
+      <exclude>public/report/questioninstances/tests/classes</exclude>
+      <exclude>public/report/questioninstances/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_stats_testsuite">
+      <directory suffix="_test.php">public/report/stats/tests</directory>
+      <exclude>public/report/stats/tests/classes</exclude>
+      <exclude>public/report/stats/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_themeusage_testsuite">
+      <directory suffix="_test.php">public/report/themeusage/tests</directory>
+      <exclude>public/report/themeusage/tests/classes</exclude>
+      <exclude>public/report/themeusage/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="report_usersessions_testsuite">
+      <directory suffix="_test.php">public/report/usersessions/tests</directory>
+      <exclude>public/report/usersessions/tests/classes</exclude>
+      <exclude>public/report/usersessions/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_contentbank_testsuite">
+      <directory suffix="_test.php">public/repository/contentbank/tests</directory>
+      <exclude>public/repository/contentbank/tests/classes</exclude>
+      <exclude>public/repository/contentbank/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_coursefiles_testsuite">
+      <directory suffix="_test.php">public/repository/coursefiles/tests</directory>
+      <exclude>public/repository/coursefiles/tests/classes</exclude>
+      <exclude>public/repository/coursefiles/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_dropbox_testsuite">
+      <directory suffix="_test.php">public/repository/dropbox/tests</directory>
+      <exclude>public/repository/dropbox/tests/classes</exclude>
+      <exclude>public/repository/dropbox/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_equella_testsuite">
+      <directory suffix="_test.php">public/repository/equella/tests</directory>
+      <exclude>public/repository/equella/tests/classes</exclude>
+      <exclude>public/repository/equella/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_filesystem_testsuite">
+      <directory suffix="_test.php">public/repository/filesystem/tests</directory>
+      <exclude>public/repository/filesystem/tests/classes</exclude>
+      <exclude>public/repository/filesystem/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_flickr_testsuite">
+      <directory suffix="_test.php">public/repository/flickr/tests</directory>
+      <exclude>public/repository/flickr/tests/classes</exclude>
+      <exclude>public/repository/flickr/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_flickr_public_testsuite">
+      <directory suffix="_test.php">public/repository/flickr_public/tests</directory>
+      <exclude>public/repository/flickr_public/tests/classes</exclude>
+      <exclude>public/repository/flickr_public/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_googledocs_testsuite">
+      <directory suffix="_test.php">public/repository/googledocs/tests</directory>
+      <exclude>public/repository/googledocs/tests/classes</exclude>
+      <exclude>public/repository/googledocs/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_local_testsuite">
+      <directory suffix="_test.php">public/repository/local/tests</directory>
+      <exclude>public/repository/local/tests/classes</exclude>
+      <exclude>public/repository/local/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_merlot_testsuite">
+      <directory suffix="_test.php">public/repository/merlot/tests</directory>
+      <exclude>public/repository/merlot/tests/classes</exclude>
+      <exclude>public/repository/merlot/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_nextcloud_testsuite">
+      <directory suffix="_test.php">public/repository/nextcloud/tests</directory>
+      <exclude>public/repository/nextcloud/tests/classes</exclude>
+      <exclude>public/repository/nextcloud/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_onedrive_testsuite">
+      <directory suffix="_test.php">public/repository/onedrive/tests</directory>
+      <exclude>public/repository/onedrive/tests/classes</exclude>
+      <exclude>public/repository/onedrive/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_recent_testsuite">
+      <directory suffix="_test.php">public/repository/recent/tests</directory>
+      <exclude>public/repository/recent/tests/classes</exclude>
+      <exclude>public/repository/recent/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_s3_testsuite">
+      <directory suffix="_test.php">public/repository/s3/tests</directory>
+      <exclude>public/repository/s3/tests/classes</exclude>
+      <exclude>public/repository/s3/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_upload_testsuite">
+      <directory suffix="_test.php">public/repository/upload/tests</directory>
+      <exclude>public/repository/upload/tests/classes</exclude>
+      <exclude>public/repository/upload/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_url_testsuite">
+      <directory suffix="_test.php">public/repository/url/tests</directory>
+      <exclude>public/repository/url/tests/classes</exclude>
+      <exclude>public/repository/url/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_user_testsuite">
+      <directory suffix="_test.php">public/repository/user/tests</directory>
+      <exclude>public/repository/user/tests/classes</exclude>
+      <exclude>public/repository/user/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_webdav_testsuite">
+      <directory suffix="_test.php">public/repository/webdav/tests</directory>
+      <exclude>public/repository/webdav/tests/classes</exclude>
+      <exclude>public/repository/webdav/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_wikimedia_testsuite">
+      <directory suffix="_test.php">public/repository/wikimedia/tests</directory>
+      <exclude>public/repository/wikimedia/tests/classes</exclude>
+      <exclude>public/repository/wikimedia/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="repository_youtube_testsuite">
+      <directory suffix="_test.php">public/repository/youtube/tests</directory>
+      <exclude>public/repository/youtube/tests/classes</exclude>
+      <exclude>public/repository/youtube/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="scormreport_basic_testsuite">
+      <directory suffix="_test.php">public/mod/scorm/report/basic/tests</directory>
+      <exclude>public/mod/scorm/report/basic/tests/classes</exclude>
+      <exclude>public/mod/scorm/report/basic/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="scormreport_interactions_testsuite">
+      <directory suffix="_test.php">public/mod/scorm/report/interactions/tests</directory>
+      <exclude>public/mod/scorm/report/interactions/tests/classes</exclude>
+      <exclude>public/mod/scorm/report/interactions/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="scormreport_objectives_testsuite">
+      <directory suffix="_test.php">public/mod/scorm/report/objectives/tests</directory>
+      <exclude>public/mod/scorm/report/objectives/tests/classes</exclude>
+      <exclude>public/mod/scorm/report/objectives/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="search_simpledb_testsuite">
+      <directory suffix="_test.php">public/search/engine/simpledb/tests</directory>
+      <exclude>public/search/engine/simpledb/tests/classes</exclude>
+      <exclude>public/search/engine/simpledb/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="search_solr_testsuite">
+      <directory suffix="_test.php">public/search/engine/solr/tests</directory>
+      <exclude>public/search/engine/solr/tests/classes</exclude>
+      <exclude>public/search/engine/solr/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="smsgateway_aws_testsuite">
+      <directory suffix="_test.php">public/sms/gateway/aws/tests</directory>
+      <exclude>public/sms/gateway/aws/tests/classes</exclude>
+      <exclude>public/sms/gateway/aws/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="smsgateway_modica_testsuite">
+      <directory suffix="_test.php">public/sms/gateway/modica/tests</directory>
+      <exclude>public/sms/gateway/modica/tests/classes</exclude>
+      <exclude>public/sms/gateway/modica/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="theme_boost_testsuite">
+      <directory suffix="_test.php">public/theme/boost/tests</directory>
+      <exclude>public/theme/boost/tests/classes</exclude>
+      <exclude>public/theme/boost/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="theme_classic_testsuite">
+      <directory suffix="_test.php">public/theme/classic/tests</directory>
+      <exclude>public/theme/classic/tests/classes</exclude>
+      <exclude>public/theme/classic/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tiny_accessibilitychecker_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tiny/plugins/accessibilitychecker/tests</directory>
+      <exclude>public/lib/editor/tiny/plugins/accessibilitychecker/tests/classes</exclude>
+      <exclude>public/lib/editor/tiny/plugins/accessibilitychecker/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tiny_aiplacement_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tiny/plugins/aiplacement/tests</directory>
+      <exclude>public/lib/editor/tiny/plugins/aiplacement/tests/classes</exclude>
+      <exclude>public/lib/editor/tiny/plugins/aiplacement/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tiny_autosave_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tiny/plugins/autosave/tests</directory>
+      <exclude>public/lib/editor/tiny/plugins/autosave/tests/classes</exclude>
+      <exclude>public/lib/editor/tiny/plugins/autosave/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tiny_equation_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tiny/plugins/equation/tests</directory>
+      <exclude>public/lib/editor/tiny/plugins/equation/tests/classes</exclude>
+      <exclude>public/lib/editor/tiny/plugins/equation/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tiny_h5p_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tiny/plugins/h5p/tests</directory>
+      <exclude>public/lib/editor/tiny/plugins/h5p/tests/classes</exclude>
+      <exclude>public/lib/editor/tiny/plugins/h5p/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tiny_html_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tiny/plugins/html/tests</directory>
+      <exclude>public/lib/editor/tiny/plugins/html/tests/classes</exclude>
+      <exclude>public/lib/editor/tiny/plugins/html/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tiny_link_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tiny/plugins/link/tests</directory>
+      <exclude>public/lib/editor/tiny/plugins/link/tests/classes</exclude>
+      <exclude>public/lib/editor/tiny/plugins/link/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tiny_media_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tiny/plugins/media/tests</directory>
+      <exclude>public/lib/editor/tiny/plugins/media/tests/classes</exclude>
+      <exclude>public/lib/editor/tiny/plugins/media/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tiny_noautolink_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tiny/plugins/noautolink/tests</directory>
+      <exclude>public/lib/editor/tiny/plugins/noautolink/tests/classes</exclude>
+      <exclude>public/lib/editor/tiny/plugins/noautolink/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tiny_premium_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tiny/plugins/premium/tests</directory>
+      <exclude>public/lib/editor/tiny/plugins/premium/tests/classes</exclude>
+      <exclude>public/lib/editor/tiny/plugins/premium/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tiny_recordrtc_testsuite">
+      <directory suffix="_test.php">public/lib/editor/tiny/plugins/recordrtc/tests</directory>
+      <exclude>public/lib/editor/tiny/plugins/recordrtc/tests/classes</exclude>
+      <exclude>public/lib/editor/tiny/plugins/recordrtc/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_admin_presets_testsuite">
+      <directory suffix="_test.php">public/admin/tool/admin_presets/tests</directory>
+      <exclude>public/admin/tool/admin_presets/tests/classes</exclude>
+      <exclude>public/admin/tool/admin_presets/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_analytics_testsuite">
+      <directory suffix="_test.php">public/admin/tool/analytics/tests</directory>
+      <exclude>public/admin/tool/analytics/tests/classes</exclude>
+      <exclude>public/admin/tool/analytics/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_availabilityconditions_testsuite">
+      <directory suffix="_test.php">public/admin/tool/availabilityconditions/tests</directory>
+      <exclude>public/admin/tool/availabilityconditions/tests/classes</exclude>
+      <exclude>public/admin/tool/availabilityconditions/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_behat_testsuite">
+      <directory suffix="_test.php">public/admin/tool/behat/tests</directory>
+      <exclude>public/admin/tool/behat/tests/classes</exclude>
+      <exclude>public/admin/tool/behat/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_brickfield_testsuite">
+      <directory suffix="_test.php">public/admin/tool/brickfield/tests</directory>
+      <exclude>public/admin/tool/brickfield/tests/classes</exclude>
+      <exclude>public/admin/tool/brickfield/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_capability_testsuite">
+      <directory suffix="_test.php">public/admin/tool/capability/tests</directory>
+      <exclude>public/admin/tool/capability/tests/classes</exclude>
+      <exclude>public/admin/tool/capability/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_cohortroles_testsuite">
+      <directory suffix="_test.php">public/admin/tool/cohortroles/tests</directory>
+      <exclude>public/admin/tool/cohortroles/tests/classes</exclude>
+      <exclude>public/admin/tool/cohortroles/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_customlang_testsuite">
+      <directory suffix="_test.php">public/admin/tool/customlang/tests</directory>
+      <exclude>public/admin/tool/customlang/tests/classes</exclude>
+      <exclude>public/admin/tool/customlang/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_dataprivacy_testsuite">
+      <directory suffix="_test.php">public/admin/tool/dataprivacy/tests</directory>
+      <exclude>public/admin/tool/dataprivacy/tests/classes</exclude>
+      <exclude>public/admin/tool/dataprivacy/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_filetypes_testsuite">
+      <directory suffix="_test.php">public/admin/tool/filetypes/tests</directory>
+      <exclude>public/admin/tool/filetypes/tests/classes</exclude>
+      <exclude>public/admin/tool/filetypes/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_generator_testsuite">
+      <directory suffix="_test.php">public/admin/tool/generator/tests</directory>
+      <exclude>public/admin/tool/generator/tests/classes</exclude>
+      <exclude>public/admin/tool/generator/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_httpsreplace_testsuite">
+      <directory suffix="_test.php">public/admin/tool/httpsreplace/tests</directory>
+      <exclude>public/admin/tool/httpsreplace/tests/classes</exclude>
+      <exclude>public/admin/tool/httpsreplace/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_installaddon_testsuite">
+      <directory suffix="_test.php">public/admin/tool/installaddon/tests</directory>
+      <exclude>public/admin/tool/installaddon/tests/classes</exclude>
+      <exclude>public/admin/tool/installaddon/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_langimport_testsuite">
+      <directory suffix="_test.php">public/admin/tool/langimport/tests</directory>
+      <exclude>public/admin/tool/langimport/tests/classes</exclude>
+      <exclude>public/admin/tool/langimport/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_licensemanager_testsuite">
+      <directory suffix="_test.php">public/admin/tool/licensemanager/tests</directory>
+      <exclude>public/admin/tool/licensemanager/tests/classes</exclude>
+      <exclude>public/admin/tool/licensemanager/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_log_testsuite">
+      <directory suffix="_test.php">public/admin/tool/log/tests</directory>
+      <exclude>public/admin/tool/log/tests/classes</exclude>
+      <exclude>public/admin/tool/log/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_lp_testsuite">
+      <directory suffix="_test.php">public/admin/tool/lp/tests</directory>
+      <exclude>public/admin/tool/lp/tests/classes</exclude>
+      <exclude>public/admin/tool/lp/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_lpimportcsv_testsuite">
+      <directory suffix="_test.php">public/admin/tool/lpimportcsv/tests</directory>
+      <exclude>public/admin/tool/lpimportcsv/tests/classes</exclude>
+      <exclude>public/admin/tool/lpimportcsv/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_lpmigrate_testsuite">
+      <directory suffix="_test.php">public/admin/tool/lpmigrate/tests</directory>
+      <exclude>public/admin/tool/lpmigrate/tests/classes</exclude>
+      <exclude>public/admin/tool/lpmigrate/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_messageinbound_testsuite">
+      <directory suffix="_test.php">public/admin/tool/messageinbound/tests</directory>
+      <exclude>public/admin/tool/messageinbound/tests/classes</exclude>
+      <exclude>public/admin/tool/messageinbound/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_mfa_testsuite">
+      <directory suffix="_test.php">public/admin/tool/mfa/tests</directory>
+      <exclude>public/admin/tool/mfa/tests/classes</exclude>
+      <exclude>public/admin/tool/mfa/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_mobile_testsuite">
+      <directory suffix="_test.php">public/admin/tool/mobile/tests</directory>
+      <exclude>public/admin/tool/mobile/tests/classes</exclude>
+      <exclude>public/admin/tool/mobile/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_monitor_testsuite">
+      <directory suffix="_test.php">public/admin/tool/monitor/tests</directory>
+      <exclude>public/admin/tool/monitor/tests/classes</exclude>
+      <exclude>public/admin/tool/monitor/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_oauth2_testsuite">
+      <directory suffix="_test.php">public/admin/tool/oauth2/tests</directory>
+      <exclude>public/admin/tool/oauth2/tests/classes</exclude>
+      <exclude>public/admin/tool/oauth2/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_policy_testsuite">
+      <directory suffix="_test.php">public/admin/tool/policy/tests</directory>
+      <exclude>public/admin/tool/policy/tests/classes</exclude>
+      <exclude>public/admin/tool/policy/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_recyclebin_testsuite">
+      <directory suffix="_test.php">public/admin/tool/recyclebin/tests</directory>
+      <exclude>public/admin/tool/recyclebin/tests/classes</exclude>
+      <exclude>public/admin/tool/recyclebin/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_task_testsuite">
+      <directory suffix="_test.php">public/admin/tool/task/tests</directory>
+      <exclude>public/admin/tool/task/tests/classes</exclude>
+      <exclude>public/admin/tool/task/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_templatelibrary_testsuite">
+      <directory suffix="_test.php">public/admin/tool/templatelibrary/tests</directory>
+      <exclude>public/admin/tool/templatelibrary/tests/classes</exclude>
+      <exclude>public/admin/tool/templatelibrary/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_uploadcourse_testsuite">
+      <directory suffix="_test.php">public/admin/tool/uploadcourse/tests</directory>
+      <exclude>public/admin/tool/uploadcourse/tests/classes</exclude>
+      <exclude>public/admin/tool/uploadcourse/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_uploaduser_testsuite">
+      <directory suffix="_test.php">public/admin/tool/uploaduser/tests</directory>
+      <exclude>public/admin/tool/uploaduser/tests/classes</exclude>
+      <exclude>public/admin/tool/uploaduser/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_usertours_testsuite">
+      <directory suffix="_test.php">public/admin/tool/usertours/tests</directory>
+      <exclude>public/admin/tool/usertours/tests/classes</exclude>
+      <exclude>public/admin/tool/usertours/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="tool_xmldb_testsuite">
+      <directory suffix="_test.php">public/admin/tool/xmldb/tests</directory>
+      <exclude>public/admin/tool/xmldb/tests/classes</exclude>
+      <exclude>public/admin/tool/xmldb/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="webservice_rest_testsuite">
+      <directory suffix="_test.php">public/webservice/rest/tests</directory>
+      <exclude>public/webservice/rest/tests/classes</exclude>
+      <exclude>public/webservice/rest/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="webservice_soap_testsuite">
+      <directory suffix="_test.php">public/webservice/soap/tests</directory>
+      <exclude>public/webservice/soap/tests/classes</exclude>
+      <exclude>public/webservice/soap/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="workshopallocation_manual_testsuite">
+      <directory suffix="_test.php">public/mod/workshop/allocation/manual/tests</directory>
+      <exclude>public/mod/workshop/allocation/manual/tests/classes</exclude>
+      <exclude>public/mod/workshop/allocation/manual/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="workshopallocation_random_testsuite">
+      <directory suffix="_test.php">public/mod/workshop/allocation/random/tests</directory>
+      <exclude>public/mod/workshop/allocation/random/tests/classes</exclude>
+      <exclude>public/mod/workshop/allocation/random/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="workshopallocation_scheduled_testsuite">
+      <directory suffix="_test.php">public/mod/workshop/allocation/scheduled/tests</directory>
+      <exclude>public/mod/workshop/allocation/scheduled/tests/classes</exclude>
+      <exclude>public/mod/workshop/allocation/scheduled/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="workshopeval_best_testsuite">
+      <directory suffix="_test.php">public/mod/workshop/eval/best/tests</directory>
+      <exclude>public/mod/workshop/eval/best/tests/classes</exclude>
+      <exclude>public/mod/workshop/eval/best/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="workshopform_accumulative_testsuite">
+      <directory suffix="_test.php">public/mod/workshop/form/accumulative/tests</directory>
+      <exclude>public/mod/workshop/form/accumulative/tests/classes</exclude>
+      <exclude>public/mod/workshop/form/accumulative/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="workshopform_comments_testsuite">
+      <directory suffix="_test.php">public/mod/workshop/form/comments/tests</directory>
+      <exclude>public/mod/workshop/form/comments/tests/classes</exclude>
+      <exclude>public/mod/workshop/form/comments/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="workshopform_numerrors_testsuite">
+      <directory suffix="_test.php">public/mod/workshop/form/numerrors/tests</directory>
+      <exclude>public/mod/workshop/form/numerrors/tests/classes</exclude>
+      <exclude>public/mod/workshop/form/numerrors/tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="workshopform_rubric_testsuite">
+      <directory suffix="_test.php">public/mod/workshop/form/rubric/tests</directory>
+      <exclude>public/mod/workshop/form/rubric/tests/classes</exclude>
+      <exclude>public/mod/workshop/form/rubric/tests/fixtures</exclude>
+    </testsuite>
+  </testsuites>
+
+  <source>
+    <include>
+      <directory suffix=".php">public/local/assistente/classes</directory>
+      <directory suffix=".php">public/local/assistente/db</directory>
+      <file>public/local/assistente/configure.php</file>
+      <file>public/local/assistente/index.php</file>
+      <file>public/local/assistente/settings.php</file>
+      <file>public/local/assistente/version.php</file>
+    </include>
+  </source>
+
+</phpunit>

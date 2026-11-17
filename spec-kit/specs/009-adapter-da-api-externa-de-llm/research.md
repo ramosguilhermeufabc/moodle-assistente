@@ -1,0 +1,41 @@
+# Research — spec-009 (Fase 0)
+
+> Sem pesquisa externa (PROMPT-3). Nenhum fornecedor foi avaliado. *(31/10/2026: o responsável escolheu o OpenRouter (DEC-60) e a documentação dele foi consultada só para conferir a compatibilidade dos campos; ver abaixo. A frase acima descreve o estado original.)*
+
+## Decididos pela spec
+- **Decision**: porta `evaluate(context, instruction) → structured_result`; o adapter cobre autenticação, request, response, timeout/erro e validação. **Rationale**: [REQ §Contratos]. **Alternatives considered**: n/a.
+- **Decision**: lista fechada de usos permitidos e proibidos. **Rationale**: [REQ §Regras]. **Alternatives considered**: n/a.
+- **Decision**: credenciais fora do banco funcional e do Git. **Rationale**: [REQ §Regras]. **Alternatives considered**: n/a. *(03/11/2026, DEC-69: a chave da API é configurada somente pela administração do Moodle (configuração de site `local_assistente`, `admin_setting_encryptedpassword`) e gravada criptografada; a variável de ambiente `ASSISTENTE_LLM_API_KEY` deixa de existir.)*
+
+## Decididos pelo responsável *(incluído em 25/10/2026)*
+- **Decision**: estrutura substituível (porta, adapter simulado, ponto de integração do adapter real); fornecedor e modelo não escolhidos, gate das tasks do adapter real. **Rationale**: DEC-34 D1; DEC-33 D1. **Alternatives considered**: escolher o fornecedor agora; usar o subsistema de IA do Moodle (`core_ai`), não verificado no 5.2 e com chaves possivelmente no banco.
+- **Decision**: fora de dev, credencial só por variável de ambiente do processo PHP; em dev, secret do ambiente. **Rationale**: DEC-34 D2; atende às duas leituras de "banco funcional". **Alternatives considered**: configuração do plugin do tipo senha em `config_plugins`. *(03/11/2026, DEC-69: a chave da API é configurada somente pela administração do Moodle (configuração de site `local_assistente`, `admin_setting_encryptedpassword`) e gravada criptografada; a variável de ambiente `ASSISTENTE_LLM_API_KEY` deixa de existir.)*
+- **Decision**: nenhum identificador de estudante enviado; Privacy API. **Rationale**: DEC-34 D3. **Alternatives considered**: sem regra de minimização; pseudonimização do texto das mensagens.
+
+## Decididos pelo responsável *(31/10/2026, DEC-60)*
+- **Decision**: fornecedor inicial OpenRouter, por HTTP, sem SDK, com o cliente HTTP do Moodle. **Rationale**: DEC-60 D1. **Alternatives considered**: não avaliadas (escolha do responsável).
+- **Decision**: URL do endpoint (completo) e identificador do modelo são configurações administrativas independentes, sem valor padrão e sem modelo fixo; `openai/o4-mini` é só exemplo. **Rationale**: DEC-60 D2; trocar fornecedor, endpoint ou modelo sem alterar código. **Alternatives considered**: URL-base com caminho acrescentado pelo código (rejeitada: exigiria regra de caminho); modelo fixo no código.
+- **Decision**: ZDR em toda requisição (`provider.zdr = true`, `provider.data_collection = "deny"`), sem fallback fora da política. **Rationale**: DEC-60 D4. **Alternatives considered**: só configuração de conta ou guardrail (mantida como reforço, não substitui o parâmetro por requisição). *(04/11/2026, revisão dos planos: DEC-71: a exigência de ZDR é a configuração `llmzdr`, ligada por padrão.)*
+- **Decision**: formato externo Responses API, convertido para o `structured_result` existente dentro do adaptador. **Rationale**: DEC-60 D5. **Alternatives considered**: segundo envelope externo (rejeitada). *(04/11/2026, revisão dos planos: DEC-70: o formato externo é o da Chat Completions API.)*
+
+## Verificação da documentação do fornecedor *(31/10/2026; não é validação de execução)*
+As três URLs indicadas na solicitação (`/docs/guides/features/provider-routing`, `/docs/guides/features/data-collection`, `/docs/api-reference/responses`) responderam HTTP 404 na consulta. Foram usadas as páginas atuais equivalentes: `docs/api/api-reference/responses/create-a-response`, `docs/guides/routing/provider-selection`, `docs/guides/features/zdr` e `docs/guides/privacy/data-collection`.
+
+Conferido na documentação:
+- O endpoint Responses é `POST /responses`; aceita `model`, `input` (texto ou lista de itens), `instructions`, `max_output_tokens`, `stream`, `text` e `provider`. `previous_response_id` com valor é rejeitado (HTTP 400); `store` é sempre falso. *(04/11/2026, revisão dos planos: DEC-70: a API adotada é a Chat Completions API; este bloco de pesquisa (linhas 22 a 31) registra a Responses API consultada em 31/10/2026 e é histórico.)*
+- O objeto `provider` vale para a Responses API e traz `zdr`, `data_collection` (`allow` por padrão, `deny`), `allow_fallbacks` (padrão verdadeiro), `require_parameters`, `only`, `ignore`. Com `zdr = true` só são usados endpoints que não retêm prompts; com `data_collection = "deny"` só provedores que não coletam dados, e, sem provedor que atenda, a requisição retorna erro. `zdr` soma-se (OU) à imposição de ZDR da conta e de guardrails.
+- ZDR vale para o roteamento de inferência. Ferramentas e plugins têm política própria; cache em memória não é tratado como retenção; registro e persistência do próprio cliente não são cobertos.
+- Sem registro de entrada e saída nem uso de entradas e saídas ativados na conta, o OpenRouter não guarda prompts e respostas; **metadados** (tokens, latência etc.) são sempre guardados e não contêm conteúdo. Retenção e treinamento são exigências distintas.
+- A resposta traz `status`, `output` (itens `message` com conteúdo `output_text`, e itens de raciocínio), `usage` (`input_tokens`, `output_tokens`, `total_tokens`), `error`, e um campo de conveniência `output_text` que o exemplo da solicitação não mostra. Erros HTTP: 400, 401, 402, 403 (inclui bloqueio por guardrail), 404, 408, 413, 422, 429, 500, 502, 503, 524, 529.
+
+**Não** conferido (a confirmar em T134 e CL-32): lista completa de valores de `status` e o formato de `incomplete_details`; o código HTTP e a mensagem quando não há endpoint compatível com `zdr`; se o modelo configurado aceita saída estruturada (`text.format`); se o modelo lê PDF; qualquer suporte a YouTube; limites de contexto por modelo; comportamento de campos extras com modelos específicos. Nada disso foi decidido por inferência. *(04/11/2026, revisão dos planos: CL-32 Fechado em 03/11/2026 (T134 [x], T138 [x]); a API adotada é a da DEC-70.)*
+
+## Abertos
+| Item | Decision | Rationale | Alternatives considered |
+|---|---|---|---|
+| Q-009-01 Fornecedor/modelo | PARCIAL — fornecedor OpenRouter e modelo administrativo (DEC-60, 31/10/2026); aguarda revisão do responsável (CL-19) *(25/10/2026: "ABERTO — decisão humana, gate do adapter real (CL-19; DEC-34 D1)"; original: "ABERTO — decisão humana (C-009-01)")* *(08/11/2026: CL-19 foi fechado em 03/11/2026, por decisão do responsável; a pendência afirmada nesta célula não está mais aberta. Texto anterior preservado, conforme a constituição §11.)* | Nenhuma spec cita fornecedor | não avaliadas (exigiria fonte externa) |
+| Q-009-02 Credenciais fora de dev | RESOLVIDO — DEC-34 D2 *(original: "ABERTO")* *(04/11/2026, revisão dos planos: DEC-69 altera a DEC-34 D2: a chave fica na configuração de site criptografada e a variável de ambiente deixa de existir.)* | Decisão do responsável | ver acima |
+| Q-009-03 Timeout/erros | PARCIAL *(03/11/2026: RESOLVIDO — timeout de 120 s, decisão do responsável; ver o plano 009)* — toda falha é tentativa da spec-007, com classe registrada; valor do timeout nas tasks; mapeamento HTTP → classe no contrato (DEC-60) *(original: "ABERTO")* | DEC-32 D3–D5, sem reabrir | classificar falhas como não re-tentáveis (exigiria alterar DEC-32) |
+| Q-009-04 `structured_result` | PARCIAL — envelope e payload mínimo por uso (contrato); conversão da resposta externa no contrato (DEC-60) *(original: "ABERTO")* | Saídas das specs 002, 010, 013, 016 | — |
+| Q-009-05 Instructions | ABERTO — nas tasks consumidoras | Não definido | — |
+| Q-009-06 Privacidade | PARCIAL — DEC-34 D3; ZDR exigido (DEC-60 D4), sem validação (CL-32); termos do fornecedor ainda não revistos (CL-19) *(original: "ABERTO")* *(04/11/2026, revisão dos planos: CL-32 Fechado em 03/11/2026; o ZDR passou a ser a configuração `llmzdr` pela DEC-71.)* | Decisão do responsável | ver acima |

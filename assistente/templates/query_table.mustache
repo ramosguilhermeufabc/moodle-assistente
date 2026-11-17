@@ -1,0 +1,42 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_assistente/query_table
+
+    A query page: title, the message when the assistant is not available, or the table of the rows.
+
+    Example context (json):
+    {
+        "title": "Grades",
+        "available": true,
+        "message": null,
+        "norows": false,
+        "noresults": false,
+        "hasrows": true,
+        "columns": [{"label": "Name"}],
+        "rows": [{"cells": [{"rowheader": true, "lines": [{"text": "Ana"}]}]}]
+    }
+}}
+<div class="local-assistente-query">
+    <h3>{{title}}</h3>
+    {{^available}}<div class="alert alert-info" role="status">{{message}}</div>{{/available}}
+    {{#available}}
+        {{#hasrows}}{{> local_assistente/table}}{{/hasrows}}
+        {{#norows}}<p>{{#str}} query:no_data, local_assistente {{/str}}</p>{{/norows}}
+        {{#noresults}}<p>{{#str}} filter:no_results, local_assistente {{/str}}</p>{{/noresults}}
+    {{/available}}
+</div>

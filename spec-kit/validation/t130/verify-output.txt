@@ -1,0 +1,48 @@
+== Capabilities e abas ==
+t130_prof_edicao   view=1 manage=1
+   abas(A)=grades,frequency,below_criteria,quiz_metrics,forums,materials,synthesis,report,history,config
+   abas(B)=grades,frequency,below_criteria,quiz_metrics,forums,materials,synthesis,report,history,config
+t130_prof_leitura  view=1 manage=0
+   abas(A)=grades,frequency,below_criteria,quiz_metrics,forums,materials,synthesis,report,history
+   abas(B)=(sem view: negado)
+t130_aluno_ana     view=0 manage=0
+   abas(A)=(sem view: negado)
+   abas(B)=(sem view: negado)
+groupmode=1 forçado=1 lang=pt_br
+config A enabled=1; config B: inexistente
+== Notas (professor com edição) ==
+  Ana Teste      total=0,00% atividades=[["Atividade 1","0,00%",null]]
+  Bia Teste      total=0,00% atividades=[["Atividade 1","0,00%",null]]
+  Carlos Teste   total=75,00% atividades=[["Atividade 1","80,00%",null],["Atividade 2","70,00%",null],[null,"75,00%","source removed"]]
+  Davi Teste     total=no data atividades=[]
+  Eva Teste      total=no data atividades=[]
+== Frequência ==
+  Ana Teste      status=ok seções=["0,00%"]
+  Bia Teste      status=ok seções=["0,00%"]
+  Carlos Teste   status=ok seções=["50,00%"]
+  Davi Teste     status=no data seções=[]
+  Eva Teste      status=ok seções=["no data"]
+== Questionários ==
+  {"quiz":"Questionário sem materiais","coverage":"no materials"}
+  {"quiz":"Questionário com materiais","coverage":"0,5"}
+  {"quiz":"Questionário sem análise","coverage":"no data"}
+== Sínteses ==
+  {"section_id":157,"section":"","status":{"state":"no_data","text":"no data"},"version":null,"content":null}
+  {"section_id":158,"section":"","status":{"state":"valid","text":null},"version":1,"content":"<script>alert(1)<\/script> e <b>negrito<\/b>"}
+  {"section_id":159,"section":"","status":{"state":"valid","text":null},"version":1,"content":"Síntese gerada em português do Brasil."}
+== Grupos separados: professor sem edição (Grupo A) ==
+  filtro courseid: 49
+  filtro tab: "grades"
+  filtro individual: true
+  filtro groups: {"10":"Grupo A"}
+  filtro sections: []
+  filtro versions: []
+  filtro dates: false
+== Notas (professor sem edição) ==
+  Ana Teste
+  Carlos Teste
+== Relatório (versões e blocos) ==
+  versão 1: grades=no_data, quiz_metrics=no_data, frequency=no_data, forums=no_data, below_criteria=no_data, material_summaries=no_data, section_synthesis=no_data
+  versão 2 (atual): grades=valid, quiz_metrics=error, frequency=valid, forums=no_data, below_criteria=no_data, material_summaries=no_data, section_synthesis=no_data
+== Curso B (professor com edição) ==
+  grades: available=false mensagem=assistant not enabled

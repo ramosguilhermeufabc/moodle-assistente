@@ -1,0 +1,367 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<XMLDB xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" PATH="local/assistente/db" VERSION="2026100100" COMMENT="XMLDB file for local_assistente" xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+    <TABLES>
+        <TABLE NAME="local_assistente_config" COMMENT="Configuracao do assistente por curso">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="enabled" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="created_at" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="course_id" TYPE="foreign-unique" FIELDS="course_id" REFTABLE="course" REFFIELDS="id"/>
+            </KEYS>
+            </TABLE>
+        <TABLE NAME="local_assistente_criteria" COMMENT="Criterios de desempenho por curso">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="config_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="activity_criterion" TYPE="number" LENGTH="10" NOTNULL="true" SEQUENCE="false" DECIMALS="3"/>
+                <FIELD NAME="forum_criterion" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="frequency_criterion" TYPE="number" LENGTH="10" NOTNULL="true" SEQUENCE="false" DECIMALS="3"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="config_id" TYPE="foreign-unique" FIELDS="config_id" REFTABLE="local_assistente_config" REFFIELDS="id"/>
+            </KEYS>
+            </TABLE>
+        <TABLE NAME="local_assistente_event" COMMENT="Eventos do assistente">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="event_type" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="payload" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="created_at" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="processed_at" TYPE="int" LENGTH="10" SEQUENCE="false" NOTNULL="false"/>
+                <FIELD NAME="response" TYPE="text" SEQUENCE="false" NOTNULL="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="course_id" TYPE="foreign" FIELDS="course_id" REFTABLE="course" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="status" UNIQUE="false" FIELDS="status"/>
+                <INDEX NAME="course_id-status" UNIQUE="false" FIELDS="course_id,status"/>
+                <INDEX NAME="created_at" UNIQUE="false" FIELDS="created_at"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_processing" COMMENT="Processamento logico de evento">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="event_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="created_at" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="finished_at" TYPE="int" LENGTH="10" SEQUENCE="false" NOTNULL="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="event_id" TYPE="foreign-unique" FIELDS="event_id" REFTABLE="local_assistente_event" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="status" UNIQUE="false" FIELDS="status"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_processing_attempt" COMMENT="Tentativas de processamento">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="processing_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="attempt_number" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="started_at" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="finished_at" TYPE="int" LENGTH="10" SEQUENCE="false" NOTNULL="false"/>
+                <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="response" TYPE="text" SEQUENCE="false" NOTNULL="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="processing_id" TYPE="foreign" FIELDS="processing_id" REFTABLE="local_assistente_processing" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="processing_id-attempt_number" UNIQUE="true" FIELDS="processing_id,attempt_number"/>
+                <INDEX NAME="status" UNIQUE="false" FIELDS="status"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_processing_context" COMMENT="Snapshot do contexto utilizado no processamento">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="processing_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="context_json" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="created_at" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="processing_id" TYPE="foreign-unique" FIELDS="processing_id" REFTABLE="local_assistente_processing" REFFIELDS="id"/>
+            </KEYS>
+            </TABLE>
+        <TABLE NAME="local_assistente_material" COMMENT="Materiais do Moodle utilizados como contexto">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="section_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="cmid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="material_type" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="availability" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="current_version" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="created_at" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="course_id" TYPE="foreign" FIELDS="course_id" REFTABLE="course" REFFIELDS="id"/>
+                <KEY NAME="section_id" TYPE="foreign" FIELDS="section_id" REFTABLE="course_sections" REFFIELDS="id"/>
+                <KEY NAME="cmid" TYPE="foreign" FIELDS="cmid" REFTABLE="course_modules" REFFIELDS="id"/>
+                <KEY NAME="current_version" TYPE="foreign" FIELDS="current_version" REFTABLE="local_assistente_material_version" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="course_id-cmid" UNIQUE="true" FIELDS="course_id,cmid"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_material_version" COMMENT="Versoes dos materiais e respectivos resumos">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="material_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="version" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="content_hash" TYPE="char" LENGTH="64" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="summary" TYPE="text" SEQUENCE="false" NOTNULL="false"/>
+                <FIELD NAME="summary_status" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="availability" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="created_at" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="material_id" TYPE="foreign" FIELDS="material_id" REFTABLE="local_assistente_material" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="material_id-version" UNIQUE="true" FIELDS="material_id,version"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_analysis" COMMENT="Analises produzidas pelo assistente">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="processing_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="analysis_type" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="cmid" TYPE="int" LENGTH="10" SEQUENCE="false" NOTNULL="false"/>
+                <FIELD NAME="summary" TYPE="text" SEQUENCE="false" NOTNULL="false"/>
+                <FIELD NAME="created_at" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="course_id" TYPE="foreign" FIELDS="course_id" REFTABLE="course" REFFIELDS="id"/>
+                <KEY NAME="processing_id" TYPE="foreign" FIELDS="processing_id" REFTABLE="local_assistente_processing" REFFIELDS="id"/>
+                <KEY NAME="cmid" TYPE="foreign" FIELDS="cmid" REFTABLE="course_modules" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="analysis_type" UNIQUE="false" FIELDS="analysis_type"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_questionnaire_analysis" COMMENT="Analise inicial de questionario">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="analysis_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="coverage" TYPE="number" LENGTH="2" NOTNULL="true" SEQUENCE="false" DECIMALS="1"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="analysis_id" TYPE="foreign-unique" FIELDS="analysis_id" REFTABLE="local_assistente_analysis" REFFIELDS="id"/>
+            </KEYS>
+            </TABLE>
+        <TABLE NAME="local_assistente_questionnaire_question" COMMENT="Questoes consideradas na analise inicial do questionario">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="questionnaire_analysis_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="question_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="question_version" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="complexity" TYPE="number" LENGTH="2" NOTNULL="true" SEQUENCE="false" DECIMALS="1"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="questionnaire_analysis_id" TYPE="foreign" FIELDS="questionnaire_analysis_id" REFTABLE="local_assistente_questionnaire_analysis" REFFIELDS="id"/>
+                <KEY NAME="question_id" TYPE="foreign" FIELDS="question_id" REFTABLE="question" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="questionnaire_analysis_id-question_id-question_version" UNIQUE="true" FIELDS="questionnaire_analysis_id,question_id,question_version"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_question_result" COMMENT="Resultados das respostas por questao">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="analysis_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="questionnaire_question_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="question_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="question_version" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="average_correctness" TYPE="number" LENGTH="10" NOTNULL="true" SEQUENCE="false" DECIMALS="3"/>
+                <FIELD NAME="correct_count" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="incorrect_count" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="partial_result" TYPE="number" LENGTH="10" SEQUENCE="false" DECIMALS="3" NOTNULL="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="analysis_id" TYPE="foreign" FIELDS="analysis_id" REFTABLE="local_assistente_analysis" REFFIELDS="id"/>
+                <KEY NAME="questionnaire_question_id" TYPE="foreign" FIELDS="questionnaire_question_id" REFTABLE="local_assistente_questionnaire_question" REFFIELDS="id"/>
+                <KEY NAME="question_id" TYPE="foreign" FIELDS="question_id" REFTABLE="question" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="analysis_id-question_id-question_version" UNIQUE="true" FIELDS="analysis_id,question_id,question_version"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_questionnaire_metric" COMMENT="Metricas agregadas de questionario">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="analysis_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="mean" TYPE="number" LENGTH="10" NOTNULL="true" SEQUENCE="false" DECIMALS="3"/>
+                <FIELD NAME="population_standard_deviation" TYPE="number" LENGTH="10" NOTNULL="true" SEQUENCE="false" DECIMALS="3"/>
+                <FIELD NAME="minimum" TYPE="number" LENGTH="10" NOTNULL="true" SEQUENCE="false" DECIMALS="3"/>
+                <FIELD NAME="maximum" TYPE="number" LENGTH="10" NOTNULL="true" SEQUENCE="false" DECIMALS="3"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="analysis_id" TYPE="foreign-unique" FIELDS="analysis_id" REFTABLE="local_assistente_analysis" REFFIELDS="id"/>
+            </KEYS>
+            </TABLE>
+        <TABLE NAME="local_assistente_forum_difficulty" COMMENT="Dificuldades identificadas em discussoes de forum">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="analysis_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="discussion_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="description" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="analysis_id" TYPE="foreign" FIELDS="analysis_id" REFTABLE="local_assistente_analysis" REFFIELDS="id"/>
+                <KEY NAME="discussion_id" TYPE="foreign" FIELDS="discussion_id" REFTABLE="forum_discussions" REFFIELDS="id"/>
+            </KEYS>
+        </TABLE>
+        <TABLE NAME="local_assistente_performance" COMMENT="Desempenho por estudante e atividade">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="analysis_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="student_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="activity_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="grade" TYPE="number" LENGTH="10" NOTNULL="true" SEQUENCE="false" DECIMALS="3"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="analysis_id" TYPE="foreign" FIELDS="analysis_id" REFTABLE="local_assistente_analysis" REFFIELDS="id"/>
+                <KEY NAME="student_id" TYPE="foreign" FIELDS="student_id" REFTABLE="user" REFFIELDS="id"/>
+                <KEY NAME="activity_id" TYPE="foreign" FIELDS="activity_id" REFTABLE="course_modules" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="analysis_id-student_id-activity_id" UNIQUE="true" FIELDS="analysis_id,student_id,activity_id"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_frequency" COMMENT="Frequencia consolidada por estudante e secao">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="analysis_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="student_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="section_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="total_activities" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="participating_activities" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="percentage" TYPE="number" LENGTH="10" NOTNULL="true" SEQUENCE="false" DECIMALS="3"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="analysis_id" TYPE="foreign" FIELDS="analysis_id" REFTABLE="local_assistente_analysis" REFFIELDS="id"/>
+                <KEY NAME="student_id" TYPE="foreign" FIELDS="student_id" REFTABLE="user" REFFIELDS="id"/>
+                <KEY NAME="section_id" TYPE="foreign" FIELDS="section_id" REFTABLE="course_sections" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="analysis_id-student_id-section_id" UNIQUE="true" FIELDS="analysis_id,student_id,section_id"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_frequency_activity" COMMENT="Participacao por atividade no calculo da frequencia">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="frequency_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="activity_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="participated" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="reference_date" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="frequency_id" TYPE="foreign" FIELDS="frequency_id" REFTABLE="local_assistente_frequency" REFFIELDS="id"/>
+                <KEY NAME="activity_id" TYPE="foreign" FIELDS="activity_id" REFTABLE="course_modules" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="frequency_id-activity_id" UNIQUE="true" FIELDS="frequency_id,activity_id"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_criteria_result" COMMENT="Resultado dos criterios por estudante">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="analysis_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="student_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="activity_status" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="forum_status" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="frequency_status" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="analysis_id" TYPE="foreign" FIELDS="analysis_id" REFTABLE="local_assistente_analysis" REFFIELDS="id"/>
+                <KEY NAME="student_id" TYPE="foreign" FIELDS="student_id" REFTABLE="user" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="analysis_id-student_id" UNIQUE="true" FIELDS="analysis_id,student_id"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_pedagogical_synthesis" COMMENT="Sintese pedagogica">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="analysis_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="section_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="version" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="content" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="input_fingerprint" TYPE="char" LENGTH="64" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="created_at" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="analysis_id" TYPE="foreign" FIELDS="analysis_id" REFTABLE="local_assistente_analysis" REFFIELDS="id"/>
+                <KEY NAME="course_id" TYPE="foreign" FIELDS="course_id" REFTABLE="course" REFFIELDS="id"/>
+                <KEY NAME="section_id" TYPE="foreign" FIELDS="section_id" REFTABLE="course_sections" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="course_id-section_id-version" UNIQUE="true" FIELDS="course_id,section_id,version"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_report" COMMENT="Relatorio por curso e seu ciclo de atualizacao">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="created_at" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="next_update_at" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="final_activity_date" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="final_update_at" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="final_completed_at" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="current_version" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="course_id" TYPE="foreign-unique" FIELDS="course_id" REFTABLE="course" REFFIELDS="id"/>
+                <KEY NAME="current_version" TYPE="foreign" FIELDS="current_version" REFTABLE="local_assistente_report_version" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="next_update_at" UNIQUE="false" FIELDS="next_update_at"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="local_assistente_report_version" COMMENT="Versoes historicas dos relatorios">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="report_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="version" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="snapshot_json" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="created_at" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="report_id" TYPE="foreign" FIELDS="report_id" REFTABLE="local_assistente_report" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="report_id-version" UNIQUE="true" FIELDS="report_id,version"/>
+            </INDEXES>
+        </TABLE>
+    </TABLES>
+</XMLDB>

@@ -1,0 +1,100 @@
+version: '3'
+
+services:
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    ports:
+      - "8025:8025"
+
+  db:
+    image: mariadb:11.4.13
+    ports:
+      - "3308:3306"
+    command: >
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --innodb_file_per_table=ON
+      --wait-timeout=28800
+      --skip-log-bin
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+      MARIADB_DATABASE: moodle
+      MARIADB_USER: moodle
+      MARIADB_PASSWORD: password
+    volumes:
+      - persistent:/var/lib/mysql
+
+  moodle:
+    build:
+      context: ./moodle
+      args:
+        MOODLE_COMMIT: 28fdef85e7043c8dd758af8c1a146da1419db0d0
+
+    environment:
+      MOODLE_DBTYPE: mariadb
+      MOODLE_DBHOST: db
+      MOODLE_DBNAME: moodle
+      MOODLE_PREFIX: mdl_
+      MOODLE_DBPORT: 3306
+      MOODLE_DBUSER: moodle
+      MOODLE_DBPASSWORD: password
+      MOODLE_WWWROOT_URL: http://localhost
+      MOODLE_SMTPHOSTS: mailhog:1025
+      # wwwroot no Codespaces (DEC-49); vazias fora dele.
+      CODESPACE_NAME: ${CODESPACE_NAME:-}
+      GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN: ${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN:-}
+      # Secrets do Codespaces, sem valor no Git (DEC-34 D2, DEC-49 D2).
+      MOODLE_ADMIN_PASSWORD: ${MOODLE_ADMIN_PASSWORD:-}
+
+    ports:
+      - "8080:80"
+
+    volumes:
+      - ./moodle/php.ini:/usr/local/etc/php/php.ini
+      - ./moodle/config.php:/var/www/html/config.php
+      - ./container-volumes/moodledata_data:/var/www/moodledata
+      - ./container-volumes/phpunitdata_data:/var/www/phpunitdata
+      - ./container-volumes/behatdata_data:/var/www/behatdata
+      - ./container-volumes/behatfaildumps_data:/var/www/behatfaildumps
+      #- ../questiongenerator:/var/www/html/question/bank/questiongenerator
+      - ../assistente:/var/www/html/public/local/assistente
+
+    depends_on:
+      - db
+
+  # Execução periódica do cron do Moodle a cada minuto (DEC-49 D3).
+  cron:
+    build:
+      context: ./moodle
+      args:
+        MOODLE_COMMIT: 28fdef85e7043c8dd758af8c1a146da1419db0d0
+    command: ["sh", "/opt/assistente-scripts/cron-loop.sh"]
+    environment:
+      MOODLE_DBTYPE: mariadb
+      MOODLE_DBHOST: db
+      MOODLE_DBNAME: moodle
+      MOODLE_PREFIX: mdl_
+      MOODLE_DBPORT: 3306
+      MOODLE_DBUSER: moodle
+      MOODLE_DBPASSWORD: password
+      MOODLE_SMTPHOSTS: mailhog:1025
+      CODESPACE_NAME: ${CODESPACE_NAME:-}
+      GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN: ${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN:-}
+    volumes:
+      - ./moodle/php.ini:/usr/local/etc/php/php.ini
+      - ./moodle/config.php:/var/www/html/config.php
+      - ./container-volumes/moodledata_data:/var/www/moodledata
+      - ../assistente:/var/www/html/public/local/assistente
+      - ./scripts:/opt/assistente-scripts:ro
+    depends_on:
+      - db
+      - moodle
+
+  # Navegador para o Behat (DEC-49 D1). Versões fixas (T008); mudam só por decisão, num commit.
+  selenium:
+    image: selenium/standalone-chrome:4.51.0
+    shm_size: 2gb
+
+volumes:
+  persistent:

@@ -1,0 +1,361 @@
+Cobertura de linhas (pcov 1.0.12), PHPUnit 11.5.55. Sem limiar. Sem relatório HTML.
+
+Filtro de cobertura: arquivo de configuração derivado do phpunit.xml gerado pelo Moodle, com o bloco <source> substituído por:
+  <directory suffix=".php">public/local/assistente/classes</directory>
+  <directory suffix=".php">public/local/assistente/db</directory>
+  <file>public/local/assistente/{configure,index,settings,version}.php</file>
+Fora do filtro: tests/ (inclusive tests/generator), lang/, templates/ e lib/pdfparser (biblioteca de terceiros, thirdpartylibs.xml).
+pcov: -d pcov.enabled=1 -d pcov.directory=/var/www/html/public/local/assistente; XDEBUG_MODE=off.
+Obs.: o relatório do PHPUnit lista só as classes com métodos executáveis; o total "Classes" (107/179) conta as classes do filtro, e a linha por classe só aparece para as listadas.
+
+== TOTAL ==
+Code Coverage Report:
+  2026-11-04 13:34:32
+
+ Summary:
+  Classes: 59.78% (107/179)
+  Methods: 84.99% (719/846)
+  Lines:   91.91% (6114/6652)
+
+== POR DIRETÓRIO DE CLASSES (linhas cobertas/total; classes listadas) ==
+local_assistente\application                                  94.27% (2601/2759)  [66 classes]
+local_assistente\domain                                       99.27% (676/681)  [37 classes]
+local_assistente\event                                        80.00% (12/15)  [1 classes]
+local_assistente\form                                         98.94% (93/94)  [2 classes]
+local_assistente\hook_callbacks                               86.67% (13/15)  [1 classes]
+local_assistente\infrastructure                               94.53% (2072/2192)  [36 classes]
+local_assistente\observer                                     94.85% (129/136)  [6 classes]
+local_assistente\output                                       92.99% (146/157)  [7 classes]
+local_assistente\privacy                                      98.85% (86/87)  [1 classes]
+local_assistente\task                                         97.80% (178/182)  [7 classes]
+Soma das classes listadas: 6006/6318 linhas; o total do relatório inclui linhas que ele não atribui a nenhuma classe listada (não detalhadas pelo PHPUnit).
+
+== POR CLASSE (saída do PHPUnit) ==
+local_assistente\application\access_service
+  Methods: 100.00% ( 7/ 7)   Lines: 100.00% ( 16/ 16)
+local_assistente\application\capability_correction_policy
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  2/  2)
+local_assistente\application\context\context_snapshot_builder
+  Methods:  80.00% ( 4/ 5)   Lines:  98.41% ( 62/ 63)
+local_assistente\application\course_config_service
+  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 50/ 50)
+local_assistente\application\criteria\criteria_handler
+  Methods: 100.00% ( 7/ 7)   Lines: 100.00% (153/153)
+local_assistente\application\criteria\criteria_request_service
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  7/  7)
+local_assistente\application\delivery\event_redelivery_scheduler
+  Methods: 100.00% (12/12)   Lines: 100.00% ( 33/ 33)
+local_assistente\application\delivery\lock_failure_budget
+  Methods:  80.00% ( 4/ 5)   Lines:  91.67% ( 11/ 12)
+local_assistente\application\delivery\observer_event_service
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  3/  3)
+local_assistente\application\enqueue_result
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+local_assistente\application\event_service
+  Methods:  50.00% ( 2/ 4)   Lines:  97.92% ( 94/ 96)
+local_assistente\application\forum\forum_analysis_handler
+  Methods:  50.00% ( 3/ 6)   Lines:  91.34% (116/127)
+local_assistente\application\forum\forum_event_service
+  Methods:  75.00% ( 6/ 8)   Lines:  89.29% ( 25/ 28)
+local_assistente\application\frequency\frequency_handler
+  Methods:  60.00% ( 3/ 5)   Lines:  92.98% (106/114)
+local_assistente\application\frequency\participation_event_service
+  Methods:  50.00% ( 2/ 4)   Lines:  55.56% ( 15/ 27)
+local_assistente\application\frequency\reference_date_detector
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 22/ 22)
+local_assistente\application\grade\grade_event_service
+  Methods:  66.67% ( 2/ 3)   Lines:  43.75% (  7/ 16)
+local_assistente\application\grade\performance_handler
+  Methods:  50.00% ( 1/ 2)   Lines:  96.49% ( 55/ 57)
+local_assistente\application\history\lineage
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\application\history\lineage_reader
+  Methods:  60.00% ( 6/10)   Lines:  96.77% (120/124)
+local_assistente\application\history\source_status_resolver
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 11/ 11)
+local_assistente\application\llm\context_guard
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 21/ 21)
+local_assistente\application\llm\guarded_llm_port
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  4/  4)
+local_assistente\application\llm\instruction_builder
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  6/  6)
+local_assistente\application\llm\llm_result_adapter
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  6/  6)
+local_assistente\application\material\extracted_content
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 10/ 10)
+local_assistente\application\material\material_event_handler
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  7/  7)
+local_assistente\application\material\material_event_service
+  Methods:  66.67% ( 2/ 3)   Lines:  88.89% (  8/  9)
+local_assistente\application\material\material_service
+  Methods:  63.64% ( 7/11)   Lines:  93.94% (124/132)
+local_assistente\application\material\page_extractor
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 11/ 11)
+local_assistente\application\material\pdf_extractor
+  Methods:  33.33% ( 1/ 3)   Lines:  80.00% (  8/ 10)
+local_assistente\application\material\youtube_extractor
+  Methods:  80.00% ( 4/ 5)   Lines:  96.55% ( 28/ 29)
+local_assistente\application\privacy\course_data_eraser
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+local_assistente\application\privacy\erasure_audit
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 12/ 12)
+local_assistente\application\privacy\erasure_retry_scheduler
+  Methods:  71.43% ( 5/ 7)   Lines:  95.35% ( 41/ 43)
+local_assistente\application\privacy\erasure_state_resolver
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 23/ 23)
+local_assistente\application\privacy\student_data_eraser
+  Methods:  66.67% ( 2/ 3)   Lines:  97.56% ( 40/ 41)
+local_assistente\application\privacy\student_event_eraser
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 39/ 39)
+local_assistente\application\query\aggregate_query
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  8/  8)
+local_assistente\application\query\below_criteria_query
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 25/ 25)
+local_assistente\application\query\forums_query
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 27/ 27)
+local_assistente\application\query\frequency_query
+  Methods:  80.00% ( 4/ 5)   Lines:  98.04% ( 50/ 51)
+local_assistente\application\query\grades_query
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 35/ 35)
+local_assistente\application\query\history_query
+  Methods:  88.89% ( 8/ 9)   Lines:  98.55% ( 68/ 69)
+local_assistente\application\query\material_summaries_query
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 15/ 15)
+local_assistente\application\query\presentation
+  Methods:  94.44% (17/18)   Lines:  98.59% ( 70/ 71)
+local_assistente\application\query\quiz_metrics_query
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 51/ 51)
+local_assistente\application\query\student_scope
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 19/ 19)
+local_assistente\application\query\synthesis_query
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 12/ 12)
+local_assistente\application\queue\attempt_failure
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  4/  4)
+local_assistente\application\queue\cycle_report
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 13/ 13)
+local_assistente\application\queue\handler_registry
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  9/  9)
+local_assistente\application\queue\handler_result
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  4/  4)
+local_assistente\application\queue\queue_processor
+  Methods:  75.00% ( 3/ 4)   Lines:  98.00% ( 49/ 50)
+local_assistente\application\quiz\initial_analysis_handler
+  Methods:  85.71% ( 6/ 7)   Lines:  90.99% (101/111)
+local_assistente\application\quiz\quiz_attempt_event_service
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 16/ 16)
+local_assistente\application\quiz\quiz_close_detector
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 12/ 12)
+local_assistente\application\quiz\quiz_publication_service
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 10/ 10)
+local_assistente\application\quiz\results_handler
+  Methods:  55.56% ( 5/ 9)   Lines:  94.07% (127/135)
+local_assistente\application\report\report_builder
+  Methods:  80.00% ( 4/ 5)   Lines:  98.72% ( 77/ 78)
+local_assistente\application\report\report_collector
+  Methods:  60.00% ( 3/ 5)   Lines:  71.43% ( 45/ 63)
+local_assistente\application\report\report_generator
+  Methods:  75.00% ( 3/ 4)   Lines:  91.84% ( 45/ 49)
+local_assistente\application\report\report_view_model
+  Methods:  63.16% (12/19)   Lines:  88.79% (198/223)
+local_assistente\application\sync\initial_sync_service
+  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 61/ 61)
+local_assistente\application\synthesis\synthesis_handler
+  Methods:  50.00% ( 3/ 6)   Lines:  86.75% (131/151)
+local_assistente\application\synthesis\synthesis_trigger
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 18/ 18)
+local_assistente\domain\analysis_type
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\attempt_status
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\criteria\assistant_state
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\criteria\criteria_evaluation
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\criteria\criteria_evaluator
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 67/ 67)
+local_assistente\domain\criteria\criterion_percentage
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% ( 11/ 11)
+local_assistente\domain\event\event_transitions
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  6/  6)
+local_assistente\domain\event\event_type
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 73/ 73)
+local_assistente\domain\event\occurrence_identity
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  7/  7)
+local_assistente\domain\event_status
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\frequency\frequency_calculator
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 54/ 54)
+local_assistente\domain\frequency\frequency_result
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\grade\grade_normalizer
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% ( 12/ 12)
+local_assistente\domain\llm\llm_context
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  3/  3)
+local_assistente\domain\material\change_detector
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  8/  8)
+local_assistente\domain\material\material_availability
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\material\material_change
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  4/  4)
+local_assistente\domain\material\material_classifier
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 12/ 12)
+local_assistente\domain\material\material_state
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  4/  4)
+local_assistente\domain\material\summary_status
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  6/  6)
+local_assistente\domain\material\youtube_url
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  6/  6)
+local_assistente\domain\material_type
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\privacy\erasure_key
+  Methods: 100.00% ( 7/ 7)   Lines: 100.00% ( 17/ 17)
+local_assistente\domain\privacy\erasure_result
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\privacy\erasure_state_calculator
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 61/ 61)
+local_assistente\domain\privacy\name_redactor
+  Methods:  71.43% ( 5/ 7)   Lines:  97.10% ( 67/ 69)
+local_assistente\domain\quiz\aggregate_metrics
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\quiz\metrics_calculator
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 49/ 49)
+local_assistente\domain\quiz\multiple_choice_selection
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  5/  5)
+local_assistente\domain\quiz\question_metrics
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\report\report_schedule
+  Methods:  87.50% ( 7/ 8)   Lines:  97.37% ( 37/ 38)
+local_assistente\domain\report\version_filter
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 18/ 18)
+local_assistente\domain\result_state
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\domain\section\section_resolution
+  Methods:  50.00% ( 2/ 4)   Lines:  66.67% (  4/  6)
+local_assistente\domain\synthesis\comparable_set
+  Methods: 100.00% (14/14)   Lines: 100.00% (122/122)
+local_assistente\domain\synthesis\fingerprint
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 10/ 10)
+local_assistente\domain\truncated_percentage
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+local_assistente\event\student_erasure_event
+  Methods:  50.00% ( 2/ 4)   Lines:  80.00% ( 12/ 15)
+local_assistente\form\course_config_form
+  Methods:  83.33% ( 5/ 6)   Lines:  98.11% ( 52/ 53)
+local_assistente\form\query_filter_form
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 41/ 41)
+local_assistente\hook_callbacks
+  Methods:   0.00% ( 0/ 1)   Lines:  86.67% ( 13/ 15)
+local_assistente\infrastructure\llm\adapter_factory
+  Methods:  66.67% ( 2/ 3)   Lines:  66.67% (  4/  6)
+local_assistente\infrastructure\llm\fake_adapter
+  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 31/ 31)
+local_assistente\infrastructure\llm\http_adapter
+  Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 90/ 90)
+local_assistente\infrastructure\llm\result_validator
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 55/ 55)
+local_assistente\infrastructure\llm\structured_result
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  6/  6)
+local_assistente\infrastructure\moodle\course_module_reader
+  Methods:  87.50% ( 7/ 8)   Lines:  98.44% ( 63/ 64)
+local_assistente\infrastructure\moodle\course_section_reader
+  Methods:  88.89% ( 8/ 9)   Lines:  97.50% ( 39/ 40)
+local_assistente\infrastructure\moodle\erasure_audit_reader
+  Methods:  75.00% ( 3/ 4)   Lines:  96.88% ( 31/ 32)
+local_assistente\infrastructure\moodle\forum_reader
+  Methods:  71.43% ( 5/ 7)   Lines:  97.40% ( 75/ 77)
+local_assistente\infrastructure\moodle\gradebook_reader
+  Methods:  62.50% ( 5/ 8)   Lines:  95.18% ( 79/ 83)
+local_assistente\infrastructure\moodle\material_reader
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 55/ 55)
+local_assistente\infrastructure\moodle\participation_reader
+  Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 63/ 63)
+local_assistente\infrastructure\moodle\questionnaire_reader
+  Methods:  54.55% ( 6/11)   Lines:  75.00% (159/212)
+local_assistente\infrastructure\moodle\source_record_reader
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% ( 48/ 48)
+local_assistente\infrastructure\moodle\student_reader
+  Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 48/ 48)
+local_assistente\infrastructure\moodle\ytdlp_client
+  Methods:  57.14% ( 4/ 7)   Lines:  59.62% ( 31/ 52)
+local_assistente\infrastructure\persistence\config_repository
+  Methods:  88.89% ( 8/ 9)   Lines:  87.50% ( 28/ 32)
+local_assistente\infrastructure\persistence\course_erasure_repository
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 48/ 48)
+local_assistente\infrastructure\persistence\criteria_repository
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  9/  9)
+local_assistente\infrastructure\persistence\criteria_result_repository
+  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 63/ 63)
+local_assistente\infrastructure\persistence\event_repository
+  Methods: 100.00% (17/17)   Lines: 100.00% (155/155)
+local_assistente\infrastructure\persistence\forum_analysis_repository
+  Methods: 100.00% ( 7/ 7)   Lines: 100.00% ( 54/ 54)
+local_assistente\infrastructure\persistence\frequency_repository
+  Methods: 100.00% ( 9/ 9)   Lines: 100.00% ( 85/ 85)
+local_assistente\infrastructure\persistence\history_redaction_writer
+  Methods:  20.00% ( 1/ 5)   Lines:  84.62% ( 66/ 78)
+local_assistente\infrastructure\persistence\material_repository
+  Methods: 100.00% (22/22)   Lines: 100.00% (126/126)
+local_assistente\infrastructure\persistence\performance_repository
+  Methods: 100.00% ( 7/ 7)   Lines: 100.00% ( 56/ 56)
+local_assistente\infrastructure\persistence\quiz_initial_repository
+  Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 54/ 54)
+local_assistente\infrastructure\persistence\quiz_results_repository
+  Methods:  90.00% ( 9/10)   Lines:  98.81% ( 83/ 84)
+local_assistente\infrastructure\persistence\redelivery_task_repository
+  Methods:  90.00% ( 9/10)   Lines:  97.62% ( 41/ 42)
+local_assistente\infrastructure\persistence\report_repository
+  Methods:  91.67% (11/12)   Lines:  97.62% ( 41/ 42)
+local_assistente\infrastructure\persistence\repository
+  Methods:  87.50% ( 7/ 8)   Lines:  93.94% ( 31/ 33)
+local_assistente\infrastructure\persistence\schema_domains
+  Methods:   0.00% ( 0/ 1)   Lines:  80.00% ( 20/ 25)
+local_assistente\infrastructure\persistence\student_data_repository
+  Methods:  46.15% ( 6/13)   Lines:  94.19% (146/155)
+local_assistente\infrastructure\persistence\synthesis_repository
+  Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 43/ 43)
+local_assistente\infrastructure\persistence\table_repository
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+local_assistente\infrastructure\persistence\unit_of_work
+  Methods: 100.00% (12/12)   Lines: 100.00% ( 44/ 44)
+local_assistente\observer\course_module_observer
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 22/ 22)
+local_assistente\observer\course_observer
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  6/  6)
+local_assistente\observer\forum_observer
+  Methods:  77.78% ( 7/ 9)   Lines:  88.46% ( 46/ 52)
+local_assistente\observer\grade_observer
+  Methods:  80.00% ( 4/ 5)   Lines:  93.33% ( 14/ 15)
+local_assistente\observer\participation_observer
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 15/ 15)
+local_assistente\observer\quiz_observer
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 26/ 26)
+local_assistente\output\configure_page
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 15/ 15)
+local_assistente\output\history_page
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+local_assistente\output\page_controller
+  Methods:  88.89% ( 8/ 9)   Lines:  98.46% ( 64/ 65)
+local_assistente\output\query_page
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 10/ 10)
+local_assistente\output\renderer
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  3/  3)
+local_assistente\output\report_page
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 24/ 24)
+local_assistente\output\table_data
+  Methods:  66.67% ( 2/ 3)   Lines:  73.68% ( 28/ 38)
+local_assistente\privacy\provider
+  Methods:  91.67% (11/12)   Lines:  98.85% ( 86/ 87)
+local_assistente\task\detect_quiz_close
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  4/  4)
+local_assistente\task\detect_reference_dates
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  4/  4)
+local_assistente\task\process_queue
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  4/  4)
+local_assistente\task\reconcile_material_versions
+  Methods:  87.50% ( 7/ 8)   Lines:  98.10% (103/105)
+local_assistente\task\redeliver_event
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 34/ 34)
+local_assistente\task\report_dispatcher
+  Methods:  50.00% ( 1/ 2)   Lines:  90.00% (  9/ 10)
+local_assistente\task\retry_student_erasure
+  Methods:  50.00% ( 1/ 2)   Lines:  95.24% ( 20/ 21)

@@ -1,0 +1,475 @@
+@local @local_assistente
+Feature: Access to the assistant
+  In order to protect the data of the students
+  As a teacher
+  I need the assistant to be available only to who has the capability
+
+  Background:                                    # /var/www/html/public/local/assistente/tests/behat/access.feature:7
+    Given the following "users" exist:           # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email                | lang |
+      | teacher1 | Teacher   | One      | teacher1@example.com | en   |
+      | student1 | Student   | One      | student1@example.com | en   |
+    And the following "courses" exist:           # behat_data_generators::the_following_entities_exist()
+      | fullname | shortname |
+      | Course 1 | C1        |
+    And the following "course enrolments" exist: # behat_data_generators::the_following_entities_exist()
+      | user     | course | role           |
+      | teacher1 | C1     | editingteacher |
+      | student1 | C1     | student        |
+
+  Scenario: A teacher opens the assistant from the navigation of the course         # /var/www/html/public/local/assistente/tests/behat/access.feature:20
+    Given I am on the "C1" course page logged in as "teacher1"                      # behat_theme_boost_behat_navigation::i_am_on_page_instance_logged_in_as()
+    Then I should see "Assistant" in the ".secondary-navigation" "css_element"      # behat_general::assert_element_contains_text()
+    When I click on "Assistant" "link" in the ".secondary-navigation" "css_element" # behat_general::i_click_on_in_the()
+    Then I should see "Grades"                                                      # behat_general::assert_page_contains_text()
+    And I should see "Report"                                                       # behat_general::assert_page_contains_text()
+
+  Scenario: A student does not see the entry and is denied by the URL              # /var/www/html/public/local/assistente/tests/behat/access.feature:27
+    Given I am on the "C1" course page logged in as "student1"                     # behat_theme_boost_behat_navigation::i_am_on_page_instance_logged_in_as()
+    Then I should not see "Assistant" in the ".secondary-navigation" "css_element" # behat_general::assert_element_not_contains_text()
+    Then the "grades" tab of the assistant in course "C1" is denied                # behat_local_assistente::the_tab_of_the_assistant_is_denied()
+
+  Scenario: Who can only view does not see the configuration tab                 # /var/www/html/public/local/assistente/tests/behat/access.feature:32
+    Given the following "users" exist:                                           # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email                | lang |
+      | teacher2 | Teacher   | Two      | teacher2@example.com | en   |
+    And the following "course enrolments" exist:                                 # behat_data_generators::the_following_entities_exist()
+      | user     | course | role    |
+      | teacher2 | C1     | teacher |
+    And the following "permission overrides" exist:                              # behat_data_generators::the_following_entities_exist()
+      | capability            | permission | role    | contextlevel | reference |
+      | local/assistente:view | Allow      | teacher | Course       | C1        |
+    When I log in as "teacher2"                                                  # behat_auth::i_log_in_as()
+    And I open the "grades" tab of the assistant in course "C1"                  # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "Grades"                                                   # behat_general::assert_page_contains_text()
+    And I should not see "Configuration" in the "ul.nav-tabs.mb-3" "css_element" # behat_general::assert_element_not_contains_text()
+    Then the configuration of the assistant in course "C1" is denied             # behat_local_assistente::the_configuration_of_the_assistant_is_denied()
+
+  Scenario: The editing teacher sees the configuration tab                    # /var/www/html/public/local/assistente/tests/behat/access.feature:48
+    Given I log in as "teacher1"                                              # behat_auth::i_log_in_as()
+    When I open the "grades" tab of the assistant in course "C1"              # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "Configuration" in the "ul.nav-tabs.mb-3" "css_element" # behat_general::assert_element_contains_text()
+
+@local @local_assistente
+Feature: Criteria are read only after they are saved
+  In order to keep the criteria of a course stable
+  As a teacher
+  I need the saved criteria to be read only
+
+  Background:                                    # /var/www/html/public/local/assistente/tests/behat/criteria_readonly.feature:7
+    Given the following "users" exist:           # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email                | lang |
+      | teacher1 | Teacher   | One      | teacher1@example.com | en   |
+      | student1 | Student   | One      | student1@example.com | en   |
+    And the following "courses" exist:           # behat_data_generators::the_following_entities_exist()
+      | fullname | shortname |
+      | Course 1 | C1        |
+    And the following "course enrolments" exist: # behat_data_generators::the_following_entities_exist()
+      | user     | course | role           |
+      | teacher1 | C1     | editingteacher |
+      | student1 | C1     | student        |
+
+  Scenario: The first save sets the criteria and the next time they are read only      # /var/www/html/public/local/assistente/tests/behat/criteria_readonly.feature:20
+    Given I log in as "teacher1"                                                       # behat_auth::i_log_in_as()
+    When I open the configuration of the assistant in course "C1"                      # behat_local_assistente::i_open_the_configuration_of_the_assistant_in_course()
+    And I set the following fields to these values:                                    # behat_forms::i_set_the_following_fields_to_these_values()
+      | Enable the assistant in this course | 1  |
+      | Activity criterion (%)              | 60 |
+      | Attendance criterion (%)            | 70 |
+    And I press "Save changes"                                                         # behat_forms::press_button()
+    Then I should see "Changes saved"                                                  # behat_general::assert_page_contains_text()
+    When I open the configuration of the assistant in course "C1"                      # behat_local_assistente::i_open_the_configuration_of_the_assistant_in_course()
+    Then I should see "The criteria are saved. Only an administrator can correct them" # behat_general::assert_page_contains_text()
+    And the "Activity criterion (%)" "field" should be disabled                        # behat_general::the_element_should_be_disabled()
+    And the field "Activity criterion (%)" matches value "60"                          # behat_forms::the_field_matches_value()
+
+  Scenario: A manager corrects criteria already saved by the teacher # /var/www/html/public/local/assistente/tests/behat/criteria_readonly.feature:34
+    Given the following "users" exist:                               # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email                | lang |
+      | manager1 | Manager   | One      | manager1@example.com | en   |
+    And the following "system role assigns" exist:                   # behat_data_generators::the_following_entities_exist()
+      | user     | role    |
+      | manager1 | manager |
+    And I log in as "teacher1"                                       # behat_auth::i_log_in_as()
+    And I open the configuration of the assistant in course "C1"     # behat_local_assistente::i_open_the_configuration_of_the_assistant_in_course()
+    And I set the following fields to these values:                  # behat_forms::i_set_the_following_fields_to_these_values()
+      | Enable the assistant in this course | 1  |
+      | Activity criterion (%)              | 60 |
+      | Attendance criterion (%)            | 70 |
+    And I press "Save changes"                                       # behat_forms::press_button()
+    And I log out                                                    # behat_auth::i_log_out()
+    When I log in as "manager1"                                      # behat_auth::i_log_in_as()
+    And I open the configuration of the assistant in course "C1"     # behat_local_assistente::i_open_the_configuration_of_the_assistant_in_course()
+    And I set the following fields to these values:                  # behat_forms::i_set_the_following_fields_to_these_values()
+      | Activity criterion (%) | 50 |
+    And I press "Save changes"                                       # behat_forms::press_button()
+    Then I should see "Changes saved"                                # behat_general::assert_page_contains_text()
+    When I open the configuration of the assistant in course "C1"    # behat_local_assistente::i_open_the_configuration_of_the_assistant_in_course()
+    Then the field "Activity criterion (%)" matches value "50"       # behat_forms::the_field_matches_value()
+
+  Scenario: An invalid percentage is refused                                      # /var/www/html/public/local/assistente/tests/behat/criteria_readonly.feature:58
+    Given I log in as "teacher1"                                                  # behat_auth::i_log_in_as()
+    When I open the configuration of the assistant in course "C1"                 # behat_local_assistente::i_open_the_configuration_of_the_assistant_in_course()
+    And I set the following fields to these values:                               # behat_forms::i_set_the_following_fields_to_these_values()
+      | Activity criterion (%)   | 100.5 |
+      | Attendance criterion (%) | 70    |
+    And I press "Save changes"                                                    # behat_forms::press_button()
+    Then I should see "Enter a number from 0 to 100 with at most three decimals." # behat_general::assert_page_contains_text()
+
+@local @local_assistente
+Feature: A course where the assistant is not enabled
+  In order not to process a course that did not ask for it
+  As a teacher
+  I need every tab to say that the assistant is not enabled
+
+  Background:                                    # /var/www/html/public/local/assistente/tests/behat/disabled_course.feature:7
+    Given the following "users" exist:           # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email                | lang |
+      | teacher1 | Teacher   | One      | teacher1@example.com | en   |
+      | student1 | Student   | One      | student1@example.com | en   |
+    And the following "courses" exist:           # behat_data_generators::the_following_entities_exist()
+      | fullname | shortname |
+      | Course 1 | C1        |
+    And the following "course enrolments" exist: # behat_data_generators::the_following_entities_exist()
+      | user     | course | role           |
+      | teacher1 | C1     | editingteacher |
+      | student1 | C1     | student        |
+
+  Scenario: A new course has the assistant disabled in every tab                              # /var/www/html/public/local/assistente/tests/behat/disabled_course.feature:20
+    Given I log in as "teacher1"                                                              # behat_auth::i_log_in_as()
+    When I open the "grades" tab of the assistant in course "C1"                              # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "assistant not enabled"                                                 # behat_general::assert_page_contains_text()
+    And "table" "css_element" should not exist in the ".local-assistente-query" "css_element" # behat_general::should_not_exist_in_the()
+    When I open the "frequency" tab of the assistant in course "C1"                           # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "assistant not enabled"                                                 # behat_general::assert_page_contains_text()
+    When I open the "forums" tab of the assistant in course "C1"                              # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "assistant not enabled"                                                 # behat_general::assert_page_contains_text()
+    When I open the "synthesis" tab of the assistant in course "C1"                           # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "assistant not enabled"                                                 # behat_general::assert_page_contains_text()
+    When I open the "report" tab of the assistant in course "C1"                              # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "assistant not enabled"                                                 # behat_general::assert_page_contains_text()
+
+  Scenario: A configured but disabled course also says so           # /var/www/html/public/local/assistente/tests/behat/disabled_course.feature:34
+    Given the following "local_assistente > configs" exist:         # behat_data_generators::the_following_entities_exist()
+      | course | enabled |
+      | C1     | 0       |
+    And I log in as "teacher1"                                      # behat_auth::i_log_in_as()
+    When I open the "materials" tab of the assistant in course "C1" # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "assistant not enabled"                       # behat_general::assert_page_contains_text()
+
+@local @local_assistente
+Feature: Texts generated by the model are shown as text
+  In order not to run markup that comes from a generated text
+  As a teacher
+  I need the synthesis to be escaped
+
+  Background:                                    # /var/www/html/public/local/assistente/tests/behat/escape.feature:7
+    Given the following "users" exist:           # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email                | lang |
+      | teacher1 | Teacher   | One      | teacher1@example.com | en   |
+      | student1 | Student   | One      | student1@example.com | en   |
+    And the following "courses" exist:           # behat_data_generators::the_following_entities_exist()
+      | fullname | shortname |
+      | Course 1 | C1        |
+    And the following "course enrolments" exist: # behat_data_generators::the_following_entities_exist()
+      | user     | course | role           |
+      | teacher1 | C1     | editingteacher |
+      | student1 | C1     | student        |
+
+  Scenario: A synthesis with script and bold tags is shown literally                      # /var/www/html/public/local/assistente/tests/behat/escape.feature:20
+    Given the following "local_assistente > configs" exist:                               # behat_data_generators::the_following_entities_exist()
+      | course | enabled |
+      | C1     | 1       |
+    And the following "local_assistente > syntheses" exist:                               # behat_data_generators::the_following_entities_exist()
+      | course | section | content                                   |
+      | C1     | 1       | <script>alert(1)</script> and <b>bold</b> |
+    And I log in as "teacher1"                                                            # behat_auth::i_log_in_as()
+    When I open the "synthesis" tab of the assistant in course "C1"                       # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "<script>alert(1)</script> and <b>bold</b>"                         # behat_general::assert_page_contains_text()
+    And "b" "css_element" should not exist in the ".local-assistente-query" "css_element" # behat_general::should_not_exist_in_the()
+
+@local @local_assistente
+Feature: Group filter in the individual queries
+  In order to see only the students of my groups
+  As a teacher in separate groups
+  I need the filter to offer only my groups
+
+  Background:                                             # /var/www/html/public/local/assistente/tests/behat/group_filters.feature:7
+    Given the following "users" exist:                    # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email                | lang |
+      | teacher1 | Teacher   | One      | teacher1@example.com | en   |
+      | teacher2 | Teacher   | Two      | teacher2@example.com | en   |
+    And the following "courses" exist:                    # behat_data_generators::the_following_entities_exist()
+      | fullname | shortname | groupmode | groupmodeforce |
+      | Course 1 | C1        | 1         | 1              |
+    And the following "course enrolments" exist:          # behat_data_generators::the_following_entities_exist()
+      | user     | course | role           |
+      | teacher1 | C1     | editingteacher |
+      | teacher2 | C1     | teacher        |
+    And the following "groups" exist:                     # behat_data_generators::the_following_entities_exist()
+      | name    | course | idnumber |
+      | Group A | C1     | GA       |
+      | Group B | C1     | GB       |
+    And the following "group members" exist:              # behat_data_generators::the_following_entities_exist()
+      | user     | group |
+      | teacher2 | GA    |
+    And the following "permission overrides" exist:       # behat_data_generators::the_following_entities_exist()
+      | capability            | permission | role    | contextlevel | reference |
+      | local/assistente:view | Allow      | teacher | Course       | C1        |
+    And the following "local_assistente > configs" exist: # behat_data_generators::the_following_entities_exist()
+      | course | enabled |
+      | C1     | 1       |
+
+  Scenario: A teacher in separate groups is offered only the own group # /var/www/html/public/local/assistente/tests/behat/group_filters.feature:33
+    Given I log in as "teacher2"                                       # behat_auth::i_log_in_as()
+    When I open the "grades" tab of the assistant in course "C1"       # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then the "Group" select box should contain "Group A"               # behat_forms::the_select_box_should_contain()
+    And the "Group" select box should not contain "Group B"            # behat_forms::the_select_box_should_not_contain()
+
+  Scenario: The editing teacher is offered every group, and the aggregate tabs have no group filter # /var/www/html/public/local/assistente/tests/behat/group_filters.feature:39
+    Given I log in as "teacher1"                                                                    # behat_auth::i_log_in_as()
+    When I open the "grades" tab of the assistant in course "C1"                                    # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then the "Group" select box should contain "Group A"                                            # behat_forms::the_select_box_should_contain()
+    And the "Group" select box should contain "Group B"                                             # behat_forms::the_select_box_should_contain()
+    When I open the "forums" tab of the assistant in course "C1"                                    # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then "Group" "select" should not exist                                                          # behat_general::should_not_exist()
+
+  Scenario: The report offers the group for its individual blocks and the history does not # /var/www/html/public/local/assistente/tests/behat/group_filters.feature:47
+    Given I log in as "teacher2"                                                           # behat_auth::i_log_in_as()
+    When I open the "report" tab of the assistant in course "C1"                           # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then the "Group" select box should contain "Group A"                                   # behat_forms::the_select_box_should_contain()
+    And the "Group" select box should not contain "Group B"                                # behat_forms::the_select_box_should_not_contain()
+    When I open the "history" tab of the assistant in course "C1"                          # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then "Group" "select" should not exist                                                 # behat_general::should_not_exist()
+
+@local @local_assistente
+Feature: Language of the interface and of the generated content
+  In order to read the interface in my language and the content in the language it was generated
+  As a teacher
+  I need the labels to follow my language and the stored content to stay as it was
+
+  Scenario: Interface in English and a synthesis stored in Portuguese # /var/www/html/public/local/assistente/tests/behat/language.feature:7
+    Given the following "users" exist:                                # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email                | lang |
+      | teacher1 | Teacher   | One      | teacher1@example.com | en   |
+    And the following "courses" exist:                                # behat_data_generators::the_following_entities_exist()
+      | fullname | shortname | lang  |
+      | Course 1 | C1        | pt_br |
+    And the following "course enrolments" exist:                      # behat_data_generators::the_following_entities_exist()
+      | user     | course | role           |
+      | teacher1 | C1     | editingteacher |
+    And the following "local_assistente > configs" exist:             # behat_data_generators::the_following_entities_exist()
+      | course | enabled |
+      | C1     | 1       |
+    And the following "local_assistente > syntheses" exist:           # behat_data_generators::the_following_entities_exist()
+      | course | section | content                                |
+      | C1     | 1       | Síntese gerada em português do Brasil. |
+    And I log in as "teacher1"                                        # behat_auth::i_log_in_as()
+    When I open the "synthesis" tab of the assistant in course "C1"   # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "Síntese gerada em português do Brasil."        # behat_general::assert_page_contains_text()
+    And I should see "Content"                                        # behat_general::assert_page_contains_text()
+    And I should see "Section"                                        # behat_general::assert_page_contains_text()
+
+@local @local_assistente
+Feature: The assistant has no chat
+  In order to keep the assistant to the fixed queries
+  As a teacher
+  I need no free text field in any tab
+
+  Background:                                    # /var/www/html/public/local/assistente/tests/behat/no_chat.feature:7
+    Given the following "users" exist:           # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email                | lang |
+      | teacher1 | Teacher   | One      | teacher1@example.com | en   |
+      | student1 | Student   | One      | student1@example.com | en   |
+    And the following "courses" exist:           # behat_data_generators::the_following_entities_exist()
+      | fullname | shortname |
+      | Course 1 | C1        |
+    And the following "course enrolments" exist: # behat_data_generators::the_following_entities_exist()
+      | user     | course | role           |
+      | teacher1 | C1     | editingteacher |
+      | student1 | C1     | student        |
+
+  Scenario: No tab has a field to type a question                                       # /var/www/html/public/local/assistente/tests/behat/no_chat.feature:20
+    Given the following "local_assistente > configs" exist:                             # behat_data_generators::the_following_entities_exist()
+      | course | enabled |
+      | C1     | 1       |
+    And I log in as "teacher1"                                                          # behat_auth::i_log_in_as()
+    When I open the "grades" tab of the assistant in course "C1"                        # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then "textarea" "css_element" should not exist in the "region-main" "region"        # behat_general::should_not_exist_in_the()
+    And "input[type=text]" "css_element" should not exist in the "region-main" "region" # behat_general::should_not_exist_in_the()
+    When I open the "synthesis" tab of the assistant in course "C1"                     # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then "textarea" "css_element" should not exist in the "region-main" "region"        # behat_general::should_not_exist_in_the()
+    And "input[type=text]" "css_element" should not exist in the "region-main" "region" # behat_general::should_not_exist_in_the()
+    When I open the "report" tab of the assistant in course "C1"                        # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then "textarea" "css_element" should not exist in the "region-main" "region"        # behat_general::should_not_exist_in_the()
+
+@local @local_assistente
+Feature: Order of the lists
+  In order to find a student quickly
+  As a teacher
+  I need the students with the same value to be listed by name
+
+  Background:                                    # /var/www/html/public/local/assistente/tests/behat/ordering.feature:7
+    Given the following "users" exist:           # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email                | lang |
+      | teacher1 | Teacher   | One      | teacher1@example.com | en   |
+      | student1 | Student   | One      | student1@example.com | en   |
+    And the following "courses" exist:           # behat_data_generators::the_following_entities_exist()
+      | fullname | shortname |
+      | Course 1 | C1        |
+    And the following "course enrolments" exist: # behat_data_generators::the_following_entities_exist()
+      | user     | course | role           |
+      | teacher1 | C1     | editingteacher |
+      | student1 | C1     | student        |
+
+  Scenario: Students without data tie and are listed from A to Z        # /var/www/html/public/local/assistente/tests/behat/ordering.feature:20
+    Given the following "users" exist:                                  # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email              | lang |
+      | carlos   | Carlos    | Silva    | carlos@example.com | en   |
+      | ana      | Ana       | Silva    | ana@example.com    | en   |
+      | bia      | Bia       | Silva    | bia@example.com    | en   |
+    And the following "course enrolments" exist:                        # behat_data_generators::the_following_entities_exist()
+      | user   | course | role    |
+      | carlos | C1     | student |
+      | ana    | C1     | student |
+      | bia    | C1     | student |
+    And the following "local_assistente > configs" exist:               # behat_data_generators::the_following_entities_exist()
+      | course | enabled |
+      | C1     | 1       |
+    And I log in as "teacher1"                                          # behat_auth::i_log_in_as()
+    When I open the "grades" tab of the assistant in course "C1"        # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then "Ana Silva" "text" should appear before "Bia Silva" "text"     # behat_general::should_appear_before()
+    And "Bia Silva" "text" should appear before "Carlos Silva" "text"   # behat_general::should_appear_before()
+    And "Carlos Silva" "text" should appear before "Student One" "text" # behat_general::should_appear_before()
+
+@local @local_assistente
+Feature: The Assistente plugin is installed
+  In order to know that the Behat runner works with the plugin
+  As an administrator
+  I need to see the plugin in the list of installed plugins
+
+  Scenario: The plugin is listed among the local plugins                   # /var/www/html/public/local/assistente/tests/behat/plugin_installed.feature:7
+    Given I log in as "admin"                                              # behat_auth::i_log_in_as()
+    When I navigate to "Plugins > Plugins overview" in site administration # behat_theme_boost_behat_navigation::i_navigate_to_in_site_administration()
+    Then I should see "local_assistente"                                   # behat_general::assert_page_contains_text()
+
+@local @local_assistente
+Feature: Filters of the report and of its history
+  In order to find a version of the report
+  As a teacher
+  I need to filter the versions by number and by the day they were executed
+
+  Background:                                                     # /var/www/html/public/local/assistente/tests/behat/report_filters.feature:7
+    Given the following "users" exist:                            # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email                | lang |
+      | teacher1 | Teacher   | One      | teacher1@example.com | en   |
+    And the following "courses" exist:                            # behat_data_generators::the_following_entities_exist()
+      | fullname | shortname |
+      | Course 1 | C1        |
+    And the following "course enrolments" exist:                  # behat_data_generators::the_following_entities_exist()
+      | user     | course | role           |
+      | teacher1 | C1     | editingteacher |
+    And the following "local_assistente > configs" exist:         # behat_data_generators::the_following_entities_exist()
+      | course | enabled |
+      | C1     | 1       |
+    And the following "local_assistente > report_versions" exist: # behat_data_generators::the_following_entities_exist()
+      | course | created_at |
+      | C1     | 1794312000 |
+      | C1     | 1794398400 |
+      | C1     | 1794484800 |
+    And I log in as "teacher1"                                    # behat_auth::i_log_in_as()
+
+  Scenario: The history lists every version and the period keeps the days chosen, both inclusive # /var/www/html/public/local/assistente/tests/behat/report_filters.feature:28
+    When I open the "history" tab of the assistant in course "C1"                                # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "10/11/26" in the ".local-assistente-history table" "css_element"          # behat_general::assert_element_contains_text()
+    And I should see "11/11/26" in the ".local-assistente-history table" "css_element"           # behat_general::assert_element_contains_text()
+    And I should see "12/11/26" in the ".local-assistente-history table" "css_element"           # behat_general::assert_element_contains_text()
+    When I set the following fields to these values:                                             # behat_forms::i_set_the_following_fields_to_these_values()
+      | id_from_enabled | 1    |
+      | id_from_day     | 11   |
+      | id_from_month   | 11   |
+      | id_from_year    | 2026 |
+      | id_to_enabled   | 1    |
+      | id_to_day       | 12   |
+      | id_to_month     | 11   |
+      | id_to_year      | 2026 |
+    And I press "Apply filters"                                                                  # behat_forms::press_button()
+    Then I should not see "10/11/26" in the ".local-assistente-history table" "css_element"      # behat_general::assert_element_not_contains_text()
+    And I should see "11/11/26" in the ".local-assistente-history table" "css_element"           # behat_general::assert_element_contains_text()
+    And I should see "12/11/26" in the ".local-assistente-history table" "css_element"           # behat_general::assert_element_contains_text()
+
+  Scenario: A period with no execution says that no version matches                             # /var/www/html/public/local/assistente/tests/behat/report_filters.feature:47
+    When I open the "history" tab of the assistant in course "C1"                               # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    And I set the following fields to these values:                                             # behat_forms::i_set_the_following_fields_to_these_values()
+      | id_from_enabled | 1    |
+      | id_from_day     | 1    |
+      | id_from_month   | 1    |
+      | id_from_year    | 2025 |
+      | id_to_enabled   | 1    |
+      | id_to_day       | 31   |
+      | id_to_month     | 1    |
+      | id_to_year      | 2025 |
+    And I press "Apply filters"                                                                 # behat_forms::press_button()
+    Then I should see "No version matches the filters."                                         # behat_general::assert_page_contains_text()
+    And "table" "css_element" should not exist in the ".local-assistente-history" "css_element" # behat_general::should_not_exist_in_the()
+
+  Scenario: A last day before the first day is refused by the form and shows no result # /var/www/html/public/local/assistente/tests/behat/report_filters.feature:62
+    When I open the "history" tab of the assistant in course "C1"                      # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    And I set the following fields to these values:                                    # behat_forms::i_set_the_following_fields_to_these_values()
+      | id_from_enabled | 1    |
+      | id_from_day     | 12   |
+      | id_from_month   | 11   |
+      | id_from_year    | 2026 |
+      | id_to_enabled   | 1    |
+      | id_to_day       | 10   |
+      | id_to_month     | 11   |
+      | id_to_year      | 2026 |
+    And I press "Apply filters"                                                        # behat_forms::press_button()
+    Then I should see "The last day must not be before the first day."                 # behat_general::assert_page_contains_text()
+    And ".local-assistente-history" "css_element" should not exist                     # behat_general::should_not_exist()
+    And I should not see "No version matches the filters."                             # behat_general::assert_page_not_contains_text()
+
+  Scenario: The report shows the current version and the version chosen in the list # /var/www/html/public/local/assistente/tests/behat/report_filters.feature:78
+    When I open the "report" tab of the assistant in course "C1"                    # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "Current version: 3"                                          # behat_general::assert_page_contains_text()
+    When I set the field "Report version" to "2"                                    # behat_forms::i_set_the_field_to()
+    And I press "Apply filters"                                                     # behat_forms::press_button()
+    Then I should see "Current version: 2"                                          # behat_general::assert_page_contains_text()
+
+@local @local_assistente
+Feature: Report and its history
+  In order to follow the reports of the course
+  As a teacher
+  I need to see the current version and reach the history
+
+  Background:                                    # /var/www/html/public/local/assistente/tests/behat/report_history.feature:7
+    Given the following "users" exist:           # behat_data_generators::the_following_entities_exist()
+      | username | firstname | lastname | email                | lang |
+      | teacher1 | Teacher   | One      | teacher1@example.com | en   |
+      | student1 | Student   | One      | student1@example.com | en   |
+    And the following "courses" exist:           # behat_data_generators::the_following_entities_exist()
+      | fullname | shortname |
+      | Course 1 | C1        |
+    And the following "course enrolments" exist: # behat_data_generators::the_following_entities_exist()
+      | user     | course | role           |
+      | teacher1 | C1     | editingteacher |
+      | student1 | C1     | student        |
+
+  Scenario: The report shows the current version with a link to the history # /var/www/html/public/local/assistente/tests/behat/report_history.feature:20
+    Given the following "local_assistente > configs" exist:                 # behat_data_generators::the_following_entities_exist()
+      | course | enabled |
+      | C1     | 1       |
+    And the following "local_assistente > report_versions" exist:           # behat_data_generators::the_following_entities_exist()
+      | course |
+      | C1     |
+      | C1     |
+    And I log in as "teacher1"                                              # behat_auth::i_log_in_as()
+    When I open the "report" tab of the assistant in course "C1"            # behat_local_assistente::i_open_the_tab_of_the_assistant_in_course()
+    Then I should see "Current version: 2"                                  # behat_general::assert_page_contains_text()
+    When I click on "See the history of the report" "link"                  # behat_general::i_click_on()
+    Then I should see "History"                                             # behat_general::assert_page_contains_text()
+    And I should see "Version"                                              # behat_general::assert_page_contains_text()
+
+22 scenarios (22 passed)
+233 steps (233 passed)
+1m34.88s (82.29Mb)

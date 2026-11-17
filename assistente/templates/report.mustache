@@ -1,0 +1,51 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_assistente/report
+
+    The current version of the report, with a link to the history, and one table for each block.
+
+    Example context (json):
+    {
+        "available": true,
+        "message": null,
+        "hasreport": true,
+        "noreport": false,
+        "noresults": false,
+        "versiontext": "Current version: 3",
+        "generated": "28/10/26, 18:00",
+        "historyurl": "https://example.com/local/assistente/index.php?id=2&tab=history",
+        "blocks": [{"title": "Grades", "statetext": null, "hasrows": true, "columns": [{"label": "Name"}],
+            "rows": [{"cells": [{"rowheader": true, "lines": [{"text": "Ana"}]}]}]}]
+    }
+}}
+<div class="local-assistente-report">
+    {{^available}}<div class="alert alert-info" role="status">{{message}}</div>{{/available}}
+    {{#noreport}}<p>{{#str}} report:none, local_assistente {{/str}}</p>{{/noreport}}
+    {{#noresults}}<p>{{#str}} filter:no_results, local_assistente {{/str}}</p>{{/noresults}}
+    {{#hasreport}}
+        <p>
+            <strong>{{versiontext}}</strong> ({{generated}}) &middot;
+            <a href="{{historyurl}}">{{#str}} report:history_link, local_assistente {{/str}}</a>
+        </p>
+        {{#blocks}}
+            <h3>{{title}}</h3>
+            {{#statetext}}<p>{{statetext}}</p>{{/statetext}}
+            {{#hasrows}}{{> local_assistente/table}}{{/hasrows}}
+        {{/blocks}}
+    {{/hasreport}}
+</div>

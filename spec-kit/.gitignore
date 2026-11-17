@@ -1,0 +1,9 @@
+# Claude Code: keep the shared Spec Kit skills (.claude/skills/) versioned,
+# but never commit machine-local settings, credentials or session state.
+.claude/*
+!.claude/skills/
+.claude/skills/**/*.local.*
+CLAUDE.local.md
+
+# Specify CLI transient lock file (created by `specify workflow` commands).
+.specify/.workflow-install.lock

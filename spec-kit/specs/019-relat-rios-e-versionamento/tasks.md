@@ -1,0 +1,46 @@
+# Tasks: spec-019 — Relatórios e Versionamento
+
+**Input**: [spec.md](spec.md), [plan.md](plan.md) (aprovado em 26/10/2026, conforme DEC-44), [data-model.md](data-model.md), [contracts/report.md](contracts/report.md), [research.md](research.md), [quickstart.md](quickstart.md)
+
+**Ordem global**: entrega E9 de [`../README.md`](../README.md) (seção "Ordem de entregas das tasks"). Depende de 017 e 018. IDs globais.
+
+**Requisitos (AT)**: AT-065.
+
+**Decisões**: DEC-06, DEC-07, DEC-17, DEC-18, DEC-23, DEC-29, DEC-44 D1 (manifesto), D2 (fuso do site, 00:00 do dia seguinte, 72 h absolutas), D3 (reabertura), DEC-42 D1, DEC-43 D2, P-05, DEC-48.
+
+**Validações técnicas**: CL-39 (T117). **Risco**: R-019-01 (manifesto depende das análises referenciadas) — sem expurgo (DEC-42 D4); volume em T105.
+
+**Testes (DEC-48)**: PHPUnit com relógio simulado; não dependem do cron. Inclui o cenário Q5 do quickstart 017. Q16 é VT.
+
+## Format: `[ID] [P?] [Entrega] Descrição`
+
+---
+
+## Entrega E9 — Relatórios
+
+**Objetivo**: relatório lógico por curso com versões-manifesto, agenda de 72 h, atualização final e reabertura.
+
+**Verificação independente**: gate G-019 — simulação temporal, cenários Q1–Q15.
+
+- [x] T112 [P] [E9] **[28/10/2026: `report_schedule` com 19 testes de domínio, tempo simulado; reabertura quando a nova `final_update_at` é posterior ao `now` informado (regra adotada, a spec não diz "futuro em relação a quê"). Validação no Moodle em T117/CL-39.]** Criar `assistente/classes/domain/report/report_schedule.php`: próxima atualização 72 h absolutas depois do último sucesso; data final = atividade elegível mais distante pela data própria; atualização final às 00:00 do dia seguinte no fuso do site; coincidência executa uma vez como final; sem data final não agenda; mudança da data recalcula a final; prazo estendido depois da final reabre (limpa `final_completed_at`); PHPUnit `assistente/tests/domain/report/report_schedule_test.php` (Q1, Q2, Q3, Q5, Q6, Q8, Q13, Q14 no domínio)
+  - Refs: quickstart 019 Q1–Q3, Q5, Q6, Q8, Q13, Q14; DEC-06, DEC-07, DEC-18, DEC-44 D2, D3
+- [x] T113 [E9] **[28/10/2026: `report_repository` com 18 testes; versão e `current_version` e agenda na mesma transação sob `report_resource`; `find_due` ignora agendas nulas; gerador estendido. Exclusão entre processos reais validada em T117 (CL-39), só no mesmo servidor.]** Criar `assistente/classes/infrastructure/persistence/report_repository.php` (agregado `report` + `report_version`; nova versão persistida antes da troca de `current_version`, sob Lock API por relatório e em transação; datas anuláveis; `final_completed_at`); estender o gerador; PHPUnit `assistente/tests/infrastructure/persistence/report_repository_test.php` (depende de T015, T016, T017)
+  - Refs: DEC-23, DEC-29; plano 003 "Unidades transacionais"
+- [x] T114 [E9] **[28/10/2026: `report_builder` monta e lê o manifesto (13 testes), só referências; a descoberta das análises correntes ficou em `report_collector` (T116), fora do builder. O estado `error` não é decidido pelo builder.]** Criar `assistente/classes/application/report/report_builder.php`: `snapshot_json` como manifesto — referências (`analysis_id`, `material_version`, versões de síntese por seção), tipo, momento e estado por bloco, sem cópia de valores e sem bloco de histórico; PHPUnit `assistente/tests/application/report/report_builder_test.php` (Q9; 017 Q5 a partir de `report_version` chega-se aos `analysis_id` e às versões de síntese) (depende de T113, T109, T110)
+  - Refs: quickstart 019 Q9; quickstart 017 Q5; DEC-44 D1
+- [x] T115 [E9] **[28/10/2026: `report_view_model` com 7 testes (Q4, Q10, Q11, Q12). Comparada com as regras do plano 018 listadas no contrato (truncamento a duas casas, estados, "sem materiais", acesso ao curso, fonte removida, ordem por nome): aplicadas, com nomes de atividades, fóruns e seções, `course_access` da frequência, nota de fonte removida nas notas e nas discussões do fórum, cobertura "sem materiais" e ordem fixa dos blocos agregados. DIVERGÊNCIA RESIDUAL, não exigida por Q4/Q10–Q12: o bloco de questionários mostra cobertura e métricas, mas não as questões individuais (complexidade, resultados por questão) que a query T110 mostra, e a frequência não lista as atividades de cada seção.]** Criar `assistente/classes/application/report/report_view_model.php`: renderização na leitura com as regras de T107, restrição por grupo nas partes individuais (T108) e sem estudantes cujos dados foram excluídos; acesso só com `require_view`; PHPUnit `assistente/tests/application/report/report_view_model_test.php` (Q4 professor sem acesso negado; Q10 versão antiga com valores das análises referenciadas; Q11 grupos separados; Q12 estudante excluído não aparece) (depende de T114, T107, T108, T104)
+  - Refs: quickstart 019 Q4, Q10–Q12; DEC-44 D1; DEC-43 D2; DEC-42 D1
+- [x] T116 [E9] **[28/10/2026: `report_collector` (coleta sem usuário), `report_generator`, `task/report_dispatcher` e entrada em `db/tasks.php`; 11 testes (Q1, Q5, Q7, Q8, Q14, Q15, lock, Tasks API). DECISÕES (28/10/2026): a coleta das referências fica em `report_collector`, não no builder nem no repositório; a elegibilidade da data final segue a DEC-39 D1 (atividade visível, não recurso, com nota numérica ou por escala, conclusão habilitada, envio ou fórum) e usa só a data própria, nunca `course.enddate`; o estado `error` NÃO é produzido porque o contrato só o define como valor possível do bloco e nenhuma regra diz quando ocorre (uma falha de leitura faz a execução daquele relatório falhar, sem versão nova, DEC-17). IMPLANTAÇÃO: incrementar `version.php`, rodar `upgrade.php` e limpar caches; o despachante varre todos os cursos habilitados.]** Criar `assistente/classes/task/report_dispatcher.php` (Scheduled Task em `assistente/db/tasks.php`, fora da fila de eventos, com lock por relatório): gera versões devidas por T112 e T114; falha registrada mantém o último resultado válido, não reinicia as 72 h e não cria outro relatório lógico; depois da final, nova nota sem mudança de datas não cria versão; PHPUnit `assistente/tests/task/report_dispatcher_test.php` (Q1, Q7, Q14, Q15) (depende de T112, T113, T114)
+  - Refs: quickstart 019 Q1, Q7, Q14, Q15; DEC-17; DEC-44 D3; P-05
+- [x] T117 [E9] **[28/10/2026, EXECUTADA em ambiente isolado, com limitações; CL-39 fechada em 28/10/2026 com limitações residuais, conforme `closure-register.md`: cópia do código com banco de prefixo `iso39_` e diretório de dados próprios (o site compartilhado não foi tocado), instalada do zero, com `report_dispatcher` descoberto pelo Moodle (`scheduled_task.php --list`) e executado pelo `admin/cli/cron.php` real da cópia no horário agendado pelo próprio Moodle (`task_log` com resultado 0; próxima execução agendada pelo Moodle em 15 minutos); fuso `America/Sao_Paulo`: `final_update_at` = 00:00 do dia seguinte, igual ao cálculo independente do Moodle; duas execuções simultâneas do cron geraram uma única versão (a segunda execução não rodou a tarefa, trava de tarefa do Moodle); data final = a mais distante entre tarefa, questionário e fórum. LIMITAÇÕES: a parada do cron por mais de 72 h foi SIMULADA (instantes gravados deslocados em 100 h nas tabelas `iso39_*`), não esperada; a tarefa não foi executada pelo contêiner `cron` do site compartilhado (exige `version.php` novo e `upgrade.php`, e processaria os cursos 5 e 6). DEFEITO ACHADO PELO CRON REAL E CORRIGIDO: `course_module_reader` usava `GRADE_TYPE_VALUE`, não definida no cron; a primeira execução falhou por curso, e no site compartilhado `detect_reference_dates` falhou uma vez (19:36, resultado 1) antes da correção e voltou ao normal. OBSERVAÇÃO: `task_log` registra resultado 0 mesmo quando um curso falha dentro da tarefa; a falha só aparece no texto da saída. Detalhes em `closure-register.md`, CL-39.]** VT CL-39 (Q16): no Moodle 5.2, site em fuso diferente de UTC, cron parado por mais de 72 h e retomado, duas execuções simultâneas do despachante, atividades com data de entrega e de encerramento; registrar em `spec-kit/closure-register.md` CL-39, sem resultado antecipado (depende de T116)
+  - Refs: quickstart 019 Q16; CL-39
+
+**Melhoria separada, fora do escopo de T112–T117 (registrada em 28/10/2026, sem tarefa nem código):** observabilidade do despachante. Na validação da CL-39, uma execução em que um curso falhou ("Undefined constant") terminou com `task_log` resultado 0, porque `report_dispatcher::execute()` apenas escreve a falha na saída (`mtrace`) e não lança exceção. Quem olha só o `task_log` ou a tela de tarefas do Moodle não vê a falha. Impacto: a falha é recuperada na execução seguinte (DEC-17), mas fica pouco visível. Decisão necessária antes de qualquer mudança: lançar a exceção ao fim da execução faria o Moodle registrar falha, mas também aplicaria o atraso crescente de tarefas agendadas com falha a todos os cursos, não só ao que falhou; alternativas são registrar a falha por curso em outro lugar (log do plugin) ou manter como está. Não é critério de T117 nem de CL-39.
+
+**Checkpoint E9 (019)**: G-019 com evidência de T112–T116.
+
+---
+
+## Dependencies & Execution Order
+
+- T112 e T113 em paralelo; T114 → T115; T116 depende de T112–T114; T117 por último. Downstream: T120 (filtros de versão/data), T125 (exibição).
